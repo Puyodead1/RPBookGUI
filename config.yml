@@ -1,0 +1,9 @@
+settings:
+  keepinvopen: true
+  usepermissions: true
+  
+messages:
+  no-permission: "&7[&dRPBookGUI&7] &cYou don't have permission for that!"
+  only-players: "&7[&dRPBookGUI&7] &cOnly players can use that command!"
+  added-book: "&e&lAdded &e{NAME}&e to your inventory."
+  config-reloaded: "&7[&dRPBookGUI&7] &aConfig reloaded!"
