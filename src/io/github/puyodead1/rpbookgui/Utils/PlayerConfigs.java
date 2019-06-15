@@ -21,6 +21,13 @@ public class PlayerConfigs {
 
 		return config;
 	}
+	
+	public static File getPlayerConfigFile(UUID uuid) {
+		String playerUUID = uuid.toString();
+		File file = new File(rpbg.getDataFolder() + File.separator +  "_playerData", playerUUID + ".yml");
+		
+		return file;
+	}
 
 	public static boolean savePlayerConfig(UUID uuid, File playerFile) {
 		try {

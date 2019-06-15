@@ -21,9 +21,11 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.puyodead1.rpbookgui.Utils.KitCreatorCreate;
 import io.github.puyodead1.rpbookgui.Utils.PlayerConfigs;
 import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
 import me.randomhashtags.randompackage.api.CustomEnchants;
@@ -36,15 +38,15 @@ public class Inventories {
 
 	public static Inventory MainGUI() {
 		Inventory inv = Bukkit.createInventory(null, 9, "Enchantment Categories");
-		inv.setItem(0, ItemStacks.GlassSeperator());
-		inv.setItem(1, ItemStacks.SimpleCategoryItem());
-		inv.setItem(2, ItemStacks.UniqueCategoryItem());
-		inv.setItem(3, ItemStacks.EliteCategoryItem());
-		inv.setItem(4, ItemStacks.UltimateCategoryItem());
-		inv.setItem(5, ItemStacks.LegendaryCategoryItem());
-		inv.setItem(6, ItemStacks.SoulCategoryItem());
-		inv.setItem(7, ItemStacks.HeroicCategoryItem());
-		inv.setItem(8, ItemStacks.GlassSeperator());
+		inv.setItem(0, ItemStacks.GlassSeperator().clone());
+		inv.setItem(1, ItemStacks.SimpleCategoryItem().clone());
+		inv.setItem(2, ItemStacks.UniqueCategoryItem().clone());
+		inv.setItem(3, ItemStacks.EliteCategoryItem().clone());
+		inv.setItem(4, ItemStacks.UltimateCategoryItem().clone());
+		inv.setItem(5, ItemStacks.LegendaryCategoryItem().clone());
+		inv.setItem(6, ItemStacks.SoulCategoryItem().clone());
+		inv.setItem(7, ItemStacks.HeroicCategoryItem().clone());
+		inv.setItem(8, ItemStacks.GlassSeperator().clone());
 		return inv;
 	}
 
@@ -54,11 +56,11 @@ public class Inventories {
 
 		for (int i = 0; i < rarities.size(); i++) {
 			CustomEnchant ce = rarities.get(i);
-			ItemStack is = ItemStacks.EnchantBook(ce);
+			ItemStack is = ItemStacks.EnchantBook(ce).clone();
 			inv.setItem(i, is);
 		}
 
-		inv.setItem(53, ItemStacks.Back());
+		inv.setItem(53, ItemStacks.Back().clone());
 		return inv;
 	}
 
@@ -67,10 +69,10 @@ public class Inventories {
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&a&lUnique Enchantments"));
 		for (int i = 0; i < rarities.size(); i++) {
 			CustomEnchant ce = rarities.get(i);
-			ItemStack is = ItemStacks.EnchantBook(ce);
+			ItemStack is = ItemStacks.EnchantBook(ce).clone();
 			inv.setItem(i, is);
 		}
-		inv.setItem(53, ItemStacks.Back());
+		inv.setItem(53, ItemStacks.Back().clone());
 		return inv;
 	}
 
@@ -80,11 +82,11 @@ public class Inventories {
 
 		for (int i = 0; i < rarities.size(); i++) {
 			CustomEnchant ce = rarities.get(i);
-			ItemStack is = ItemStacks.EnchantBook(ce);
+			ItemStack is = ItemStacks.EnchantBook(ce).clone();
 			inv.setItem(i, is);
 		}
 
-		inv.setItem(53, ItemStacks.Back());
+		inv.setItem(53, ItemStacks.Back().clone());
 		return inv;
 	}
 
@@ -95,11 +97,11 @@ public class Inventories {
 
 		for (int i = 0; i < rarities.size(); i++) {
 			CustomEnchant ce = rarities.get(i);
-			ItemStack is = ItemStacks.EnchantBook(ce);
+			ItemStack is = ItemStacks.EnchantBook(ce).clone();
 			inv.setItem(i, is);
 		}
 
-		inv.setItem(53, ItemStacks.Back());
+		inv.setItem(53, ItemStacks.Back().clone());
 		return inv;
 	}
 
@@ -109,11 +111,11 @@ public class Inventories {
 
 		for (int i = 0; i < rarities.size(); i++) {
 			CustomEnchant ce = rarities.get(i);
-			ItemStack is = ItemStacks.EnchantBook(ce);
+			ItemStack is = ItemStacks.EnchantBook(ce).clone();
 			inv.setItem(i, is);
 		}
 
-		inv.setItem(53, ItemStacks.Back());
+		inv.setItem(53, ItemStacks.Back().clone());
 		return inv;
 	}
 
@@ -123,11 +125,11 @@ public class Inventories {
 
 		for (int i = 0; i < rarities.size(); i++) {
 			CustomEnchant ce = rarities.get(i);
-			ItemStack is = ItemStacks.EnchantBook(ce);
+			ItemStack is = ItemStacks.EnchantBook(ce).clone();
 			inv.setItem(i, is);
 		}
 
-		inv.setItem(53, ItemStacks.Back());
+		inv.setItem(53, ItemStacks.Back().clone());
 		return inv;
 	}
 
@@ -137,11 +139,11 @@ public class Inventories {
 
 		for (int i = 0; i < rarities.size(); i++) {
 			CustomEnchant ce = rarities.get(i);
-			ItemStack is = ItemStacks.EnchantBook(ce);
+			ItemStack is = ItemStacks.EnchantBook(ce).clone();
 			inv.setItem(i, is);
 		}
 
-		inv.setItem(53, ItemStacks.Back());
+		inv.setItem(53, ItemStacks.Back().clone());
 		return inv;
 	}
 
@@ -150,11 +152,11 @@ public class Inventories {
 		Inventory inv = Bukkit.createInventory(null, 18, rarity.getNameColors() + ce.getName());
 		int x = 0;
 		for (int i = 1; i < ce.getMaxLevel() + 1; i++) {
-			ItemStack is = CustomEnchants.getCustomEnchants().getRevealedItem(ce, i, 100, 0, true, true);
+			ItemStack is = CustomEnchants.getCustomEnchants().getRevealedItem(ce, i, 100, 0, true, true).clone();
 			inv.setItem(x, is);
 			x++;
 		}
-		inv.setItem(17, ItemStacks.Back());
+		inv.setItem(17, ItemStacks.Back().clone());
 		return inv;
 	}
 
@@ -162,24 +164,24 @@ public class Inventories {
 		Inventory inv = Bukkit.createInventory(null, 36, RPBookGUIUtils.ChatColor("&6&lRPBookGUI Settings"));
 
 		for (int i = 0; i < 10; i++) {
-			inv.setItem(i, ItemStacks.GlassSeperator());
+			inv.setItem(i, ItemStacks.GlassSeperator().clone());
 		}
-		inv.setItem(10, ItemStacks.GlassSeperator2());
-		inv.setItem(11, ItemStacks.KeepMenuOpenSetting());
-		inv.setItem(12, ItemStacks.GlassSeperator2());
+		inv.setItem(10, ItemStacks.GlassSeperator2().clone());
+		inv.setItem(11, ItemStacks.KeepMenuOpenSetting().clone());
+		inv.setItem(12, ItemStacks.GlassSeperator2().clone());
 
-		inv.setItem(13, ItemStacks.GlassSeperator3());
+		inv.setItem(13, ItemStacks.GlassSeperator3().clone());
 
-		inv.setItem(14, ItemStacks.GlassSeperator2());
-		inv.setItem(15, ItemStacks.UsePermissionsSetting());
-		inv.setItem(16, ItemStacks.GlassSeperator2());
+		inv.setItem(14, ItemStacks.GlassSeperator2().clone());
+		inv.setItem(15, ItemStacks.UsePermissionsSetting().clone());
+		inv.setItem(16, ItemStacks.GlassSeperator2().clone());
 
-		inv.setItem(17, ItemStacks.GlassSeperator());
-		inv.setItem(18, ItemStacks.GlassSeperator());
+		inv.setItem(17, ItemStacks.GlassSeperator().clone());
+		inv.setItem(18, ItemStacks.GlassSeperator().clone());
 		for (int i = 26; i < 36; i++) {
-			inv.setItem(i, ItemStacks.GlassSeperator());
+			inv.setItem(i, ItemStacks.GlassSeperator().clone());
 		}
-		inv.setItem(22, ItemStacks.Back());
+		inv.setItem(22, ItemStacks.Back().clone());
 		return inv;
 	}
 
@@ -199,13 +201,13 @@ public class Inventories {
 
 		if (ownedKits == 0) {
 			for (int a = 0; a < inv.getSize(); a++) {
-				inv.setItem(a, ItemStacks.GlassSeperator());
+				inv.setItem(a, ItemStacks.GlassSeperator().clone());
 			}
-			inv.setItem(8, ItemStacks.CreateKit());
+			inv.setItem(8, ItemStacks.CreateKit().clone());
 		} else {
 			for (int i = 0; i < ownedKits; i++) {
-				List<String> kits = playerConfig.getStringList("kits.kits." + i);
-				Material mat = Material.valueOf(playerConfig.getString("kits.kits." + i + ".item"));
+				List<String> kits = playerConfig.getStringList("kits." + String.valueOf(i));
+				Material mat = Material.valueOf(playerConfig.getString("kits." + String.valueOf(i) + ".item"));
 				ItemStack is = new ItemStack(mat);
 				inv.setItem(i, is);
 			}
@@ -214,22 +216,45 @@ public class Inventories {
 		return inv;
 	}
 
-	public static Inventory KitCreatorOverviewInv() {
+	public static Inventory KitCreatorOverviewInv(Player player) {
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&6&lKit Creator - Kit Editor"));
 
 		for (int i = 0; i < 54; i++) {
-			inv.setItem(i, ItemStacks.GlassSeperator());
+			inv.setItem(i, ItemStacks.GlassSeperator().clone());
 		}
+		
+		ItemStack helm = ItemStacks.CreateKitHelmateBase().clone();
+		ItemStack bow = ItemStacks.CreateKitBowBase().clone();
+		ItemStack sword = ItemStacks.CreateKitSwordBase().clone();
+		ItemStack chest = ItemStacks.CreateKitChestplateBase().clone();
+		ItemStack axe = ItemStacks.CreateKitAxeBase().clone();
+		ItemStack pick = ItemStacks.CreateKitPickaxeBase().clone();
+		ItemStack pants = ItemStacks.CreateKitLeggingsBase().clone();
+		ItemStack shovel = ItemStacks.CreateKitShovelBase().clone();
+		ItemStack boots = ItemStacks.CreateKitBootsBase().clone();
+		
+		ItemStack[] arrayOfItems = new ItemStack[9];
+		arrayOfItems[0] = helm;
+		arrayOfItems[1] = bow;
+		arrayOfItems[2] = sword;
+		arrayOfItems[3] = chest;
+		arrayOfItems[4] = axe;
+		arrayOfItems[5] = pick;
+		arrayOfItems[6] = pants;
+		arrayOfItems[7] = shovel;
+		arrayOfItems[8] = boots;
+		
+		KitCreatorCreate.CreateKit(player, arrayOfItems);
 
-		inv.setItem(13, new ItemStack(Material.DIAMOND_HELMET));
-		inv.setItem(16, new ItemStack(Material.BOW));
-		inv.setItem(21, new ItemStack(Material.DIAMOND_SWORD));
-		inv.setItem(22, new ItemStack(Material.DIAMOND_CHESTPLATE));
-		inv.setItem(23, new ItemStack(Material.DIAMOND_AXE));
-		inv.setItem(25, new ItemStack(Material.DIAMOND_PICKAXE));
-		inv.setItem(31, new ItemStack(Material.DIAMOND_LEGGINGS));
-		inv.setItem(34, new ItemStack(Material.DIAMOND_SHOVEL));
-		inv.setItem(40, new ItemStack(Material.DIAMOND_BOOTS));
+		inv.setItem(13, helm);
+		inv.setItem(16, bow);
+		inv.setItem(21, sword);
+		inv.setItem(22, chest);
+		inv.setItem(23, axe);
+		inv.setItem(25, pick);
+		inv.setItem(31, pants);
+		inv.setItem(34, shovel);
+		inv.setItem(40, boots);
 
 		return inv;
 	}

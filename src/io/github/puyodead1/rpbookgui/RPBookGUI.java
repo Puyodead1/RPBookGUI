@@ -24,6 +24,7 @@ import io.github.puyodead1.rpbookgui.Commands.BookGUICommand;
 import io.github.puyodead1.rpbookgui.Commands.KitCreatorCommand;
 import io.github.puyodead1.rpbookgui.Events.InventoryClick;
 import io.github.puyodead1.rpbookgui.Events.PlayerJoin;
+import io.github.puyodead1.rpbookgui.Utils.MetricsLite;
 import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
 
 public class RPBookGUI extends JavaPlugin {

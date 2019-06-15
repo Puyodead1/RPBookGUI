@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -228,5 +229,167 @@ public class ItemStacks {
 		is.setItemMeta(im);
 
 		return is;
+	}
+	
+	public static ItemStack CreateKitHelmateBase() {
+		ItemStack item = new ItemStack(Material.DIAMOND_HELMET);
+		ItemMeta meta = item.getItemMeta();
+		ArrayList<String> il = new ArrayList<String>();
+		
+		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lHelmet"));
+		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
+		
+		meta.setLore(il);
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+		meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
+		meta.addItemFlags(ItemFlag.HIDE_PLACED_ON);
+		meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+		item.setItemMeta(meta);
+		return item;
+	}
+	
+	public static ItemStack CreateKitChestplateBase() {
+		ItemStack item = new ItemStack(Material.DIAMOND_CHESTPLATE);
+		ItemMeta meta = item.getItemMeta();
+		ArrayList<String> il = new ArrayList<String>();
+		
+		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lChestplate"));
+		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
+		
+		meta.setLore(il);
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+		meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
+		meta.addItemFlags(ItemFlag.HIDE_PLACED_ON);
+		meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+		item.setItemMeta(meta);
+		return item;
+	}
+	
+	public static ItemStack CreateKitLeggingsBase() {
+		ItemStack item = new ItemStack(Material.DIAMOND_LEGGINGS);
+		ItemMeta meta = item.getItemMeta();
+		ArrayList<String> il = new ArrayList<String>();
+		
+		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lLeggings"));
+		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
+		
+		meta.setLore(il);
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+		meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
+		meta.addItemFlags(ItemFlag.HIDE_PLACED_ON);
+		meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+		item.setItemMeta(meta);
+		return item;
+	}
+	
+	public static ItemStack CreateKitBootsBase() {
+		ItemStack item = new ItemStack(Material.DIAMOND_BOOTS);
+		ItemMeta meta = item.getItemMeta();
+		ArrayList<String> il = new ArrayList<String>();
+		
+		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lBoots"));
+		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
+		
+		meta.setLore(il);
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+		meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
+		meta.addItemFlags(ItemFlag.HIDE_PLACED_ON);
+		meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+		item.setItemMeta(meta);
+		return item;
+	}
+	
+	public static ItemStack CreateKitPickaxeBase() {
+		ItemStack item = new ItemStack(Material.DIAMOND_PICKAXE);
+		ItemMeta meta = item.getItemMeta();
+		ArrayList<String> il = new ArrayList<String>();
+		
+		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lPickaxe"));
+		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
+		
+		meta.setLore(il);
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+		meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
+		meta.addItemFlags(ItemFlag.HIDE_PLACED_ON);
+		meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+		item.setItemMeta(meta);
+		return item;
+	}
+	
+	public static ItemStack CreateKitSwordBase() {
+		ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
+		ItemMeta meta = item.getItemMeta();
+		ArrayList<String> il = new ArrayList<String>();
+		
+		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lSword"));
+		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
+		
+		meta.setLore(il);
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+		meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
+		meta.addItemFlags(ItemFlag.HIDE_PLACED_ON);
+		meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+		item.setItemMeta(meta);
+		return item;
+	}
+	
+	public static ItemStack CreateKitAxeBase() {
+		ItemStack item = new ItemStack(Material.DIAMOND_AXE);
+		ItemMeta meta = item.getItemMeta();
+		ArrayList<String> il = new ArrayList<String>();
+		
+		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lAxe"));
+		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
+		
+		meta.setLore(il);
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+		meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
+		meta.addItemFlags(ItemFlag.HIDE_PLACED_ON);
+		meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+		item.setItemMeta(meta);
+		return item;
+	}
+	
+	public static ItemStack CreateKitShovelBase() {
+		ItemStack item = new ItemStack(Material.DIAMOND_SHOVEL);
+		ItemMeta meta = item.getItemMeta();
+		ArrayList<String> il = new ArrayList<String>();
+		
+		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lShovel"));
+		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
+		
+		meta.setLore(il);
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+		meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
+		meta.addItemFlags(ItemFlag.HIDE_PLACED_ON);
+		meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+		item.setItemMeta(meta);
+		return item;
+	}
+	
+	public static ItemStack CreateKitBowBase() {
+		ItemStack item = new ItemStack(Material.BOW);
+		ItemMeta meta = item.getItemMeta();
+		ArrayList<String> il = new ArrayList<String>();
+		
+		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lBow"));
+		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
+		
+		meta.setLore(il);
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+		meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
+		meta.addItemFlags(ItemFlag.HIDE_PLACED_ON);
+		meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+		item.setItemMeta(meta);
+		return item;
 	}
 }

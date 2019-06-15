@@ -66,7 +66,7 @@ public class InventoryClick implements Listener {
 			/*
 			 * Create new kit overview inv click
 			 */
-			if (e.getClickedInventory().getTitle().equals(Inventories.KitCreatorOverviewInv().getTitle())) {
+			if (e.getClickedInventory().getTitle().equals(Inventories.KitCreatorOverviewInv(player).getTitle())) {
 				e.setCancelled(true);
 
 				if (!ci.getType().equals(Material.WHITE_STAINED_GLASS_PANE)) {
@@ -84,7 +84,7 @@ public class InventoryClick implements Listener {
 
 				if (ci.getItemMeta().getDisplayName().equals(ItemStacks.CreateKit().clone().getItemMeta().getDisplayName())) {
 					player.closeInventory();
-					player.openInventory(Inventories.KitCreatorOverviewInv());
+					player.openInventory(Inventories.KitCreatorOverviewInv(player));
 				}
 			}
 
