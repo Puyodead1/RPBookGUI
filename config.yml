@@ -7,3 +7,11 @@ messages:
   only-players: "&7[&dRPBookGUI&7] &cOnly players can use that command!"
   added-book: "&e&lAdded &e{NAME}&e to your inventory."
   config-reloaded: "&7[&dRPBookGUI&7] &aConfig reloaded!"
+  
+permissions:
+  bookgui: "bookgui.use"
+  bookgui-help: "bookgui.help"
+  bookgui-info: "bookgui.info"
+  bookgui-settings: "bookgui.settings"
+  bookgui-reload: "bookgui-settings"
+  kitcreator: "bookgui.kitcreator"

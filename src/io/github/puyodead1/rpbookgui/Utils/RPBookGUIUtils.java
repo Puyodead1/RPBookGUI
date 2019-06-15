@@ -13,11 +13,11 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  ******************************************************************************/
-package io.github.puyodead1.rpbookgui;
+package io.github.puyodead1.rpbookgui.Utils;
 
 import org.bukkit.ChatColor;
 
-public class Utils {
+public class RPBookGUIUtils {
 	public static String ChatColor(String msg) {
 		return ChatColor.translateAlternateColorCodes('&', msg);
 	}
@@ -28,5 +28,9 @@ public class Utils {
 			a++;
 		}
 		return (int) (a * 9);
+	}
+
+	public static String Strip(String message) {
+		return ChatColor.stripColor(message);
 	}
 }
