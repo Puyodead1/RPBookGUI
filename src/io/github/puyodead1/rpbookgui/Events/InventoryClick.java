@@ -1,5 +1,8 @@
 package io.github.puyodead1.rpbookgui.Events;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -66,12 +69,15 @@ public class InventoryClick implements Listener {
 			/*
 			 * Create new kit overview inv click
 			 */
-			if (e.getClickedInventory().getTitle().equals(Inventories.KitCreatorOverviewInv(player).getTitle())) {
+			if (e.getClickedInventory().getTitle().equals("Kit Creator - Kit Editor")) {
 				e.setCancelled(true);
 
 				if (!ci.getType().equals(Material.WHITE_STAINED_GLASS_PANE)) {
 					// It's not the glass that was clicked
-
+					
+					player.closeInventory();
+					player.openInventory(Inventories.EnchantCategoryInv(ci.getType().toString().replace("DIAMOND_", "")));
+					
 				}
 			}
 
@@ -266,6 +272,7 @@ public class InventoryClick implements Listener {
 					}
 				}
 				if (e.getCurrentItem().getType().equals(Material.BOOK)) {
+					e.setCancelled(true);
 					player.getInventory().addItem(ci);
 					if (!RPBookGUI.getPlugin.getConfig().getBoolean("settings.keepinvopen")) {
 						player.closeInventory();
@@ -274,7 +281,54 @@ public class InventoryClick implements Listener {
 							.getString("messages.added-book").replace("{NAME}", ci.getItemMeta().getDisplayName())));
 				}
 			}
+			/*
+			 * KC enchant category inv
+			 */
+			if(e.getClickedInventory().getTitle().contains("Enchant Categories - ")) {
+				ArrayList<String> regex = new ArrayList<String>();
+				regex.addAll(Arrays.asList("HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS", "SWORD", "AXE", "PICKAXE", "SHOVEL", "BOW"));
+				if(regex.contains(e.getClickedInventory().getTitle().split("-")[1].trim())) {
+					e.setCancelled(true);
+					String type = e.getClickedInventory().getTitle().split("-")[1].trim();
+					ItemStack applyTo;
+					
+					if(type == "BOW") {
+						applyTo = new ItemStack(Material.BOW);
+					} else {
+						applyTo = new ItemStack(Material.valueOf("DIAMOND_" + type));
+					}
+					
+					if (ci.getItemMeta().getDisplayName()
+							.equals(ItemStacks.SimpleCategoryItem().clone().getItemMeta().getDisplayName())) {
+						player.closeInventory();
+						player.openInventory(Inventories.SimpleEnchants(applyTo));
+					} else if (ci.getItemMeta().getDisplayName()
+							.equals(ItemStacks.UniqueCategoryItem().clone().getItemMeta().getDisplayName())) {
+						player.closeInventory();
+						player.openInventory(Inventories.UniqueEnchants(applyTo));
+					} else if (ci.getItemMeta().getDisplayName()
+							.equals(ItemStacks.EliteCategoryItem().clone().getItemMeta().getDisplayName())) {
+						player.closeInventory();
+						player.openInventory(Inventories.EliteEnchants(applyTo));
+					} else if (ci.getItemMeta().getDisplayName()
+							.equals(ItemStacks.UltimateCategoryItem().clone().getItemMeta().getDisplayName())) {
+						player.closeInventory();
+						player.openInventory(Inventories.UltimateEnchants(applyTo));
+					} else if (ci.getItemMeta().getDisplayName()
+							.equals(ItemStacks.LegendaryCategoryItem().clone().getItemMeta().getDisplayName())) {
+						player.closeInventory();
+						player.openInventory(Inventories.LegendaryEnchants(applyTo));
+					} else if (ci.getItemMeta().getDisplayName()
+							.equals(ItemStacks.SoulCategoryItem().clone().getItemMeta().getDisplayName())) {
+						player.closeInventory();
+						player.openInventory(Inventories.SoulEnchants(applyTo));
+					} else if (ci.getItemMeta().getDisplayName()
+							.equals(ItemStacks.HeroicCategoryItem().clone().getItemMeta().getDisplayName())) {
+						player.closeInventory();
+						player.openInventory(Inventories.HeroicEnchants(applyTo));
+					}
+				}
+			}
 		}
-
 	}
 }

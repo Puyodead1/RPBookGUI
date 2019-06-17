@@ -15,6 +15,7 @@
  ******************************************************************************/
 package io.github.puyodead1.rpbookgui;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -147,6 +148,168 @@ public class Inventories {
 		return inv;
 	}
 
+	/**/
+	public static Inventory SimpleEnchants(ItemStack itemApplyTo) {
+		List<CustomEnchant> rarities = EnchantRarity.rarities.get("SIMPLE").getEnchants();
+		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
+				.ChatColor("&f&lSimple Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
+
+		List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
+
+		for (int i = 0; i < rarities.size(); i++) {
+			CustomEnchant ce = rarities.get(i);
+			if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo)) {
+				enchantsForIS.add(ce);
+			}
+		}
+
+		for (int i = 0; i < enchantsForIS.size(); i++) {
+			ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
+			inv.setItem(i, is);
+		}
+
+		inv.setItem(53, ItemStacks.Back().clone());
+		return inv;
+	}
+
+	public static Inventory UniqueEnchants(ItemStack itemApplyTo) {
+		List<CustomEnchant> rarities = EnchantRarity.rarities.get("UNIQUE").getEnchants();
+		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
+				.ChatColor("&a&lUnique Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
+
+		List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
+
+		for (int i = 0; i < rarities.size(); i++) {
+			CustomEnchant ce = rarities.get(i);
+			if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo)) {
+				enchantsForIS.add(ce);
+			}
+		}
+
+		for (int i = 0; i < enchantsForIS.size(); i++) {
+			ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
+			inv.setItem(i, is);
+		}
+
+		inv.setItem(53, ItemStacks.Back().clone());
+		return inv;
+	}
+
+	public static Inventory EliteEnchants(ItemStack itemApplyTo) {
+		List<CustomEnchant> rarities = EnchantRarity.rarities.get("ELITE").getEnchants();
+		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
+				.ChatColor("&b&lElite Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
+
+		List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
+
+		for (int i = 0; i < rarities.size(); i++) {
+			CustomEnchant ce = rarities.get(i);
+			if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo)) {
+				enchantsForIS.add(ce);
+			}
+		}
+
+		for (int i = 0; i < enchantsForIS.size(); i++) {
+			ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
+			inv.setItem(i, is);
+		}
+
+		inv.setItem(53, ItemStacks.Back().clone());
+		return inv;
+	}
+
+	public static Inventory UltimateEnchants(ItemStack itemApplyTo) {
+		List<CustomEnchant> rarities = EnchantRarity.rarities.get("ULTIMATE").getEnchants();
+		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
+				.ChatColor("&e&lUltimate Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
+
+		List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
+
+		for (int i = 0; i < rarities.size(); i++) {
+			CustomEnchant ce = rarities.get(i);
+			if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo)) {
+				enchantsForIS.add(ce);
+			}
+		}
+
+		for (int i = 0; i < enchantsForIS.size(); i++) {
+			ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
+			inv.setItem(i, is);
+		}
+
+		inv.setItem(53, ItemStacks.Back().clone());
+		return inv;
+	}
+
+	public static Inventory LegendaryEnchants(ItemStack itemApplyTo) {
+		List<CustomEnchant> rarities = EnchantRarity.rarities.get("LEGENDARY").getEnchants();
+		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
+				.ChatColor("&6&lLegendary Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
+
+		List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
+
+		for (int i = 0; i < rarities.size(); i++) {
+			CustomEnchant ce = rarities.get(i);
+			if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo)) {
+				enchantsForIS.add(ce);
+			}
+		}
+
+		for (int i = 0; i < enchantsForIS.size(); i++) {
+			ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
+			inv.setItem(i, is);
+		}
+
+		inv.setItem(53, ItemStacks.Back().clone());
+		return inv;
+	}
+
+	public static Inventory SoulEnchants(ItemStack itemApplyTo) {
+		List<CustomEnchant> rarities = EnchantRarity.rarities.get("SOUL").getEnchants();
+		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
+				.ChatColor("&c&lSoul Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
+
+		List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
+
+		for (int i = 0; i < rarities.size(); i++) {
+			CustomEnchant ce = rarities.get(i);
+			if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo)) {
+				enchantsForIS.add(ce);
+			}
+		}
+
+		for (int i = 0; i < enchantsForIS.size(); i++) {
+			ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
+			inv.setItem(i, is);
+		}
+
+		inv.setItem(53, ItemStacks.Back().clone());
+		return inv;
+	}
+
+	public static Inventory HeroicEnchants(ItemStack itemApplyTo) {
+		List<CustomEnchant> rarities = EnchantRarity.rarities.get("HEROIC").getEnchants();
+		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
+				.ChatColor("&d&lHeroic Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
+
+		List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
+
+		for (int i = 0; i < rarities.size(); i++) {
+			CustomEnchant ce = rarities.get(i);
+			if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo)) {
+				enchantsForIS.add(ce);
+			}
+		}
+
+		for (int i = 0; i < enchantsForIS.size(); i++) {
+			ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
+			inv.setItem(i, is);
+		}
+
+		inv.setItem(53, ItemStacks.Back().clone());
+		return inv;
+	}
+
 	public static Inventory EnchantInv(CustomEnchant ce) {
 		EnchantRarity rarity = EnchantRarity.valueOf(ce);
 		Inventory inv = Bukkit.createInventory(null, 18, rarity.getNameColors() + ce.getName());
@@ -217,12 +380,12 @@ public class Inventories {
 	}
 
 	public static Inventory KitCreatorOverviewInv(Player player) {
-		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&6&lKit Creator - Kit Editor"));
+		Inventory inv = Bukkit.createInventory(null, 54, "Kit Creator - Kit Editor");
 
 		for (int i = 0; i < 54; i++) {
 			inv.setItem(i, ItemStacks.GlassSeperator().clone());
 		}
-		
+
 		ItemStack helm = ItemStacks.CreateKitHelmateBase().clone();
 		ItemStack bow = ItemStacks.CreateKitBowBase().clone();
 		ItemStack sword = ItemStacks.CreateKitSwordBase().clone();
@@ -232,7 +395,7 @@ public class Inventories {
 		ItemStack pants = ItemStacks.CreateKitLeggingsBase().clone();
 		ItemStack shovel = ItemStacks.CreateKitShovelBase().clone();
 		ItemStack boots = ItemStacks.CreateKitBootsBase().clone();
-		
+
 		ItemStack[] arrayOfItems = new ItemStack[9];
 		arrayOfItems[0] = helm;
 		arrayOfItems[1] = bow;
@@ -243,7 +406,7 @@ public class Inventories {
 		arrayOfItems[6] = pants;
 		arrayOfItems[7] = shovel;
 		arrayOfItems[8] = boots;
-		
+
 		KitCreatorCreate.CreateKit(player, arrayOfItems);
 
 		inv.setItem(13, helm);
@@ -256,6 +419,23 @@ public class Inventories {
 		inv.setItem(34, shovel);
 		inv.setItem(40, boots);
 
+		return inv;
+	}
+
+	/*
+	 * Enchants inv for Kit Creator
+	 */
+	public static Inventory EnchantCategoryInv(String material) {
+		Inventory inv = Bukkit.createInventory(null, 9, "Enchant Categories - " + material);
+		inv.setItem(0, ItemStacks.GlassSeperator().clone());
+		inv.setItem(1, ItemStacks.SimpleCategoryItem().clone());
+		inv.setItem(2, ItemStacks.UniqueCategoryItem().clone());
+		inv.setItem(3, ItemStacks.EliteCategoryItem().clone());
+		inv.setItem(4, ItemStacks.UltimateCategoryItem().clone());
+		inv.setItem(5, ItemStacks.LegendaryCategoryItem().clone());
+		inv.setItem(6, ItemStacks.SoulCategoryItem().clone());
+		inv.setItem(7, ItemStacks.HeroicCategoryItem().clone());
+		inv.setItem(8, ItemStacks.GlassSeperator().clone());
 		return inv;
 	}
 }
