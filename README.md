@@ -2,6 +2,13 @@
 Get any RandomPackage Enchantment book ease!<br>
 https://www.spigotmc.org/resources/rpbookgui.41502/
 
+![GitHub repo size](https://img.shields.io/github/repo-size/Puyodead1/RPBookGUI.svg?style=plastic)
+[![Discord Server](https://discordapp.com/api/guilds/589200717277954093/embed.png)](https://discord.gg/mfMQvYW)
+![GitHub issues](https://img.shields.io/github/issues/Puyodead1/RPBookGUI.svg?style=plastic)
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Puyodead1/RPBookGUI.svg?style=plastic)
+![GitHub](https://img.shields.io/github/license/Puyodead1/RPBookGUI.svg?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/Puyodead1/RPBookGUI.svg?style=plastic)
+
 ## RPBookGUI V2!<br>
 #### Back from the dead and working!<br>
 This plugin allows players to open a GUI and select a RandomPackage Enchant category, they can then select an enchant and click the level they want and it is added to their inventory!<br>
