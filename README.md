@@ -24,6 +24,7 @@ This plugin should work with RandomPackage 16.1.3+<br>
 /bookgui help - Shows help page<br>
 /bookgui info - show info page<br>
 /bookgui settings - show the settings menu<br>
+/rarityinfo <enchant name> - returns the rarity/category of an enchant<br>
 
 
 ### Permissions:<br>
@@ -32,6 +33,7 @@ bookgui.reload - use /bookgui reload<br>
 bookgui.help - use /bookgui help<br>
 bookgui.info - use /bookgui info<br>
 bookgui.settings - use /bookgui settings<br>
+bookgui.rarityinfo - use /rarityinfo<br>
 
 
 ### Future Features:<br>
