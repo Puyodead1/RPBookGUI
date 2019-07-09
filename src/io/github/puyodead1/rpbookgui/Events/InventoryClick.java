@@ -29,11 +29,12 @@ public class InventoryClick implements Listener {
 				&& !e.getClick().equals(ClickType.DOUBLE_CLICK)) {
 			ItemStack ci = e.getCurrentItem();
 			Player player = (Player) e.getWhoClicked();
+			String invTitle = e.getView().getTitle();
 
 			/*
 			 * Main inv click
 			 */
-			if (e.getInventory().getTitle().equals(Inventories.MainGUI().getTitle())) {
+			if (invTitle.equals("Enchantment Categories")) {
 				e.setCancelled(true);
 
 				if (ci.getItemMeta().getDisplayName()
@@ -69,7 +70,7 @@ public class InventoryClick implements Listener {
 			/*
 			 * Settings inv click
 			 */
-			if (e.getClickedInventory().getTitle().equals(Inventories.SettingsInv().getTitle())) {
+			if (invTitle.equals("RPBookGUI Settings")) {
 				e.setCancelled(true);
 
 				if (ci.getItemMeta().getDisplayName().equals(ItemStacks.Back().clone().getItemMeta().getDisplayName()))
@@ -95,7 +96,7 @@ public class InventoryClick implements Listener {
 			/*
 			 * Heroic inv click
 			 */
-			if (e.getClickedInventory().getTitle().equals(Inventories.HeroicEnchants().getTitle())) {
+			if (invTitle.equals(RPBookGUIUtils.ChatColor("&d&lHeroic Enchantments"))) {
 				e.setCancelled(true);
 				if (ci.getItemMeta().getDisplayName()
 						.equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
@@ -113,7 +114,7 @@ public class InventoryClick implements Listener {
 			/*
 			 * soul inv click
 			 */
-			if (e.getClickedInventory().getTitle().equals(Inventories.SoulEnchants().getTitle())) {
+			if (invTitle.equals(RPBookGUIUtils.ChatColor("&c&lSoul Enchantments"))) {
 				e.setCancelled(true);
 				if (ci.getItemMeta().getDisplayName()
 						.equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
@@ -130,7 +131,7 @@ public class InventoryClick implements Listener {
 			/*
 			 * Legendary inv click
 			 */
-			if (e.getClickedInventory().getTitle().equals(Inventories.LegendaryEnchants().getTitle())) {
+			if (invTitle.equals(RPBookGUIUtils.ChatColor("&6&lLegendary Enchantments"))) {
 				e.setCancelled(true);
 				if (ci.getItemMeta().getDisplayName()
 						.equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
@@ -148,7 +149,7 @@ public class InventoryClick implements Listener {
 			/*
 			 * Ultimate inv click
 			 */
-			if (e.getClickedInventory().getTitle().equals(Inventories.UltimateEnchants().getTitle())) {
+			if (invTitle.equals(RPBookGUIUtils.ChatColor("&e&lUltimate Enchantments"))) {
 				e.setCancelled(true);
 				if (ci.getItemMeta().getDisplayName()
 						.equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
@@ -165,7 +166,7 @@ public class InventoryClick implements Listener {
 			/*
 			 * Elite inv click
 			 */
-			if (e.getClickedInventory().getTitle().equals(Inventories.EliteEnchants().getTitle())) {
+			if (invTitle.equals(RPBookGUIUtils.ChatColor("&b&lElite Enchantments"))) {
 				e.setCancelled(true);
 				if (ci.getItemMeta().getDisplayName()
 						.equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
@@ -183,7 +184,7 @@ public class InventoryClick implements Listener {
 			/*
 			 * Unique inv click
 			 */
-			if (e.getClickedInventory().getTitle().equals(Inventories.UniqueEnchants().getTitle())) {
+			if (invTitle.equals(RPBookGUIUtils.ChatColor("&a&lUnique Enchantments"))) {
 				e.setCancelled(true);
 				if (ci.getItemMeta().getDisplayName()
 						.equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
@@ -200,7 +201,7 @@ public class InventoryClick implements Listener {
 			/*
 			 * Simple inv click
 			 */
-			if (e.getClickedInventory().getTitle().equals(Inventories.SimpleEnchants().getTitle())) {
+			if (invTitle.equals(RPBookGUIUtils.ChatColor("&7&lSimple Enchantments"))) {
 				e.setCancelled(true);
 				if (ci.getItemMeta().getDisplayName()
 						.equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
@@ -218,7 +219,7 @@ public class InventoryClick implements Listener {
 			/*
 			 * Enchant inv click
 			 */
-			CustomEnchant enchant = CustomEnchant.valueOf(e.getClickedInventory().getTitle());
+			CustomEnchant enchant = CustomEnchant.valueOf(invTitle);
 			if (enchant != null) {
 				e.setCancelled(true);
 				if (e.getCurrentItem().getItemMeta().getDisplayName()

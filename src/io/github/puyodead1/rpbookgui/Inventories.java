@@ -47,7 +47,7 @@ public class Inventories {
 
 	public static Inventory SimpleEnchants() {
 		List<CustomEnchant> rarities = EnchantRarity.rarities.get("SIMPLE").getEnchants();
-		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&f&lSimple Enchantments"));
+		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&7&lSimple Enchantments"));
 
 		for (int i = 0; i < rarities.size(); i++) {
 			CustomEnchant ce = rarities.get(i);
@@ -145,7 +145,7 @@ public class Inventories {
 	public static Inventory SimpleEnchants(ItemStack itemApplyTo) {
 		List<CustomEnchant> rarities = EnchantRarity.rarities.get("SIMPLE").getEnchants();
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
-				.ChatColor("&f&lSimple Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
+				.ChatColor("&7&lSimple Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
 
 		List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
 
@@ -310,7 +310,7 @@ public class Inventories {
 	}
 
 	public static Inventory SettingsInv() {
-		Inventory inv = Bukkit.createInventory(null, 36, RPBookGUIUtils.ChatColor("&6&lRPBookGUI Settings"));
+		Inventory inv = Bukkit.createInventory(null, 36, "RPBookGUI Settings");
 
 		for (int i = 0; i < 10; i++)
 			inv.setItem(i, ItemStacks.GlassSeperator().clone());
