@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright 2019 Puyodead1
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
  * of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
@@ -29,6 +29,7 @@ import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
 import me.randomhashtags.randompackage.RandomPackage;
 import me.randomhashtags.randompackage.utils.classes.customenchants.CustomEnchant;
 import me.randomhashtags.randompackage.utils.classes.customenchants.EnchantRarity;
+import me.randomhashtags.randompackage.utils.universal.UMaterial;
 
 public class ItemStacks {
 
@@ -117,7 +118,7 @@ public class ItemStacks {
 	}
 
 	public static ItemStack GlassSeperator() {
-		ItemStack item = new ItemStack(Material.WHITE_STAINED_GLASS_PANE);
+		ItemStack item = new ItemStack(UMaterial.match("WHITE_STAINED_GLASS_PANE").getMaterial());
 		ItemMeta meta = item.getItemMeta();
 
 		meta.setDisplayName(" ");
@@ -126,7 +127,7 @@ public class ItemStacks {
 	}
 
 	public static ItemStack GlassSeperator2() {
-		ItemStack item = new ItemStack(Material.RED_STAINED_GLASS_PANE);
+		ItemStack item = new ItemStack(UMaterial.match("RED_STAINED_GLASS_PANE").getMaterial());
 		ItemMeta meta = item.getItemMeta();
 
 		meta.setDisplayName(" ");
@@ -135,7 +136,7 @@ public class ItemStacks {
 	}
 
 	public static ItemStack GlassSeperator3() {
-		ItemStack item = new ItemStack(Material.BLUE_STAINED_GLASS_PANE);
+		ItemStack item = new ItemStack(UMaterial.match("BLUE_STAINED_GLASS_PANE").getMaterial());
 		ItemMeta meta = item.getItemMeta();
 
 		meta.setDisplayName(" ");
@@ -144,23 +145,23 @@ public class ItemStacks {
 	}
 
 	public static ItemStack Back() {
-		ItemStack item = new ItemStack(Material.BARRIER);
+		ItemStack item = new ItemStack(UMaterial.match("BARRIER").getMaterial());
 		ItemMeta meta = item.getItemMeta();
 
 		meta.setDisplayName(RPBookGUIUtils.ChatColor("&c&lGo Back"));
 		item.setItemMeta(meta);
 		return item;
 	}
-	
+
 	public static ItemStack CreateKit() {
-		ItemStack item = new ItemStack(Material.CHEST);
+		ItemStack item = new ItemStack(UMaterial.match("CHEST").getMaterial());
 		ItemMeta meta = item.getItemMeta();
 		ArrayList<String> il = new ArrayList<String>();
-		
+
 		meta.setDisplayName(RPBookGUIUtils.ChatColor("&6&lCreate Kit"));
 		il.add(RPBookGUIUtils.ChatColor("&7Click to create a"));
 		il.add(RPBookGUIUtils.ChatColor("&7new kit."));
-		
+
 		meta.setLore(il);
 		item.setItemMeta(meta);
 		return item;
@@ -189,13 +190,12 @@ public class ItemStacks {
 		ItemStack is = new ItemStack(Material.CHEST);
 		ItemMeta im = is.getItemMeta();
 		ArrayList<String> il = new ArrayList<String>();
-		Boolean currentSetting = RPBookGUI.getPlugin.getConfig().getBoolean("settings.keepinvopen");
+		Boolean currentSetting = RPBookGUI.getPlugin.getConfig().getBoolean("settings.keep inventory open");
 		String currentSettingString;
-		if (currentSetting) {
+		if (currentSetting)
 			currentSettingString = "&a&l&nTrue";
-		} else {
+		else
 			currentSettingString = "&c&l&nFalse";
-		}
 
 		im.setDisplayName(RPBookGUIUtils.ChatColor("&dKeep Inventory Open"));
 		il.add(RPBookGUIUtils.ChatColor("&7Keep menu open after"));
@@ -212,13 +212,12 @@ public class ItemStacks {
 		ItemStack is = new ItemStack(Material.PAPER);
 		ItemMeta im = is.getItemMeta();
 		ArrayList<String> il = new ArrayList<String>();
-		Boolean currentSetting = RPBookGUI.getPlugin.getConfig().getBoolean("settings.usepermissions");
+		Boolean currentSetting = RPBookGUI.getPlugin.getConfig().getBoolean("settings.use permissions");
 		String currentSettingString;
-		if (currentSetting) {
+		if (currentSetting)
 			currentSettingString = "&a&l&nTrue";
-		} else {
+		else
 			currentSettingString = "&c&l&nFalse";
-		}
 
 		im.setDisplayName(RPBookGUIUtils.ChatColor("&dUse Permissions"));
 		il.add(RPBookGUIUtils.ChatColor("&7Permissions are needed to"));
@@ -230,15 +229,15 @@ public class ItemStacks {
 
 		return is;
 	}
-	
+
 	public static ItemStack CreateKitHelmateBase() {
 		ItemStack item = new ItemStack(Material.DIAMOND_HELMET);
 		ItemMeta meta = item.getItemMeta();
 		ArrayList<String> il = new ArrayList<String>();
-		
+
 		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lHelmet"));
 		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
-		
+
 		meta.setLore(il);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -248,15 +247,15 @@ public class ItemStacks {
 		item.setItemMeta(meta);
 		return item;
 	}
-	
+
 	public static ItemStack CreateKitChestplateBase() {
 		ItemStack item = new ItemStack(Material.DIAMOND_CHESTPLATE);
 		ItemMeta meta = item.getItemMeta();
 		ArrayList<String> il = new ArrayList<String>();
-		
+
 		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lChestplate"));
 		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
-		
+
 		meta.setLore(il);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -266,15 +265,15 @@ public class ItemStacks {
 		item.setItemMeta(meta);
 		return item;
 	}
-	
+
 	public static ItemStack CreateKitLeggingsBase() {
 		ItemStack item = new ItemStack(Material.DIAMOND_LEGGINGS);
 		ItemMeta meta = item.getItemMeta();
 		ArrayList<String> il = new ArrayList<String>();
-		
+
 		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lLeggings"));
 		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
-		
+
 		meta.setLore(il);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -284,15 +283,15 @@ public class ItemStacks {
 		item.setItemMeta(meta);
 		return item;
 	}
-	
+
 	public static ItemStack CreateKitBootsBase() {
 		ItemStack item = new ItemStack(Material.DIAMOND_BOOTS);
 		ItemMeta meta = item.getItemMeta();
 		ArrayList<String> il = new ArrayList<String>();
-		
+
 		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lBoots"));
 		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
-		
+
 		meta.setLore(il);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -302,15 +301,15 @@ public class ItemStacks {
 		item.setItemMeta(meta);
 		return item;
 	}
-	
+
 	public static ItemStack CreateKitPickaxeBase() {
 		ItemStack item = new ItemStack(Material.DIAMOND_PICKAXE);
 		ItemMeta meta = item.getItemMeta();
 		ArrayList<String> il = new ArrayList<String>();
-		
+
 		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lPickaxe"));
 		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
-		
+
 		meta.setLore(il);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -320,15 +319,15 @@ public class ItemStacks {
 		item.setItemMeta(meta);
 		return item;
 	}
-	
+
 	public static ItemStack CreateKitSwordBase() {
 		ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
 		ItemMeta meta = item.getItemMeta();
 		ArrayList<String> il = new ArrayList<String>();
-		
+
 		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lSword"));
 		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
-		
+
 		meta.setLore(il);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -338,15 +337,15 @@ public class ItemStacks {
 		item.setItemMeta(meta);
 		return item;
 	}
-	
+
 	public static ItemStack CreateKitAxeBase() {
 		ItemStack item = new ItemStack(Material.DIAMOND_AXE);
 		ItemMeta meta = item.getItemMeta();
 		ArrayList<String> il = new ArrayList<String>();
-		
+
 		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lAxe"));
 		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
-		
+
 		meta.setLore(il);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -356,15 +355,15 @@ public class ItemStacks {
 		item.setItemMeta(meta);
 		return item;
 	}
-	
+
 	public static ItemStack CreateKitShovelBase() {
 		ItemStack item = new ItemStack(Material.DIAMOND_SHOVEL);
 		ItemMeta meta = item.getItemMeta();
 		ArrayList<String> il = new ArrayList<String>();
-		
+
 		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lShovel"));
 		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
-		
+
 		meta.setLore(il);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -374,15 +373,15 @@ public class ItemStacks {
 		item.setItemMeta(meta);
 		return item;
 	}
-	
+
 	public static ItemStack CreateKitBowBase() {
 		ItemStack item = new ItemStack(Material.BOW);
 		ItemMeta meta = item.getItemMeta();
 		ArrayList<String> il = new ArrayList<String>();
-		
+
 		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lBow"));
 		il.add(RPBookGUIUtils.ChatColor("&7Click to customize."));
-		
+
 		meta.setLore(il);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);

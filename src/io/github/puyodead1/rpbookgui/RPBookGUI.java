@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright 2019 Puyodead1
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
  * of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
@@ -15,26 +15,24 @@
  ******************************************************************************/
 package io.github.puyodead1.rpbookgui;
 
-import java.io.File;
-
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import io.github.puyodead1.rpbookgui.Commands.BookGUICommand;
-import io.github.puyodead1.rpbookgui.Commands.KitCreatorCommand;
+import io.github.puyodead1.rpbookgui.Commands.RarityInfo;
 import io.github.puyodead1.rpbookgui.Events.InventoryClick;
-import io.github.puyodead1.rpbookgui.Events.PlayerJoin;
 import io.github.puyodead1.rpbookgui.Utils.MetricsLite;
 import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
 
 public class RPBookGUI extends JavaPlugin {
 	public static RPBookGUI getPlugin;
 
+	@Override
 	public void onEnable() {
 		getPlugin = this;
-		
-		Bukkit.getConsoleSender().sendMessage(
-				RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &b============================================================="));
+
+		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils
+				.ChatColor("&7[&dRPBookGUI&7] &b============================================================="));
 		InitCommands();
 		InitConfig();
 		InitEvents();
@@ -45,19 +43,20 @@ public class RPBookGUI extends JavaPlugin {
 				+ getServer().getPluginManager().getPlugin("RandomPackage").getDescription().getVersion()));
 		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bRPBookGUI Version: &e"
 				+ getServer().getPluginManager().getPlugin("RPBookGUI").getDescription().getVersion()));
-		Bukkit.getConsoleSender()
-				.sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bMinecraft Version: &e" + getServer().getVersion()));
 		Bukkit.getConsoleSender().sendMessage(
-				RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &b============================================================="));
+				RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bMinecraft Version: &e" + getServer().getVersion()));
+		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils
+				.ChatColor("&7[&dRPBookGUI&7] &b============================================================="));
 	}
 
+	@Override
 	public void onDisable() {
 
 	}
 
 	public void InitCommands() {
 		getCommand("bookgui").setExecutor(new BookGUICommand());
-		getCommand("kitcreator").setExecutor(new KitCreatorCommand());
+		getCommand("rarityinfo").setExecutor(new RarityInfo());
 	}
 
 	public void InitConfig() {
@@ -65,27 +64,29 @@ public class RPBookGUI extends JavaPlugin {
 
 		getConfig().options().copyDefaults(true);
 		saveDefaultConfig();
-		File playerDataDir = new File(this.getDataFolder(), "_playerData");
-		if(!playerDataDir.exists()) {
-			Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bPlayer Data Directory doesn't exist, creating..."));
-			if(playerDataDir.mkdir()) {
-				Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bCreated Player Data Directory."));
-			} else {
-				Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bFailed to create Player Data Directory."));
-			}
-		} else {
-			Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bPlayer Data Directory exists."));
-		}
+//		File playerDataDir = new File(getDataFolder(), "_playerData");
+//		if (!playerDataDir.exists()) {
+//			Bukkit.getConsoleSender().sendMessage(
+//					RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bPlayer Data Directory doesn't exist, creating..."));
+//			if (playerDataDir.mkdir())
+//				Bukkit.getConsoleSender()
+//						.sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bCreated Player Data Directory."));
+//			else
+//				Bukkit.getConsoleSender().sendMessage(
+//						RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bFailed to create Player Data Directory."));
+//		} else
+//			Bukkit.getConsoleSender()
+//					.sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bPlayer Data Directory exists."));
 
-		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bLoaded Configuration file &e("
-				+ (System.currentTimeMillis() - started) + "ms)"));
+		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor(
+				"&7[&dRPBookGUI&7] &bLoaded Configuration file &e(" + (System.currentTimeMillis() - started) + "ms)"));
 	}
 
 	public void InitEvents() {
 		long started = System.currentTimeMillis();
 
 		getServer().getPluginManager().registerEvents(new InventoryClick(), this);
-		getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
+		// getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
 
 		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils
 				.ChatColor("&7[&dRPBookGUI&7] &bLoaded Events &e(" + (System.currentTimeMillis() - started) + "ms)"));

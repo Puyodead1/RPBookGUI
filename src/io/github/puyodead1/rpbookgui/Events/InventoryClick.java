@@ -1,7 +1,6 @@
 package io.github.puyodead1.rpbookgui.Events;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -11,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.puyodead1.rpbookgui.Inventories;
 import io.github.puyodead1.rpbookgui.ItemStacks;
@@ -18,6 +18,7 @@ import io.github.puyodead1.rpbookgui.RPBookGUI;
 import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
 import me.randomhashtags.randompackage.utils.classes.customenchants.CustomEnchant;
 import me.randomhashtags.randompackage.utils.classes.customenchants.EnchantRarity;
+import me.randomhashtags.randompackage.utils.universal.UMaterial;
 
 public class InventoryClick implements Listener {
 
@@ -65,44 +66,14 @@ public class InventoryClick implements Listener {
 					player.openInventory(Inventories.HeroicEnchants());
 				}
 			}
-
-			/*
-			 * Create new kit overview inv click
-			 */
-			if (e.getClickedInventory().getTitle().equals("Kit Creator - Kit Editor")) {
-				e.setCancelled(true);
-
-				if (!ci.getType().equals(Material.WHITE_STAINED_GLASS_PANE)) {
-					// It's not the glass that was clicked
-					
-					player.closeInventory();
-					player.openInventory(Inventories.EnchantCategoryInv(ci.getType().toString().replace("DIAMOND_", "")));
-					
-				}
-			}
-
-			/*
-			 * Create kit click
-			 */
-			if (e.getClickedInventory().getTitle()
-					.equals(Inventories.KitCreatorKitsInv(e.getWhoClicked().getUniqueId()).getTitle())) {
-				e.setCancelled(true);
-
-				if (ci.getItemMeta().getDisplayName().equals(ItemStacks.CreateKit().clone().getItemMeta().getDisplayName())) {
-					player.closeInventory();
-					player.openInventory(Inventories.KitCreatorOverviewInv(player));
-				}
-			}
-
 			/*
 			 * Settings inv click
 			 */
 			if (e.getClickedInventory().getTitle().equals(Inventories.SettingsInv().getTitle())) {
 				e.setCancelled(true);
 
-				if (ci.getItemMeta().getDisplayName().equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
+				if (ci.getItemMeta().getDisplayName().equals(ItemStacks.Back().clone().getItemMeta().getDisplayName()))
 					player.closeInventory();
-				}
 				if (ci.getItemMeta().getDisplayName()
 						.equals(ItemStacks.KeepMenuOpenSetting().clone().getItemMeta().getDisplayName())) {
 					RPBookGUI.getPlugin.getConfig().set("settings.keepinvopen",
@@ -126,11 +97,12 @@ public class InventoryClick implements Listener {
 			 */
 			if (e.getClickedInventory().getTitle().equals(Inventories.HeroicEnchants().getTitle())) {
 				e.setCancelled(true);
-				if (ci.getItemMeta().getDisplayName().equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
+				if (ci.getItemMeta().getDisplayName()
+						.equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
 					player.closeInventory();
 					player.openInventory(Inventories.MainGUI());
 				}
-				if (e.getCurrentItem().getType().equals(Material.BOOK)) {
+				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
 					CustomEnchant ce = CustomEnchant
 							.valueOf(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
@@ -143,11 +115,12 @@ public class InventoryClick implements Listener {
 			 */
 			if (e.getClickedInventory().getTitle().equals(Inventories.SoulEnchants().getTitle())) {
 				e.setCancelled(true);
-				if (ci.getItemMeta().getDisplayName().equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
+				if (ci.getItemMeta().getDisplayName()
+						.equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
 					player.closeInventory();
 					player.openInventory(Inventories.MainGUI());
 				}
-				if (e.getCurrentItem().getType().equals(Material.BOOK)) {
+				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
 					CustomEnchant ce = CustomEnchant
 							.valueOf(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
@@ -159,11 +132,12 @@ public class InventoryClick implements Listener {
 			 */
 			if (e.getClickedInventory().getTitle().equals(Inventories.LegendaryEnchants().getTitle())) {
 				e.setCancelled(true);
-				if (ci.getItemMeta().getDisplayName().equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
+				if (ci.getItemMeta().getDisplayName()
+						.equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
 					player.closeInventory();
 					player.openInventory(Inventories.MainGUI());
 				}
-				if (e.getCurrentItem().getType().equals(Material.BOOK)) {
+				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
 					CustomEnchant ce = CustomEnchant
 							.valueOf(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
@@ -176,11 +150,12 @@ public class InventoryClick implements Listener {
 			 */
 			if (e.getClickedInventory().getTitle().equals(Inventories.UltimateEnchants().getTitle())) {
 				e.setCancelled(true);
-				if (ci.getItemMeta().getDisplayName().equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
+				if (ci.getItemMeta().getDisplayName()
+						.equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
 					player.closeInventory();
 					player.openInventory(Inventories.MainGUI());
 				}
-				if (e.getCurrentItem().getType().equals(Material.BOOK)) {
+				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
 					CustomEnchant ce = CustomEnchant
 							.valueOf(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
@@ -192,11 +167,12 @@ public class InventoryClick implements Listener {
 			 */
 			if (e.getClickedInventory().getTitle().equals(Inventories.EliteEnchants().getTitle())) {
 				e.setCancelled(true);
-				if (ci.getItemMeta().getDisplayName().equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
+				if (ci.getItemMeta().getDisplayName()
+						.equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
 					player.closeInventory();
 					player.openInventory(Inventories.MainGUI());
 				}
-				if (e.getCurrentItem().getType().equals(Material.BOOK)) {
+				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
 					CustomEnchant ce = CustomEnchant
 							.valueOf(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
@@ -209,11 +185,12 @@ public class InventoryClick implements Listener {
 			 */
 			if (e.getClickedInventory().getTitle().equals(Inventories.UniqueEnchants().getTitle())) {
 				e.setCancelled(true);
-				if (ci.getItemMeta().getDisplayName().equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
+				if (ci.getItemMeta().getDisplayName()
+						.equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
 					player.closeInventory();
 					player.openInventory(Inventories.MainGUI());
 				}
-				if (e.getCurrentItem().getType().equals(Material.BOOK)) {
+				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
 					CustomEnchant ce = CustomEnchant
 							.valueOf(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
@@ -225,11 +202,12 @@ public class InventoryClick implements Listener {
 			 */
 			if (e.getClickedInventory().getTitle().equals(Inventories.SimpleEnchants().getTitle())) {
 				e.setCancelled(true);
-				if (ci.getItemMeta().getDisplayName().equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
+				if (ci.getItemMeta().getDisplayName()
+						.equals(ItemStacks.Back().clone().getItemMeta().getDisplayName())) {
 					player.closeInventory();
 					player.openInventory(Inventories.MainGUI());
 				}
-				if (e.getCurrentItem().getType().equals(Material.BOOK)) {
+				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
 					CustomEnchant ce = CustomEnchant
 							.valueOf(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
@@ -271,61 +249,44 @@ public class InventoryClick implements Listener {
 						break;
 					}
 				}
-				if (e.getCurrentItem().getType().equals(Material.BOOK)) {
+				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
 					e.setCancelled(true);
-					player.getInventory().addItem(ci);
-					if (!RPBookGUI.getPlugin.getConfig().getBoolean("settings.keepinvopen")) {
-						player.closeInventory();
-					}
-					player.sendMessage(RPBookGUIUtils.ChatColor(RPBookGUI.getPlugin.getConfig()
-							.getString("messages.added-book").replace("{NAME}", ci.getItemMeta().getDisplayName())));
-				}
-			}
-			/*
-			 * KC enchant category inv
-			 */
-			if(e.getClickedInventory().getTitle().contains("Enchant Categories - ")) {
-				ArrayList<String> regex = new ArrayList<String>();
-				regex.addAll(Arrays.asList("HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS", "SWORD", "AXE", "PICKAXE", "SHOVEL", "BOW"));
-				if(regex.contains(e.getClickedInventory().getTitle().split("-")[1].trim())) {
-					e.setCancelled(true);
-					String type = e.getClickedInventory().getTitle().split("-")[1].trim();
-					ItemStack applyTo;
-					
-					if(type == "BOW") {
-						applyTo = new ItemStack(Material.BOW);
+					if (RPBookGUI.getPlugin.getConfig().getBoolean("settings.try to apply to item in hand")
+							&& RPBookGUIUtils.isOnCorrectItem(enchant, player.getItemInHand())) {
+
+						CustomEnchant ce = CustomEnchant.valueOf(ci);
+						EnchantRarity rarity = EnchantRarity.valueOf(ce);
+
+						ItemStack o = player.getInventory().getItemInMainHand();
+						ItemMeta m = o.getItemMeta();
+
+						if (m.getLore() == null) {
+							ArrayList<String> lores = new ArrayList<String>();
+							lores.add(
+									rarity.getApplyColors() + ChatColor.stripColor(ci.getItemMeta().getDisplayName()));
+							m.setLore(lores);
+						} else {
+							ArrayList<String> lores = new ArrayList<String>();
+							lores.addAll(m.getLore());
+							lores.add(
+									rarity.getApplyColors() + ChatColor.stripColor(ci.getItemMeta().getDisplayName()));
+							m.setLore(lores);
+						}
+
+						o.setItemMeta(m);
+						player.updateInventory();
+
+						player.sendMessage(RPBookGUIUtils
+								.ChatColor(RPBookGUI.getPlugin.getConfig().getString("messages.added enchant")
+										.replace("{NAME}", ci.getItemMeta().getDisplayName())
+										.replace("{ITEM}", player.getItemInHand().getType().name())));
 					} else {
-						applyTo = new ItemStack(Material.valueOf("DIAMOND_" + type));
-					}
-					
-					if (ci.getItemMeta().getDisplayName()
-							.equals(ItemStacks.SimpleCategoryItem().clone().getItemMeta().getDisplayName())) {
-						player.closeInventory();
-						player.openInventory(Inventories.SimpleEnchants(applyTo));
-					} else if (ci.getItemMeta().getDisplayName()
-							.equals(ItemStacks.UniqueCategoryItem().clone().getItemMeta().getDisplayName())) {
-						player.closeInventory();
-						player.openInventory(Inventories.UniqueEnchants(applyTo));
-					} else if (ci.getItemMeta().getDisplayName()
-							.equals(ItemStacks.EliteCategoryItem().clone().getItemMeta().getDisplayName())) {
-						player.closeInventory();
-						player.openInventory(Inventories.EliteEnchants(applyTo));
-					} else if (ci.getItemMeta().getDisplayName()
-							.equals(ItemStacks.UltimateCategoryItem().clone().getItemMeta().getDisplayName())) {
-						player.closeInventory();
-						player.openInventory(Inventories.UltimateEnchants(applyTo));
-					} else if (ci.getItemMeta().getDisplayName()
-							.equals(ItemStacks.LegendaryCategoryItem().clone().getItemMeta().getDisplayName())) {
-						player.closeInventory();
-						player.openInventory(Inventories.LegendaryEnchants(applyTo));
-					} else if (ci.getItemMeta().getDisplayName()
-							.equals(ItemStacks.SoulCategoryItem().clone().getItemMeta().getDisplayName())) {
-						player.closeInventory();
-						player.openInventory(Inventories.SoulEnchants(applyTo));
-					} else if (ci.getItemMeta().getDisplayName()
-							.equals(ItemStacks.HeroicCategoryItem().clone().getItemMeta().getDisplayName())) {
-						player.closeInventory();
-						player.openInventory(Inventories.HeroicEnchants(applyTo));
+						player.getInventory().addItem(ci);
+						if (!RPBookGUI.getPlugin.getConfig().getBoolean("settings.keep inventory open"))
+							player.closeInventory();
+						player.sendMessage(RPBookGUIUtils
+								.ChatColor(RPBookGUI.getPlugin.getConfig().getString("messages.added book")
+										.replace("{NAME}", ci.getItemMeta().getDisplayName())));
 					}
 				}
 			}

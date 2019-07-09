@@ -1,17 +1,21 @@
 settings:
-  keepinvopen: true
-  usepermissions: true
+  keep inventory open: true
+  use permissions: true
+  try to apply to item in hand: true
   
 messages:
-  no-permission: "&7[&dRPBookGUI&7] &cYou don't have permission for that!"
-  only-players: "&7[&dRPBookGUI&7] &cOnly players can use that command!"
-  added-book: "&e&lAdded &e{NAME}&e to your inventory."
-  config-reloaded: "&7[&dRPBookGUI&7] &aConfig reloaded!"
+  no permission: "&7[&dRPBookGUI&7] &cYou don't have permission for that!"
+  only players: "&7[&dRPBookGUI&7] &cOnly players can use that command!"
+  added book: "&eAdded {NAME} &eto your inventory."
+  added enchant: "&eAdded {NAME} &eto &e&l{ITEM}"
+  config reloaded: "&7[&dRPBookGUI&7] &aConfig reloaded!"
+  invalid syntax: "&c&l(!) Invalid syntax!"
+  rarity info: "&bEnchant rarity for &b&l{ENCHANT} &bis: {RARITY}"
   
 permissions:
   bookgui: "bookgui.use"
-  bookgui-help: "bookgui.help"
-  bookgui-info: "bookgui.info"
-  bookgui-settings: "bookgui.settings"
-  bookgui-reload: "bookgui-settings"
-  kitcreator: "bookgui.kitcreator"
+  bookgui help: "bookgui.help"
+  bookgui info: "bookgui.info"
+  bookgui settings: "bookgui.settings"
+  bookgui reload: "bookgui-settings"
+  rarityinfo: "bookgui.rarityinfo"
