@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright 2019 Puyodead1
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
  * of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
@@ -15,10 +15,13 @@
  ******************************************************************************/
 package io.github.puyodead1.rpbookgui.Utils;
 
+import java.util.List;
+
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 
-import me.randomhashtags.randompackage.utils.classes.customenchants.CustomEnchant;
+import me.randomhashtags.randompackage.addons.CustomEnchant;
+import me.randomhashtags.randompackage.api.CustomEnchants;
 
 public class RPBookGUIUtils {
 	public static String ChatColor(String msg) {
@@ -27,19 +30,25 @@ public class RPBookGUIUtils {
 
 	public static int r(double i) {
 		long a = Math.round(i / 9);
-		if(a <= 1) {
+		if (a <= 1)
 			a++;
-		}
 		return (int) (a * 9);
 	}
 
 	public static String Strip(String message) {
 		return ChatColor.stripColor(message);
 	}
-	
+
 	public static boolean isOnCorrectItem(CustomEnchant enchant, ItemStack is) {
-        final String i = is != null ? is.getType().name() : null;
-        if(enchant != null && i != null) for(String s : enchant.getAppliesTo()) if(i.endsWith(s.toUpperCase())) return true;
-        return false;
-    }
+		final String i = is != null ? is.getType().name() : null;
+		if (enchant != null && i != null)
+			for (String s : enchant.getAppliesTo())
+				if (i.endsWith(s.toUpperCase()))
+					return true;
+		return false;
+	}
+
+	public static List<CustomEnchant> getCustomEnchants(String rarity) {
+		return CustomEnchants.getCustomEnchants().getEnchantRarity(rarity.toUpperCase()).getEnchants();
+	}
 }

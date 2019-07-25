@@ -23,9 +23,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
+import me.randomhashtags.randompackage.addons.CustomEnchant;
+import me.randomhashtags.randompackage.addons.EnchantRarity;
 import me.randomhashtags.randompackage.api.CustomEnchants;
-import me.randomhashtags.randompackage.utils.classes.customenchants.CustomEnchant;
-import me.randomhashtags.randompackage.utils.classes.customenchants.EnchantRarity;
 
 public class Inventories {
 	// TODO: get the round method working, round to closest multiple of 9 depending
@@ -46,7 +46,7 @@ public class Inventories {
 	}
 
 	public static Inventory SimpleEnchants() {
-		List<CustomEnchant> rarities = EnchantRarity.rarities.get("SIMPLE").getEnchants();
+		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("SIMPLE");
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&7&lSimple Enchantments"));
 
 		for (int i = 0; i < rarities.size(); i++) {
@@ -60,7 +60,7 @@ public class Inventories {
 	}
 
 	public static Inventory UniqueEnchants() {
-		List<CustomEnchant> rarities = EnchantRarity.rarities.get("UNIQUE").getEnchants();
+		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("UNIQUE");
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&a&lUnique Enchantments"));
 		for (int i = 0; i < rarities.size(); i++) {
 			CustomEnchant ce = rarities.get(i);
@@ -72,7 +72,7 @@ public class Inventories {
 	}
 
 	public static Inventory EliteEnchants() {
-		List<CustomEnchant> rarities = EnchantRarity.rarities.get("ELITE").getEnchants();
+		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("ELITE");
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&b&lElite Enchantments"));
 
 		for (int i = 0; i < rarities.size(); i++) {
@@ -86,7 +86,7 @@ public class Inventories {
 	}
 
 	public static Inventory UltimateEnchants() {
-		List<CustomEnchant> rarities = EnchantRarity.rarities.get("ULTIMATE").getEnchants();
+		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("ULTIMATE");
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&e&lUltimate Enchantments"));
 
 		for (int i = 0; i < rarities.size(); i++) {
@@ -100,7 +100,7 @@ public class Inventories {
 	}
 
 	public static Inventory LegendaryEnchants() {
-		List<CustomEnchant> rarities = EnchantRarity.rarities.get("LEGENDARY").getEnchants();
+		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("LEGENDARY");
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&6&lLegendary Enchantments"));
 
 		for (int i = 0; i < rarities.size(); i++) {
@@ -114,7 +114,7 @@ public class Inventories {
 	}
 
 	public static Inventory SoulEnchants() {
-		List<CustomEnchant> rarities = EnchantRarity.rarities.get("SOUL").getEnchants();
+		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("SOUL");
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&c&lSoul Enchantments"));
 
 		for (int i = 0; i < rarities.size(); i++) {
@@ -128,7 +128,7 @@ public class Inventories {
 	}
 
 	public static Inventory HeroicEnchants() {
-		List<CustomEnchant> rarities = EnchantRarity.rarities.get("HEROIC").getEnchants();
+		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("HEROIC");
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&d&lHeroic Enchantments"));
 
 		for (int i = 0; i < rarities.size(); i++) {
@@ -143,7 +143,7 @@ public class Inventories {
 
 	/**/
 	public static Inventory SimpleEnchants(ItemStack itemApplyTo) {
-		List<CustomEnchant> rarities = EnchantRarity.rarities.get("SIMPLE").getEnchants();
+		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("SIMPLE");
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
 				.ChatColor("&7&lSimple Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
 
@@ -165,7 +165,7 @@ public class Inventories {
 	}
 
 	public static Inventory UniqueEnchants(ItemStack itemApplyTo) {
-		List<CustomEnchant> rarities = EnchantRarity.rarities.get("UNIQUE").getEnchants();
+		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("UNIQUE");
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
 				.ChatColor("&a&lUnique Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
 
@@ -187,7 +187,7 @@ public class Inventories {
 	}
 
 	public static Inventory EliteEnchants(ItemStack itemApplyTo) {
-		List<CustomEnchant> rarities = EnchantRarity.rarities.get("ELITE").getEnchants();
+		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("ELITE");
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
 				.ChatColor("&b&lElite Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
 
@@ -209,7 +209,7 @@ public class Inventories {
 	}
 
 	public static Inventory UltimateEnchants(ItemStack itemApplyTo) {
-		List<CustomEnchant> rarities = EnchantRarity.rarities.get("ULTIMATE").getEnchants();
+		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("ULTIMATE");
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
 				.ChatColor("&e&lUltimate Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
 
@@ -231,7 +231,7 @@ public class Inventories {
 	}
 
 	public static Inventory LegendaryEnchants(ItemStack itemApplyTo) {
-		List<CustomEnchant> rarities = EnchantRarity.rarities.get("LEGENDARY").getEnchants();
+		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("LEGENDARY");
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
 				.ChatColor("&6&lLegendary Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
 
@@ -253,7 +253,7 @@ public class Inventories {
 	}
 
 	public static Inventory SoulEnchants(ItemStack itemApplyTo) {
-		List<CustomEnchant> rarities = EnchantRarity.rarities.get("SOUL").getEnchants();
+		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("SOUL");
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
 				.ChatColor("&c&lSoul Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
 
@@ -275,7 +275,7 @@ public class Inventories {
 	}
 
 	public static Inventory HeroicEnchants(ItemStack itemApplyTo) {
-		List<CustomEnchant> rarities = EnchantRarity.rarities.get("HEROIC").getEnchants();
+		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("HEROIC");
 		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
 				.ChatColor("&d&lHeroic Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
 

@@ -8,8 +8,8 @@ import org.bukkit.entity.Player;
 
 import io.github.puyodead1.rpbookgui.RPBookGUI;
 import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
-import me.randomhashtags.randompackage.utils.classes.customenchants.CustomEnchant;
-import me.randomhashtags.randompackage.utils.classes.customenchants.EnchantRarity;
+import me.randomhashtags.randompackage.addons.CustomEnchant;
+import me.randomhashtags.randompackage.addons.EnchantRarity;
 
 public class RarityInfo implements CommandExecutor {
 
@@ -29,7 +29,7 @@ public class RarityInfo implements CommandExecutor {
 					player.sendMessage(rarity != null
 							? RPBookGUIUtils
 									.ChatColor(rpbgConfig.getString("messages.rarity info").replace("{ENCHANT}", arg)
-											.replace("{RARITY}", rarity.getNameColors() + rarity.getName()))
+											.replace("{RARITY}", rarity.getNameColors() + rarity.getIdentifier()))
 							: RPBookGUIUtils.ChatColor("&c&l(!) Invalid Enchant Name!"));
 					return true;
 				} else {

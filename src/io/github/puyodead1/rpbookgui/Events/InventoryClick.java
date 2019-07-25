@@ -16,8 +16,8 @@ import io.github.puyodead1.rpbookgui.Inventories;
 import io.github.puyodead1.rpbookgui.ItemStacks;
 import io.github.puyodead1.rpbookgui.RPBookGUI;
 import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
-import me.randomhashtags.randompackage.utils.classes.customenchants.CustomEnchant;
-import me.randomhashtags.randompackage.utils.classes.customenchants.EnchantRarity;
+import me.randomhashtags.randompackage.addons.CustomEnchant;
+import me.randomhashtags.randompackage.addons.EnchantRarity;
 import me.randomhashtags.randompackage.utils.universal.UMaterial;
 
 public class InventoryClick implements Listener {
@@ -226,7 +226,7 @@ public class InventoryClick implements Listener {
 						.equals(ItemStacks.Back().getItemMeta().getDisplayName())
 						&& e.getCurrentItem().getType().equals(ItemStacks.Back().clone().clone().getType())) {
 					player.closeInventory();
-					switch (EnchantRarity.valueOf(enchant).getName()) {
+					switch (EnchantRarity.valueOf(enchant).getIdentifier()) {
 					case "SIMPLE":
 						player.openInventory(Inventories.SimpleEnchants());
 						break;
