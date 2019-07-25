@@ -3,7 +3,7 @@ Get any RandomPackage Enchantment book ease!<br>
 https://www.spigotmc.org/resources/rpbookgui.41502/
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/Puyodead1/RPBookGUI.svg?style=plastic)
-[![Discord Server](https://discordapp.com/api/guilds/589200717277954093/embed.png)](https://discord.gg/mfMQvYW)
+[![Discord Server](https://discordapp.com/api/guilds/589200717277954093/embed.png)](https://discord.gg/tMzrSxQ)
 ![GitHub issues](https://img.shields.io/github/issues/Puyodead1/RPBookGUI.svg?style=plastic)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Puyodead1/RPBookGUI.svg?style=plastic)
 ![GitHub](https://img.shields.io/github/license/Puyodead1/RPBookGUI.svg?style=plastic)
