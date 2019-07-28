@@ -38,7 +38,5 @@ bookgui.rarityinfo - use /rarityinfo<br>
 
 ### Future Features:<br>
 Configurable Success and Destroy rates<br>
-Kit creator? create a kit by selecting enchants you want and click a button to get it, gets saved so you can go back and get it again and edit it later.<br>
-~~Configurable messages~~<br>
 
 Let me know if you want any other features!
