@@ -8,7 +8,7 @@ https://www.spigotmc.org/resources/rpbookgui.41502/
 ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Puyodead1/RPBookGUI.svg?style=plastic)
 ![GitHub](https://img.shields.io/github/license/Puyodead1/RPBookGUI.svg?style=plastic)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Puyodead1/RPBookGUI.svg?style=plastic)
-[![Build Status](http://185.230.160.95:8080/buildStatus/icon?job=RPBookGUI)](http://185.230.160.95:8080/job/RPBookGUI/)
+[![Build Status](http://ci.puyodead1-development.me/buildStatus/icon?style=plastic&job=RPBookGUI)](http://ci.puyodead1-development.me/job/RPBookGUI/)
 
 ## RPBookGUI V2!<br>
 #### Back from the dead and working!<br>
