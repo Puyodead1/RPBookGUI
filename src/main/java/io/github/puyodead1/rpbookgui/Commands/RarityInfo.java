@@ -8,12 +8,14 @@ import org.bukkit.entity.Player;
 
 import io.github.puyodead1.rpbookgui.RPBookGUI;
 import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
+import me.randomhashtags.randompackage.RandomPackageAPI;
 import me.randomhashtags.randompackage.addons.CustomEnchant;
 import me.randomhashtags.randompackage.addons.EnchantRarity;
 
 public class RarityInfo implements CommandExecutor {
 
 	private FileConfiguration rpbgConfig = RPBookGUI.getPlugin.getConfig();
+	private static RandomPackageAPI rpapi = new RandomPackageAPI();
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -24,8 +26,8 @@ public class RarityInfo implements CommandExecutor {
 						|| !rpbgConfig.getBoolean("settings.use permissions")) {
 					String arg = args[0];
 					arg = arg.substring(0, 1).toUpperCase() + arg.substring(1, arg.length()).toLowerCase();
-					CustomEnchant ce = CustomEnchant.valueOf(arg);
-					EnchantRarity rarity = EnchantRarity.valueOf(ce);
+					CustomEnchant ce = rpapi.valueOfCustomEnchant(arg);
+					EnchantRarity rarity = rpapi.valueOfEnchantRarity(ce);
 					player.sendMessage(rarity != null
 							? RPBookGUIUtils
 									.ChatColor(rpbgConfig.getString("messages.rarity info").replace("{ENCHANT}", arg)

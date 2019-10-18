@@ -23,11 +23,16 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
+import me.randomhashtags.randompackage.RandomPackageAPI;
 import me.randomhashtags.randompackage.addons.CustomEnchant;
 import me.randomhashtags.randompackage.addons.EnchantRarity;
 import me.randomhashtags.randompackage.api.CustomEnchants;
+import me.randomhashtags.randompackage.utils.CustomEnchantUtils;
+import me.randomhashtags.randompackage.utils.RPStorage;
 
 public class Inventories {
+	
+	private static RandomPackageAPI rpapi = new RandomPackageAPI();
 	// TODO: get the round method working, round to closest multiple of 9 depending
 	// on the number of enchants.
 
@@ -297,7 +302,7 @@ public class Inventories {
 	}
 
 	public static Inventory EnchantInv(CustomEnchant ce) {
-		EnchantRarity rarity = EnchantRarity.valueOf(ce);
+		EnchantRarity rarity = rpapi.valueOfEnchantRarity(ce);
 		Inventory inv = Bukkit.createInventory(null, 18, rarity.getNameColors() + ce.getName());
 		int x = 0;
 		for (int i = 1; i < ce.getMaxLevel() + 1; i++) {

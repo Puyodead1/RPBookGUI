@@ -16,11 +16,14 @@ import io.github.puyodead1.rpbookgui.Inventories;
 import io.github.puyodead1.rpbookgui.ItemStacks;
 import io.github.puyodead1.rpbookgui.RPBookGUI;
 import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
+import me.randomhashtags.randompackage.RandomPackageAPI;
 import me.randomhashtags.randompackage.addons.CustomEnchant;
 import me.randomhashtags.randompackage.addons.EnchantRarity;
 import me.randomhashtags.randompackage.utils.universal.UMaterial;
 
 public class InventoryClick implements Listener {
+	
+	private static RandomPackageAPI rpapi = new RandomPackageAPI();
 
 	@EventHandler
 	public void InventoryClickEvent(InventoryClickEvent e) {
@@ -104,8 +107,7 @@ public class InventoryClick implements Listener {
 					player.openInventory(Inventories.MainGUI());
 				}
 				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
-					CustomEnchant ce = CustomEnchant
-							.valueOf(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+					CustomEnchant ce = rpapi.valueOfCustomEnchant(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
 					player.openInventory(Inventories.EnchantInv(ce));
 				}
@@ -122,8 +124,7 @@ public class InventoryClick implements Listener {
 					player.openInventory(Inventories.MainGUI());
 				}
 				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
-					CustomEnchant ce = CustomEnchant
-							.valueOf(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+					CustomEnchant ce = rpapi.valueOfCustomEnchant(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
 					player.openInventory(Inventories.EnchantInv(ce));
 				}
@@ -139,8 +140,7 @@ public class InventoryClick implements Listener {
 					player.openInventory(Inventories.MainGUI());
 				}
 				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
-					CustomEnchant ce = CustomEnchant
-							.valueOf(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+					CustomEnchant ce = rpapi.valueOfCustomEnchant(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
 					player.openInventory(Inventories.EnchantInv(ce));
 				}
@@ -157,8 +157,7 @@ public class InventoryClick implements Listener {
 					player.openInventory(Inventories.MainGUI());
 				}
 				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
-					CustomEnchant ce = CustomEnchant
-							.valueOf(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+					CustomEnchant ce = rpapi.valueOfCustomEnchant(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
 					player.openInventory(Inventories.EnchantInv(ce));
 				}
@@ -174,8 +173,7 @@ public class InventoryClick implements Listener {
 					player.openInventory(Inventories.MainGUI());
 				}
 				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
-					CustomEnchant ce = CustomEnchant
-							.valueOf(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+					CustomEnchant ce = rpapi.valueOfCustomEnchant(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
 					player.openInventory(Inventories.EnchantInv(ce));
 				}
@@ -192,8 +190,7 @@ public class InventoryClick implements Listener {
 					player.openInventory(Inventories.MainGUI());
 				}
 				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
-					CustomEnchant ce = CustomEnchant
-							.valueOf(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+					CustomEnchant ce = rpapi.valueOfCustomEnchant(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
 					player.openInventory(Inventories.EnchantInv(ce));
 				}
@@ -209,8 +206,7 @@ public class InventoryClick implements Listener {
 					player.openInventory(Inventories.MainGUI());
 				}
 				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
-					CustomEnchant ce = CustomEnchant
-							.valueOf(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+					CustomEnchant ce = rpapi.valueOfCustomEnchant(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
 					player.openInventory(Inventories.EnchantInv(ce));
 				}
@@ -219,14 +215,14 @@ public class InventoryClick implements Listener {
 			/*
 			 * Enchant inv click
 			 */
-			CustomEnchant enchant = CustomEnchant.valueOf(invTitle);
+			CustomEnchant enchant = rpapi.valueOfCustomEnchant(invTitle);
 			if (enchant != null) {
 				e.setCancelled(true);
 				if (e.getCurrentItem().getItemMeta().getDisplayName()
 						.equals(ItemStacks.Back().getItemMeta().getDisplayName())
 						&& e.getCurrentItem().getType().equals(ItemStacks.Back().clone().clone().getType())) {
 					player.closeInventory();
-					switch (EnchantRarity.valueOf(enchant).getIdentifier()) {
+					switch (rpapi.valueOfEnchantRarity(enchant).getIdentifier()) {
 					case "SIMPLE":
 						player.openInventory(Inventories.SimpleEnchants());
 						break;
@@ -255,8 +251,8 @@ public class InventoryClick implements Listener {
 					if (RPBookGUI.getPlugin.getConfig().getBoolean("settings.try to apply to item in hand")
 							&& RPBookGUIUtils.isOnCorrectItem(enchant, player.getItemInHand())) {
 
-						CustomEnchant ce = CustomEnchant.valueOf(ci);
-						EnchantRarity rarity = EnchantRarity.valueOf(ce);
+						CustomEnchant ce = rpapi.valueOfCustomEnchant(ci);
+						EnchantRarity rarity = rpapi.valueOfEnchantRarity(ce);
 
 						ItemStack o = player.getInventory().getItemInMainHand();
 						ItemMeta m = o.getItemMeta();

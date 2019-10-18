@@ -20,8 +20,11 @@ import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 
+import me.randomhashtags.randompackage.RandomPackageAPI;
 import me.randomhashtags.randompackage.addons.CustomEnchant;
+import me.randomhashtags.randompackage.addons.EnchantRarity;
 import me.randomhashtags.randompackage.api.CustomEnchants;
+import me.randomhashtags.randompackage.utils.RPStorage;
 
 public class RPBookGUIUtils {
 	public static String ChatColor(String msg) {
@@ -51,4 +54,5 @@ public class RPBookGUIUtils {
 	public static List<CustomEnchant> getCustomEnchants(String rarity) {
 		return CustomEnchants.getCustomEnchants().getEnchantRarity(rarity.toUpperCase()).getEnchants();
 	}
+
 }
