@@ -5,7 +5,6 @@ cache:
 script: mvn clean package
 
 before_deploy:
-  if: tag
   - git config --local user.name "Puyodead1"
   - git config --local user.email "23562356riley@gmail.com"
   - git tag $TRAVIS_TAG
