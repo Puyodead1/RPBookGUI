@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -27,8 +28,6 @@ import me.randomhashtags.randompackage.RandomPackageAPI;
 import me.randomhashtags.randompackage.addons.CustomEnchant;
 import me.randomhashtags.randompackage.addons.EnchantRarity;
 import me.randomhashtags.randompackage.api.CustomEnchants;
-import me.randomhashtags.randompackage.utils.CustomEnchantUtils;
-import me.randomhashtags.randompackage.utils.RPStorage;
 
 public class Inventories {
 	
@@ -300,21 +299,24 @@ public class Inventories {
 		inv.setItem(53, ItemStacks.Back().clone());
 		return inv;
 	}
-
-	public static Inventory EnchantInv(CustomEnchant ce) {
+	
+	public static Inventory Enchant(CustomEnchant ce) {
 		EnchantRarity rarity = rpapi.valueOfEnchantRarity(ce);
 		Inventory inv = Bukkit.createInventory(null, 18, rarity.getNameColors() + ce.getName());
 		int x = 0;
 		for (int i = 1; i < ce.getMaxLevel() + 1; i++) {
 			ItemStack is = CustomEnchants.getCustomEnchants().getRevealedItem(ce, i, 100, 0, true, true).clone();
+			new EnchantConstructor(ce, rarity, i, 0, 0);
+			Bukkit.broadcastMessage("EnchantConstructor size: " + EnchantConstructor.getEnchants().size());
 			inv.setItem(x, is);
 			x++;
 		}
+		Bukkit.broadcastMessage("Final EnchantConstructor size: " + EnchantConstructor.getEnchants().size());
 		inv.setItem(17, ItemStacks.Back().clone());
 		return inv;
 	}
 
-	public static Inventory SettingsInv() {
+	public static Inventory Settings() {
 		Inventory inv = Bukkit.createInventory(null, 36, "RPBookGUI Settings");
 
 		for (int i = 0; i < 10; i++)
@@ -334,6 +336,27 @@ public class Inventories {
 		for (int i = 26; i < 36; i++)
 			inv.setItem(i, ItemStacks.GlassSeperator().clone());
 		inv.setItem(22, ItemStacks.Back().clone());
+		return inv;
+	}
+	
+	public static Inventory SuccessDestroySelection(ItemStack book) {
+		Inventory inv = Bukkit.createInventory(null, 54, "Success & Destry Configuration");
+		CustomEnchant ce = rpapi.valueOfCustomEnchant(book);
+		// slot 10 - increase success
+		// slot 28 - decrease success
+		// slot 21 - book
+		
+		ItemStack addSuccess = new ItemStack(Material.GREEN_WOOL);
+		ItemStack removeSuccess = new ItemStack(Material.RED_WOOL);
+		
+		inv.setItem(10, addSuccess);
+//		inv.setItem(21, CustomEnchants.getCustomEnchants().getRevealedItem(ce, EnchantConstructor.getEnchants().get(ce.getName()).getEnchantLevel(), 0, 0, true, true));
+		inv.setItem(28, removeSuccess);
+		
+		for(EnchantConstructor ec : EnchantConstructor.getEnchants().values()) {
+			Bukkit.broadcastMessage(ec.getCustomEnchant().getIdentifier() + " " + ec.getEnchantLevel());
+		}
+		
 		return inv;
 	}
 }

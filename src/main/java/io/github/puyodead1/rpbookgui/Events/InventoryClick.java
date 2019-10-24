@@ -2,6 +2,7 @@ package io.github.puyodead1.rpbookgui.Events;
 
 import java.util.ArrayList;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -12,6 +13,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import io.github.puyodead1.rpbookgui.EnchantConstructor;
 import io.github.puyodead1.rpbookgui.Inventories;
 import io.github.puyodead1.rpbookgui.ItemStacks;
 import io.github.puyodead1.rpbookgui.RPBookGUI;
@@ -22,7 +24,7 @@ import me.randomhashtags.randompackage.addons.EnchantRarity;
 import me.randomhashtags.randompackage.utils.universal.UMaterial;
 
 public class InventoryClick implements Listener {
-	
+
 	private static RandomPackageAPI rpapi = new RandomPackageAPI();
 
 	@EventHandler
@@ -84,7 +86,7 @@ public class InventoryClick implements Listener {
 							!RPBookGUI.getPlugin.getConfig().getBoolean("settings.keepinvopen"));
 
 					player.closeInventory();
-					player.openInventory(Inventories.SettingsInv());
+					player.openInventory(Inventories.Settings());
 				}
 				if (ci.getItemMeta().getDisplayName()
 						.equals(ItemStacks.UsePermissionsSetting().clone().getItemMeta().getDisplayName())) {
@@ -92,7 +94,7 @@ public class InventoryClick implements Listener {
 							!RPBookGUI.getPlugin.getConfig().getBoolean("settings.usepermissions"));
 
 					player.closeInventory();
-					player.openInventory(Inventories.SettingsInv());
+					player.openInventory(Inventories.Settings());
 				}
 			}
 
@@ -107,9 +109,10 @@ public class InventoryClick implements Listener {
 					player.openInventory(Inventories.MainGUI());
 				}
 				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
-					CustomEnchant ce = rpapi.valueOfCustomEnchant(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+					CustomEnchant ce = rpapi.valueOfCustomEnchant(
+							ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
-					player.openInventory(Inventories.EnchantInv(ce));
+					player.openInventory(Inventories.Enchant(ce));
 				}
 			}
 
@@ -124,9 +127,10 @@ public class InventoryClick implements Listener {
 					player.openInventory(Inventories.MainGUI());
 				}
 				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
-					CustomEnchant ce = rpapi.valueOfCustomEnchant(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+					CustomEnchant ce = rpapi.valueOfCustomEnchant(
+							ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
-					player.openInventory(Inventories.EnchantInv(ce));
+					player.openInventory(Inventories.Enchant(ce));
 				}
 			}
 			/*
@@ -140,9 +144,10 @@ public class InventoryClick implements Listener {
 					player.openInventory(Inventories.MainGUI());
 				}
 				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
-					CustomEnchant ce = rpapi.valueOfCustomEnchant(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+					CustomEnchant ce = rpapi.valueOfCustomEnchant(
+							ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
-					player.openInventory(Inventories.EnchantInv(ce));
+					player.openInventory(Inventories.Enchant(ce));
 				}
 			}
 
@@ -157,9 +162,10 @@ public class InventoryClick implements Listener {
 					player.openInventory(Inventories.MainGUI());
 				}
 				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
-					CustomEnchant ce = rpapi.valueOfCustomEnchant(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+					CustomEnchant ce = rpapi.valueOfCustomEnchant(
+							ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
-					player.openInventory(Inventories.EnchantInv(ce));
+					player.openInventory(Inventories.Enchant(ce));
 				}
 			}
 			/*
@@ -173,9 +179,10 @@ public class InventoryClick implements Listener {
 					player.openInventory(Inventories.MainGUI());
 				}
 				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
-					CustomEnchant ce = rpapi.valueOfCustomEnchant(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+					CustomEnchant ce = rpapi.valueOfCustomEnchant(
+							ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
-					player.openInventory(Inventories.EnchantInv(ce));
+					player.openInventory(Inventories.Enchant(ce));
 				}
 			}
 
@@ -190,9 +197,10 @@ public class InventoryClick implements Listener {
 					player.openInventory(Inventories.MainGUI());
 				}
 				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
-					CustomEnchant ce = rpapi.valueOfCustomEnchant(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+					CustomEnchant ce = rpapi.valueOfCustomEnchant(
+							ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
-					player.openInventory(Inventories.EnchantInv(ce));
+					player.openInventory(Inventories.Enchant(ce));
 				}
 			}
 			/*
@@ -206,9 +214,10 @@ public class InventoryClick implements Listener {
 					player.openInventory(Inventories.MainGUI());
 				}
 				if (e.getCurrentItem().getType().equals(UMaterial.match("BOOK").getMaterial())) {
-					CustomEnchant ce = rpapi.valueOfCustomEnchant(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+					CustomEnchant ce = rpapi.valueOfCustomEnchant(
+							ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 					player.closeInventory();
-					player.openInventory(Inventories.EnchantInv(ce));
+					player.openInventory(Inventories.Enchant(ce));
 				}
 			}
 
@@ -278,12 +287,22 @@ public class InventoryClick implements Listener {
 										.replace("{NAME}", ci.getItemMeta().getDisplayName())
 										.replace("{ITEM}", player.getItemInHand().getType().name())));
 					} else {
-						player.getInventory().addItem(ci);
-						if (!RPBookGUI.getPlugin.getConfig().getBoolean("settings.keep inventory open"))
-							player.closeInventory();
-						player.sendMessage(RPBookGUIUtils
-								.ChatColor(RPBookGUI.getPlugin.getConfig().getString("messages.added book")
-										.replace("{NAME}", ci.getItemMeta().getDisplayName())));
+						
+						for(EnchantConstructor ec : EnchantConstructor.getEnchants().values()) {
+							if(ec.getRevealItem() != ci) {
+								Bukkit.broadcastMessage("Removing EnchantConstructor: " + ec.getCustomEnchant().getIdentifier() + " " + ec.getEnchantLevel());
+								EnchantConstructor.getEnchants().remove(ec.getCustomEnchant().getIdentifier());
+							}
+						}
+						
+						player.closeInventory();
+						player.openInventory(Inventories.SuccessDestroySelection(ci));
+//						player.getInventory().addItem(ci);
+//						if (!RPBookGUI.getPlugin.getConfig().getBoolean("settings.keep inventory open"))
+//							player.closeInventory();
+//						player.sendMessage(RPBookGUIUtils
+//								.ChatColor(RPBookGUI.getPlugin.getConfig().getString("messages.added book")
+//										.replace("{NAME}", ci.getItemMeta().getDisplayName())));
 					}
 				}
 			}
