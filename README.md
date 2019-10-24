@@ -18,7 +18,7 @@ This plugin allows players to open a GUI and select a RandomPackage Enchant cate
 
 ### Requirements:<br>
 RandomPackage - https://www.spigotmc.org/resources/randompackage.38501/<br>
-This plugin should work with RandomPackage 16.1.3+<br>
+This plugin was made with RandomPackage 16.1.3+ (*Requires correct RPBookGUI and RP versions*)<br>
 
 ### Commands:<br>
 /bookgui - Opens the Book menu<br>
