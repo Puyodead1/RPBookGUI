@@ -39,5 +39,3 @@ bookgui.rarityinfo - use /rarityinfo<br>
 
 ### Future Features:<br>
 Configurable Success and Destroy rates<br>
-
-Let me know if you want any other features!
