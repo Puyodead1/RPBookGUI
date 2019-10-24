@@ -1,5 +1,5 @@
 name: RPBookGUI
-version: 2.9.4
+version: 2.9.5
 author: Puyodead1
 main: io.github.puyodead1.rpbookgui.RPBookGUI
 depend: [RandomPackage]
