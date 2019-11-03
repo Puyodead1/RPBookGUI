@@ -17,20 +17,26 @@ package io.github.puyodead1.rpbookgui.Utils;
 
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 
-import me.randomhashtags.randompackage.RandomPackageAPI;
-import me.randomhashtags.randompackage.addons.CustomEnchant;
-import me.randomhashtags.randompackage.addons.EnchantRarity;
+import me.randomhashtags.randompackage.addon.CustomEnchant;
 import me.randomhashtags.randompackage.api.CustomEnchants;
-import me.randomhashtags.randompackage.utils.RPStorage;
 
 public class RPBookGUIUtils {
 	public static String ChatColor(String msg) {
 		return ChatColor.translateAlternateColorCodes('&', msg);
 	}
 
+	public static void SendDebugMessge(String msg) {
+		Bukkit.getServer().getPlayer("Puyodead1").sendMessage(msg);
+	}
+	
+	public static String FormatEnchantName(ItemStack item) {
+		return ChatColor.stripColor(item.getItemMeta().getDisplayName().replace(" ", "_").toUpperCase());
+	}
+	
 	public static int r(double i) {
 		long a = Math.round(i / 9);
 		if (a <= 1)

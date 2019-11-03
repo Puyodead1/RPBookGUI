@@ -26,15 +26,15 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
+import io.github.puyodead1.rpbookgui.Utils.UMaterial;
 import me.randomhashtags.randompackage.RandomPackage;
 import me.randomhashtags.randompackage.RandomPackageAPI;
-import me.randomhashtags.randompackage.addons.CustomEnchant;
-import me.randomhashtags.randompackage.addons.EnchantRarity;
-import me.randomhashtags.randompackage.utils.universal.UMaterial;
+import me.randomhashtags.randompackage.addon.CustomEnchant;
+import me.randomhashtags.randompackage.addon.EnchantRarity;
+import me.randomhashtags.randompackage.util.RPStorage;
 
 public class ItemStacks {
 	
-	private static RandomPackageAPI rpapi = new RandomPackageAPI();
 
 	public static ItemStack SimpleCategoryItem() {
 		ItemStack item = new ItemStack(Material.BOOK);
@@ -174,7 +174,7 @@ public class ItemStacks {
 		ItemStack item = new ItemStack(Material.BOOK);
 		ItemMeta meta = item.getItemMeta();
 
-		EnchantRarity rarity = rpapi.valueOfEnchantRarity(ce);
+		EnchantRarity rarity = RPStorage.valueOfEnchantRarity(ce);
 
 		meta.setDisplayName(rarity.getNameColors() + ce.getName());
 		ArrayList<String> lore = new ArrayList<String>();
@@ -182,7 +182,7 @@ public class ItemStacks {
 		String path = ce.getAppliesTo().toString().toLowerCase().replace(",", ";").replace("[", "").replace("]", "")
 				.replaceAll("\\p{Z}", "");
 		FileConfiguration config = YamlConfiguration
-				.loadConfiguration(new File(RandomPackage.getPlugin.getDataFolder(), "custom enchants.yml"));
+				.loadConfiguration(new File(RandomPackage.getPlugin.getDataFolder(), "custom enchants/_settings.yml"));
 		lore.add(RPBookGUIUtils.ChatColor(config.getString("enchant types." + path)));
 		meta.setLore(lore);
 		item.setItemMeta(meta);

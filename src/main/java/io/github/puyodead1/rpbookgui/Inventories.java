@@ -25,13 +25,13 @@ import org.bukkit.inventory.ItemStack;
 
 import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
 import me.randomhashtags.randompackage.RandomPackageAPI;
-import me.randomhashtags.randompackage.addons.CustomEnchant;
-import me.randomhashtags.randompackage.addons.EnchantRarity;
+import me.randomhashtags.randompackage.addon.CustomEnchant;
+import me.randomhashtags.randompackage.addon.EnchantRarity;
 import me.randomhashtags.randompackage.api.CustomEnchants;
+import me.randomhashtags.randompackage.util.RPStorage;
 
 public class Inventories {
 	
-	private static RandomPackageAPI rpapi = new RandomPackageAPI();
 	// TODO: get the round method working, round to closest multiple of 9 depending
 	// on the number of enchants.
 
@@ -301,17 +301,20 @@ public class Inventories {
 	}
 	
 	public static Inventory Enchant(CustomEnchant ce) {
-		EnchantRarity rarity = rpapi.valueOfEnchantRarity(ce);
+		EnchantRarity rarity = RPStorage.valueOfEnchantRarity(ce);
+		RPBookGUIUtils.SendDebugMessge("CE: " + ce.toString());
+		RPBookGUIUtils.SendDebugMessge("Name: " + ce.getName());
+		RPBookGUIUtils.SendDebugMessge("Colors: " + rarity.getNameColors());
 		Inventory inv = Bukkit.createInventory(null, 18, rarity.getNameColors() + ce.getName());
 		int x = 0;
 		for (int i = 1; i < ce.getMaxLevel() + 1; i++) {
 			ItemStack is = CustomEnchants.getCustomEnchants().getRevealedItem(ce, i, 100, 0, true, true).clone();
 			new EnchantConstructor(ce, rarity, i, 0, 0);
-			Bukkit.broadcastMessage("EnchantConstructor size: " + EnchantConstructor.getEnchants().size());
+			RPBookGUIUtils.SendDebugMessge("EnchantConstructor size: " + EnchantConstructor.getEnchants().size());
 			inv.setItem(x, is);
 			x++;
 		}
-		Bukkit.broadcastMessage("Final EnchantConstructor size: " + EnchantConstructor.getEnchants().size());
+		RPBookGUIUtils.SendDebugMessge("Final EnchantConstructor size: " + EnchantConstructor.getEnchants().size());
 		inv.setItem(17, ItemStacks.Back().clone());
 		return inv;
 	}
@@ -341,7 +344,7 @@ public class Inventories {
 	
 	public static Inventory SuccessDestroySelection(ItemStack book) {
 		Inventory inv = Bukkit.createInventory(null, 54, "Success & Destry Configuration");
-		CustomEnchant ce = rpapi.valueOfCustomEnchant(book);
+		CustomEnchant ce = RPStorage.valueOfCustomEnchant(book);
 		// slot 10 - increase success
 		// slot 28 - decrease success
 		// slot 21 - book

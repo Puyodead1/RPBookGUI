@@ -5,8 +5,8 @@ import java.util.HashMap;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 
-import me.randomhashtags.randompackage.addons.CustomEnchant;
-import me.randomhashtags.randompackage.addons.EnchantRarity;
+import me.randomhashtags.randompackage.addon.CustomEnchant;
+import me.randomhashtags.randompackage.addon.EnchantRarity;
 import me.randomhashtags.randompackage.api.CustomEnchants;
 
 public class EnchantConstructor {
@@ -29,7 +29,7 @@ public class EnchantConstructor {
 		
 		enchants.put(customEnchant.getIdentifier(), this);
 		
-		Bukkit.broadcastMessage("EnchantConstructor added: " + customEnchant.getIdentifier() + " " + enchantLevel);
+		// Bukkit.broadcastMessage("EnchantConstructor added: " + customEnchant.getIdentifier() + " " + enchantLevel);
 	}
 
 	public CustomEnchant getCustomEnchant() {
