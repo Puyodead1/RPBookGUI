@@ -3,6 +3,7 @@ version: 2.9.7
 author: Puyodead1
 main: io.github.puyodead1.rpbookgui.RPBookGUI
 depend: [RandomPackage]
+api-version: 1.13
 commands:
   bookgui:
     description: Open the main menu

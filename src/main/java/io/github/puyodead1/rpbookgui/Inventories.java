@@ -22,16 +22,17 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
+import io.github.puyodead1.rpbookgui.Utils.ItemBuilder;
 import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
-import me.randomhashtags.randompackage.RandomPackageAPI;
 import me.randomhashtags.randompackage.addon.CustomEnchant;
 import me.randomhashtags.randompackage.addon.EnchantRarity;
 import me.randomhashtags.randompackage.api.CustomEnchants;
 import me.randomhashtags.randompackage.util.RPStorage;
 
 public class Inventories {
-	
+
 	// TODO: get the round method working, round to closest multiple of 9 depending
 	// on the number of enchants.
 
@@ -299,22 +300,17 @@ public class Inventories {
 		inv.setItem(53, ItemStacks.Back().clone());
 		return inv;
 	}
-	
+
 	public static Inventory Enchant(CustomEnchant ce) {
 		EnchantRarity rarity = RPStorage.valueOfEnchantRarity(ce);
-		RPBookGUIUtils.SendDebugMessge("CE: " + ce.toString());
-		RPBookGUIUtils.SendDebugMessge("Name: " + ce.getName());
-		RPBookGUIUtils.SendDebugMessge("Colors: " + rarity.getNameColors());
 		Inventory inv = Bukkit.createInventory(null, 18, rarity.getNameColors() + ce.getName());
 		int x = 0;
 		for (int i = 1; i < ce.getMaxLevel() + 1; i++) {
 			ItemStack is = CustomEnchants.getCustomEnchants().getRevealedItem(ce, i, 100, 0, true, true).clone();
 			new EnchantConstructor(ce, rarity, i, 0, 0);
-			RPBookGUIUtils.SendDebugMessge("EnchantConstructor size: " + EnchantConstructor.getEnchants().size());
 			inv.setItem(x, is);
 			x++;
 		}
-		RPBookGUIUtils.SendDebugMessge("Final EnchantConstructor size: " + EnchantConstructor.getEnchants().size());
 		inv.setItem(17, ItemStacks.Back().clone());
 		return inv;
 	}
@@ -341,25 +337,63 @@ public class Inventories {
 		inv.setItem(22, ItemStacks.Back().clone());
 		return inv;
 	}
-	
+
 	public static Inventory SuccessDestroySelection(ItemStack book) {
-		Inventory inv = Bukkit.createInventory(null, 54, "Success & Destry Configuration");
+		Inventory inv = Bukkit.createInventory(null, 45, "Success & Destry Configuration");
 		CustomEnchant ce = RPStorage.valueOfCustomEnchant(book);
-		// slot 10 - increase success
-		// slot 28 - decrease success
-		// slot 21 - book
+		// slot 10-12 - increase success
+		// slot 14-16 - increase destroy
+		// slot 28-30 - decrease success
+		// slot 32-34 - decrease destroy
+		// slot 22 - book
+
+		// Success controls
+		ItemStack as1 = new ItemBuilder(Material.GREEN_WOOL).setName(RPBookGUIUtils.ChatColor("&a+1 Success"))
+				.toItemStack();
+		ItemStack rs1 = new ItemBuilder(Material.RED_WOOL).setName(RPBookGUIUtils.ChatColor("&c-1 Success"))
+				.toItemStack();
+		ItemStack as5 = new ItemBuilder(Material.GREEN_WOOL).setName(RPBookGUIUtils.ChatColor("&a+5 Success"))
+				.toItemStack();
+		ItemStack rs5 = new ItemBuilder(Material.RED_WOOL).setName(RPBookGUIUtils.ChatColor("&c-5 Success"))
+				.toItemStack();
+		ItemStack as10 = new ItemBuilder(Material.GREEN_WOOL).setName(RPBookGUIUtils.ChatColor("&a+10 Success"))
+				.toItemStack();
+		ItemStack rs10 = new ItemBuilder(Material.RED_WOOL).setName(RPBookGUIUtils.ChatColor("&c-10 Success"))
+				.toItemStack();
+
+		// Destroy controls
+		ItemStack ad1 = new ItemBuilder(Material.GREEN_WOOL).setName(RPBookGUIUtils.ChatColor("&a+1 Destroy"))
+				.toItemStack();
+		ItemStack rd1 = new ItemBuilder(Material.RED_WOOL).setName(RPBookGUIUtils.ChatColor("&c-1 Destroy"))
+				.toItemStack();
+		ItemStack ad5 = new ItemBuilder(Material.GREEN_WOOL).setName(RPBookGUIUtils.ChatColor("&a+5 Destroy"))
+				.toItemStack();
+		ItemStack rd5 = new ItemBuilder(Material.RED_WOOL).setName(RPBookGUIUtils.ChatColor("&c-5 Destroy"))
+				.toItemStack();
+		ItemStack ad10 = new ItemBuilder(Material.GREEN_WOOL).setName(RPBookGUIUtils.ChatColor("&a+10 Destroy"))
+				.toItemStack();
+		ItemStack rd10 = new ItemBuilder(Material.RED_WOOL).setName(RPBookGUIUtils.ChatColor("&c-10 Destroy"))
+				.toItemStack();
+
+		inv.setItem(10, as1);
+		inv.setItem(11, as5);
+		inv.setItem(12, as10);
 		
-		ItemStack addSuccess = new ItemStack(Material.GREEN_WOOL);
-		ItemStack removeSuccess = new ItemStack(Material.RED_WOOL);
+		inv.setItem(14, ad10);
+		inv.setItem(15, ad5);
+		inv.setItem(16, ad1);
+
+		inv.setItem(22, CustomEnchants.getCustomEnchants().getRevealedItem(ce,
+				EnchantConstructor.getEnchants().get(ce.getIdentifier()).getEnchantLevel(), 0, 0, true, true));
+
+		inv.setItem(28, rs1);
+		inv.setItem(29, rs5);
+		inv.setItem(30, rs10);
 		
-		inv.setItem(10, addSuccess);
-//		inv.setItem(21, CustomEnchants.getCustomEnchants().getRevealedItem(ce, EnchantConstructor.getEnchants().get(ce.getName()).getEnchantLevel(), 0, 0, true, true));
-		inv.setItem(28, removeSuccess);
-		
-		for(EnchantConstructor ec : EnchantConstructor.getEnchants().values()) {
-			Bukkit.broadcastMessage(ec.getCustomEnchant().getIdentifier() + " " + ec.getEnchantLevel());
-		}
-		
+		inv.setItem(32, rd10);
+		inv.setItem(33, rd5);
+		inv.setItem(34, rd1);
+
 		return inv;
 	}
 }

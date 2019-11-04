@@ -2,6 +2,7 @@ settings:
   keep inventory open: true
   use permissions: true
   try to apply to item in hand: true
+  use success destroy configuration: true
   
 messages:
   no permission: "&7[&dRPBookGUI&7] &cYou don't have permission for that!"

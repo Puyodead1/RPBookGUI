@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
 import me.randomhashtags.randompackage.addon.CustomEnchant;
 import me.randomhashtags.randompackage.addon.EnchantRarity;
 import me.randomhashtags.randompackage.api.CustomEnchants;
@@ -29,7 +30,6 @@ public class EnchantConstructor {
 		
 		enchants.put(customEnchant.getIdentifier(), this);
 		
-		// Bukkit.broadcastMessage("EnchantConstructor added: " + customEnchant.getIdentifier() + " " + enchantLevel);
 	}
 
 	public CustomEnchant getCustomEnchant() {
