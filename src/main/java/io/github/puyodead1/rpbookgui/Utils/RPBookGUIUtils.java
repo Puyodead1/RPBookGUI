@@ -15,7 +15,9 @@
  ******************************************************************************/
 package io.github.puyodead1.rpbookgui.Utils;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -58,7 +60,8 @@ public class RPBookGUIUtils {
 	}
 
 	public static List<CustomEnchant> getCustomEnchants(String rarity) {
-		return CustomEnchants.getCustomEnchants().getEnchantRarity(rarity.toUpperCase()).getEnchants();
+		List<CustomEnchant> enchants = CustomEnchants.getCustomEnchants().getEnchantRarity(rarity.toUpperCase()).getEnchants();
+		return enchants.stream().filter(e -> e.isEnabled()).collect(Collectors.toList());
 	}
 
 }

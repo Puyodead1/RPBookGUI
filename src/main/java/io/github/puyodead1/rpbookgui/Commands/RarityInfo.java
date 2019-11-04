@@ -25,7 +25,7 @@ public class RarityInfo implements CommandExecutor {
 						|| !rpbgConfig.getBoolean("settings.use permissions")) {
 					String arg = args[0];
 					arg = arg.substring(0, 1).toUpperCase() + arg.substring(1, arg.length()).toLowerCase();
-					CustomEnchant ce = RPStorage.valueOfCustomEnchant(arg);
+					CustomEnchant ce = RPStorage.valueOfCustomEnchant(arg, true);
 					EnchantRarity rarity = RPStorage.valueOfEnchantRarity(ce);
 					player.sendMessage(rarity != null
 							? RPBookGUIUtils
