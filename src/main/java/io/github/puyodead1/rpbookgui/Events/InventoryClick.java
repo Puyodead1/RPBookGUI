@@ -336,14 +336,14 @@ public class InventoryClick implements Listener {
 							final int newAmount = (currentSuccess + amount);
 							ItemStack eb = CustomEnchants.getCustomEnchants().getRevealedItem(ce,
 									EnchantConstructor.getEnchants().get(ce.getIdentifier()).getEnchantLevel(),
-									newAmount > 0 ? newAmount : currentSuccess, currentDestroy, true, true);
+									newAmount > 0 && newAmount <= 100 ? newAmount : currentSuccess, currentDestroy, true, true);
 							e.getInventory().setItem(22, eb);
 							player.updateInventory();
 						} else if (incrementType.equals("-")) {
 							final int newAmount = (currentSuccess - amount);
 							ItemStack eb = CustomEnchants.getCustomEnchants().getRevealedItem(ce,
 									EnchantConstructor.getEnchants().get(ce.getIdentifier()).getEnchantLevel(),
-									newAmount > 0 ? newAmount : currentSuccess, currentDestroy, true, true);
+									newAmount > 0 && newAmount <= 100 ? newAmount : currentSuccess, currentDestroy, true, true);
 							e.getInventory().setItem(22, eb);
 							player.updateInventory();
 						}
@@ -352,14 +352,14 @@ public class InventoryClick implements Listener {
 							final int newAmount = (currentDestroy + amount);
 							ItemStack eb = CustomEnchants.getCustomEnchants().getRevealedItem(ce,
 									EnchantConstructor.getEnchants().get(ce.getIdentifier()).getEnchantLevel(),
-									currentSuccess, newAmount > 0 ? newAmount : currentDestroy, true, true);
+									currentSuccess, newAmount > 0 && newAmount <= 100 ? newAmount : currentDestroy, true, true);
 							e.getInventory().setItem(22, eb);
 							player.updateInventory();
 						} else if (incrementType.equals("-")) {
 							final int newAmount = (currentDestroy - amount);
 							ItemStack eb = CustomEnchants.getCustomEnchants().getRevealedItem(ce,
 									EnchantConstructor.getEnchants().get(ce.getIdentifier()).getEnchantLevel(),
-									currentSuccess, newAmount > 0 ? newAmount : currentDestroy, true, true);
+									currentSuccess, newAmount > 0 && newAmount <= 100 ? newAmount : currentDestroy, true, true);
 							e.getInventory().setItem(22, eb);
 							player.updateInventory();
 						}

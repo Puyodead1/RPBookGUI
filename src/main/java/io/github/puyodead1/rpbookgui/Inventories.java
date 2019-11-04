@@ -30,6 +30,7 @@ import me.randomhashtags.randompackage.addon.CustomEnchant;
 import me.randomhashtags.randompackage.addon.EnchantRarity;
 import me.randomhashtags.randompackage.api.CustomEnchants;
 import me.randomhashtags.randompackage.util.RPStorage;
+import me.randomhashtags.randompackage.util.universal.UMaterial;
 
 public class Inventories {
 
@@ -348,31 +349,31 @@ public class Inventories {
 		// slot 22 - book
 
 		// Success controls
-		ItemStack as1 = new ItemBuilder(Material.GREEN_WOOL).setName(RPBookGUIUtils.ChatColor("&a+1 Success"))
+		ItemStack as1 = new ItemBuilder(UMaterial.match("GREEN_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&a+1 Success"))
 				.toItemStack();
-		ItemStack rs1 = new ItemBuilder(Material.RED_WOOL).setName(RPBookGUIUtils.ChatColor("&c-1 Success"))
+		ItemStack rs1 = new ItemBuilder(UMaterial.match("RED_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&c-1 Success"))
 				.toItemStack();
-		ItemStack as5 = new ItemBuilder(Material.GREEN_WOOL).setName(RPBookGUIUtils.ChatColor("&a+5 Success"))
+		ItemStack as5 = new ItemBuilder(UMaterial.match("GREEN_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&a+5 Success"))
 				.toItemStack();
-		ItemStack rs5 = new ItemBuilder(Material.RED_WOOL).setName(RPBookGUIUtils.ChatColor("&c-5 Success"))
+		ItemStack rs5 = new ItemBuilder(UMaterial.match("RED_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&c-5 Success"))
 				.toItemStack();
-		ItemStack as10 = new ItemBuilder(Material.GREEN_WOOL).setName(RPBookGUIUtils.ChatColor("&a+10 Success"))
+		ItemStack as10 = new ItemBuilder(UMaterial.match("GREEN_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&a+10 Success"))
 				.toItemStack();
-		ItemStack rs10 = new ItemBuilder(Material.RED_WOOL).setName(RPBookGUIUtils.ChatColor("&c-10 Success"))
+		ItemStack rs10 = new ItemBuilder(UMaterial.match("RED_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&c-10 Success"))
 				.toItemStack();
 
 		// Destroy controls
-		ItemStack ad1 = new ItemBuilder(Material.GREEN_WOOL).setName(RPBookGUIUtils.ChatColor("&a+1 Destroy"))
+		ItemStack ad1 = new ItemBuilder(UMaterial.match("GREEN_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&a+1 Destroy"))
 				.toItemStack();
-		ItemStack rd1 = new ItemBuilder(Material.RED_WOOL).setName(RPBookGUIUtils.ChatColor("&c-1 Destroy"))
+		ItemStack rd1 = new ItemBuilder(UMaterial.match("RED_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&c-1 Destroy"))
 				.toItemStack();
-		ItemStack ad5 = new ItemBuilder(Material.GREEN_WOOL).setName(RPBookGUIUtils.ChatColor("&a+5 Destroy"))
+		ItemStack ad5 = new ItemBuilder(UMaterial.match("GREEN_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&a+5 Destroy"))
 				.toItemStack();
-		ItemStack rd5 = new ItemBuilder(Material.RED_WOOL).setName(RPBookGUIUtils.ChatColor("&c-5 Destroy"))
+		ItemStack rd5 = new ItemBuilder(UMaterial.match("RED_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&c-5 Destroy"))
 				.toItemStack();
-		ItemStack ad10 = new ItemBuilder(Material.GREEN_WOOL).setName(RPBookGUIUtils.ChatColor("&a+10 Destroy"))
+		ItemStack ad10 = new ItemBuilder(UMaterial.match("GREEN_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&a+10 Destroy"))
 				.toItemStack();
-		ItemStack rd10 = new ItemBuilder(Material.RED_WOOL).setName(RPBookGUIUtils.ChatColor("&c-10 Destroy"))
+		ItemStack rd10 = new ItemBuilder(UMaterial.match("RED_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&c-10 Destroy"))
 				.toItemStack();
 
 		inv.setItem(10, as1);
