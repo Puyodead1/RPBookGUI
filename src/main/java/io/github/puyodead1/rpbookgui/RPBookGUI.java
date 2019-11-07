@@ -25,6 +25,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import io.github.puyodead1.rpbookgui.Commands.BookGUICommand;
 import io.github.puyodead1.rpbookgui.Commands.RarityInfo;
 import io.github.puyodead1.rpbookgui.Events.RarityInventoryClick;
+import io.github.puyodead1.rpbookgui.Events.SettingsInventoryClick;
 import io.github.puyodead1.rpbookgui.Events.SuccessDestroyInventoryClick;
 import io.github.puyodead1.rpbookgui.Events.EnchantInventoryClick;
 import io.github.puyodead1.rpbookgui.Events.MainInventoryClick;
@@ -116,6 +117,8 @@ public class RPBookGUI extends JavaPlugin {
 		.registerEvents(new EnchantInventoryClick(), this);
 		getServer().getPluginManager()
 		.registerEvents(new SuccessDestroyInventoryClick(), this);
+		getServer().getPluginManager()
+		.registerEvents(new SettingsInventoryClick(), this);
 
 		Bukkit.getConsoleSender().sendMessage(
 				RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bLoaded Events &e("

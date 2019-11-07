@@ -57,8 +57,8 @@ public class BookGUICommand implements CommandExecutor {
 									.ChatColor("&7/bookgui - Open main menu."));
 							player.sendMessage(RPBookGUIUtils.ChatColor(
 									"&7/bookgui help - This help message."));
-							player.sendMessage(RPBookGUIUtils.ChatColor(
-									"&7/bookgui settings - Open settings menu."));
+//							player.sendMessage(RPBookGUIUtils.ChatColor(
+//									"&7/bookgui settings - Open settings menu."));
 							player.sendMessage(RPBookGUIUtils.ChatColor(
 									"&7/bookgui info - show plugin info."));
 							player.sendMessage(RPBookGUIUtils.ChatColor(
@@ -70,19 +70,19 @@ public class BookGUICommand implements CommandExecutor {
 											"messages.no permission")));
 							return false;
 						}
-					} else if (args[0].equalsIgnoreCase("settings")) {
-						if (player
-								.hasPermission(rpbgConfig.getString(
-										"permissions.bookgui settings"))
-								|| player.isOp()) {
-							player.openInventory(Inventories.settingsInventory());
-							return true;
-						} else {
-							player.sendMessage(RPBookGUIUtils
-									.ChatColor(rpbgConfig.getString(
-											"messages.no permission")));
-							return false;
-						}
+//					} else if (args[0].equalsIgnoreCase("settings")) {
+//						if (player
+//								.hasPermission(rpbgConfig.getString(
+//										"permissions.bookgui settings"))
+//								|| player.isOp()) {
+//							player.openInventory(Inventories.settingsInventory());
+//							return true;
+//						} else {
+//							player.sendMessage(RPBookGUIUtils
+//									.ChatColor(rpbgConfig.getString(
+//											"messages.no permission")));
+//							return false;
+//						}
 					} else if (args[0].equalsIgnoreCase("info")) {
 						if (player
 								.hasPermission(rpbgConfig
