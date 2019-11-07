@@ -1,4 +1,4 @@
-package io.github.puyodead1.rpbookgui.Utils;
+package io.github.puyodead1.rpbookgui.utils;
 
 import me.randomhashtags.randompackage.RandomPackageAPI;
 import me.randomhashtags.randompackage.addon.CustomEnchant;
@@ -13,8 +13,10 @@ import org.bukkit.configuration.file.YamlConfiguration;
 public class FileCustomEnchant implements CustomEnchant {
 	protected static RandomPackageAPI api = RandomPackageAPI.api;
     private List<String> lore;
-    private List<String> appliesto, attributes;
-    private BigDecimal[] alchemist, tinkerer;
+    private List<String> appliesto;
+    private List<String> attributes;
+    private BigDecimal[] alchemist;
+    private BigDecimal[] tinkerer;
     protected YamlConfiguration yml;
     private File f;
 

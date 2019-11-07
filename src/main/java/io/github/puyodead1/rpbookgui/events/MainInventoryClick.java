@@ -1,4 +1,4 @@
-package io.github.puyodead1.rpbookgui.Events;
+package io.github.puyodead1.rpbookgui.events;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -9,13 +9,13 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.puyodead1.rpbookgui.Inventories;
-import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
+import io.github.puyodead1.rpbookgui.utils.RPBookGUIUtils;
 import me.randomhashtags.randompackage.addon.EnchantRarity;
 
 public class MainInventoryClick extends RPBookGUIUtils implements Listener {
 	
 	@EventHandler
-	public void InventoryClickEvent(InventoryClickEvent e) {
+	public void clickEvent(InventoryClickEvent e) {
 		if (!e.isCancelled() && e.getCurrentItem() != null
 				&& !e.getCurrentItem().getType().equals(Material.AIR)
 				&& e.getClickedInventory() != null && e.getCursor() != null
@@ -24,9 +24,9 @@ public class MainInventoryClick extends RPBookGUIUtils implements Listener {
 			Player player = (Player) e.getWhoClicked();
 			String invTitle = e.getView().getTitle();
 			
-			if(invTitle.equals("Enchantment Categories")) {
+			if("Enchantment Categories".equals(invTitle)) {
 				String itemName = item.getItemMeta().getDisplayName().split(" ")[0];
-				itemName = Strip(itemName).toUpperCase();
+				itemName = stripColor(itemName).toUpperCase();
 				
 				for(final EnchantRarity rarity : rarities.values()) {
 					if(itemName.equals(rarity.getIdentifier())) {

@@ -1,4 +1,4 @@
-package io.github.puyodead1.rpbookgui.Commands;
+package io.github.puyodead1.rpbookgui.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -7,7 +7,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import io.github.puyodead1.rpbookgui.RPBookGUI;
-import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
+import io.github.puyodead1.rpbookgui.utils.RPBookGUIUtils;
 import me.randomhashtags.randompackage.addon.CustomEnchant;
 import me.randomhashtags.randompackage.addon.EnchantRarity;
 import me.randomhashtags.randompackage.util.RPStorage;
@@ -29,20 +29,20 @@ public class RarityInfo implements CommandExecutor {
 					EnchantRarity rarity = RPStorage.valueOfEnchantRarity(ce);
 					player.sendMessage(rarity != null
 							? RPBookGUIUtils
-									.ChatColor(rpbgConfig.getString("messages.rarity info").replace("{ENCHANT}", arg)
+									.chatColor(rpbgConfig.getString("messages.rarity info").replace("{ENCHANT}", arg)
 											.replace("{RARITY}", rarity.getNameColors() + rarity.getIdentifier()))
-							: RPBookGUIUtils.ChatColor("&c&l(!) Invalid Enchant Name!"));
+							: RPBookGUIUtils.chatColor("&c&l(!) Invalid Enchant Name!"));
 					return true;
 				} else {
-					player.sendMessage(RPBookGUIUtils.ChatColor(rpbgConfig.getString("messages.no permission")));
+					player.sendMessage(RPBookGUIUtils.chatColor(rpbgConfig.getString("messages.no permission")));
 					return false;
 				}
 			} else
-				player.sendMessage(RPBookGUIUtils.ChatColor("&c&l(!) Invalid syntax!"));
+				player.sendMessage(RPBookGUIUtils.chatColor("&c&l(!) Invalid syntax!"));
 
 			return true;
 		} else {
-			sender.sendMessage(RPBookGUIUtils.ChatColor(rpbgConfig.getString("messages.only players")));
+			sender.sendMessage(RPBookGUIUtils.chatColor(rpbgConfig.getString("messages.only players")));
 			return false;
 		}
 	}

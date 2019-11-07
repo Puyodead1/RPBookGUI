@@ -22,17 +22,17 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import io.github.puyodead1.rpbookgui.Commands.BookGUICommand;
-import io.github.puyodead1.rpbookgui.Commands.RarityInfo;
-import io.github.puyodead1.rpbookgui.Events.EnchantInventoryClick;
-import io.github.puyodead1.rpbookgui.Events.MainInventoryClick;
-import io.github.puyodead1.rpbookgui.Events.RarityInventoryClick;
-import io.github.puyodead1.rpbookgui.Events.SettingsInventoryClick;
-import io.github.puyodead1.rpbookgui.Events.SuccessDestroyInventoryClick;
-import io.github.puyodead1.rpbookgui.Utils.FileCustomEnchant;
-import io.github.puyodead1.rpbookgui.Utils.FileEnchantRarity;
-import io.github.puyodead1.rpbookgui.Utils.MetricsLite;
-import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
+import io.github.puyodead1.rpbookgui.commands.BookGUICommand;
+import io.github.puyodead1.rpbookgui.commands.RarityInfo;
+import io.github.puyodead1.rpbookgui.events.EnchantInventoryClick;
+import io.github.puyodead1.rpbookgui.events.MainInventoryClick;
+import io.github.puyodead1.rpbookgui.events.RarityInventoryClick;
+import io.github.puyodead1.rpbookgui.events.SettingsInventoryClick;
+import io.github.puyodead1.rpbookgui.events.SuccessDestroyInventoryClick;
+import io.github.puyodead1.rpbookgui.utils.FileCustomEnchant;
+import io.github.puyodead1.rpbookgui.utils.FileEnchantRarity;
+import io.github.puyodead1.rpbookgui.utils.MetricsLite;
+import io.github.puyodead1.rpbookgui.utils.RPBookGUIUtils;
 import me.randomhashtags.randompackage.util.addon.RPAddon;
 
 public class RPBookGUI extends JavaPlugin {
@@ -49,22 +49,22 @@ public class RPBookGUI extends JavaPlugin {
 		}
 
 		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils
-				.ChatColor("&7[&dRPBookGUI&7] &b============================================================="));
+				.chatColor("&7[&dRPBookGUI&7] &b============================================================="));
 		InitRarities();
 		InitCommands();
 		InitConfig();
 		InitEvents();
 		InitMetrics();
-		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &d========================"));
-		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bAuthor: &ePuyodead1"));
-		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bRandomPackage Version: &e"
+		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.chatColor("&7[&dRPBookGUI&7] &d========================"));
+		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.chatColor("&7[&dRPBookGUI&7] &bAuthor: &ePuyodead1"));
+		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.chatColor("&7[&dRPBookGUI&7] &bRandomPackage Version: &e"
 				+ getServer().getPluginManager().getPlugin("RandomPackage").getDescription().getVersion()));
-		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bRPBookGUI Version: &e"
+		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.chatColor("&7[&dRPBookGUI&7] &bRPBookGUI Version: &e"
 				+ getServer().getPluginManager().getPlugin("RPBookGUI").getDescription().getVersion()));
 		Bukkit.getConsoleSender().sendMessage(
-				RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bMinecraft Version: &e" + getServer().getVersion()));
+				RPBookGUIUtils.chatColor("&7[&dRPBookGUI&7] &bMinecraft Version: &e" + getServer().getVersion()));
 		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils
-				.ChatColor("&7[&dRPBookGUI&7] &b============================================================="));
+				.chatColor("&7[&dRPBookGUI&7] &b============================================================="));
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class RPBookGUI extends JavaPlugin {
 		getConfig().options().copyDefaults(true);
 		saveDefaultConfig();
 
-		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor(
+		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.chatColor(
 				"&7[&dRPBookGUI&7] &bLoaded Configuration file &e(" + (System.currentTimeMillis() - started) + "ms)"));
 	}
 
@@ -106,7 +106,7 @@ public class RPBookGUI extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new SettingsInventoryClick(), this);
 
 		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils
-				.ChatColor("&7[&dRPBookGUI&7] &bLoaded Events &e(" + (System.currentTimeMillis() - started) + "ms)"));
+				.chatColor("&7[&dRPBookGUI&7] &bLoaded Events &e(" + (System.currentTimeMillis() - started) + "ms)"));
 	}
 
 	/**

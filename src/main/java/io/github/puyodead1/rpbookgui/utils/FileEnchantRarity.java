@@ -1,4 +1,4 @@
-package io.github.puyodead1.rpbookgui.Utils;
+package io.github.puyodead1.rpbookgui.utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -17,8 +17,10 @@ import me.randomhashtags.randompackage.addon.EnchantRarity;
 public class FileEnchantRarity extends RPBookGUIUtils implements EnchantRarity {
 	protected static RandomPackageAPI api = RandomPackageAPI.api;
 	private File folder;
-	private List<String> revealedEnchantMsg, loreFormat;
-	private ItemStack revealItem, revealedItem;
+	private List<String> revealedEnchantMsg;
+	private List<String> loreFormat;
+	private ItemStack revealItem;
+	private ItemStack revealedItem;
 	private Firework firework;
 	protected List<CustomEnchant> enchants;
 	protected YamlConfiguration yml;

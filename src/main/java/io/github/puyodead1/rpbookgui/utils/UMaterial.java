@@ -1,4 +1,4 @@
-package io.github.puyodead1.rpbookgui.Utils;
+package io.github.puyodead1.rpbookgui.utils;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;

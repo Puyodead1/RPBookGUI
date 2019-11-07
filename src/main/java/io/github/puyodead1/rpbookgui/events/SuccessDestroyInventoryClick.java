@@ -1,4 +1,4 @@
-package io.github.puyodead1.rpbookgui.Events;
+package io.github.puyodead1.rpbookgui.events;
 
 import java.util.Map.Entry;
 
@@ -12,7 +12,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.puyodead1.rpbookgui.EnchantConstructor;
-import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
+import io.github.puyodead1.rpbookgui.utils.RPBookGUIUtils;
 import me.randomhashtags.randompackage.addon.CustomEnchant;
 import me.randomhashtags.randompackage.api.CustomEnchants;
 import me.randomhashtags.randompackage.util.RPStorage;
@@ -22,26 +22,25 @@ public class SuccessDestroyInventoryClick extends RPBookGUIUtils
 			Listener {
 
 	@EventHandler
-	public void InventoryClickEvent(InventoryClickEvent e) {
+	public void clickEvent(InventoryClickEvent e) {
 		if (!e.isCancelled() && e.getCurrentItem() != null
 				&& !e.getCurrentItem().getType().equals(Material.AIR)
 				&& e.getClickedInventory() != null && e.getCursor() != null
 				&& !e.getClick().equals(ClickType.DOUBLE_CLICK)) {
-			ItemStack item = e.getCurrentItem();
 			Player player = (Player) e.getWhoClicked();
 			String invTitle = e.getView().getTitle();
 
-			if (invTitle.equals("Success & Destroy Configuration")) {
+			if ("Success & Destroy Configuration".equals(invTitle)) {
 				e.setCancelled(true);
 				if (e.getCurrentItem().getType().equals(Material.BOOK)) {
 					EnchantConstructor.getEnchants().clear();
 					player.getInventory().addItem(e.getCurrentItem().clone());
 					player.getOpenInventory().close();
 				} else {
-					String incrementType = Strip(
+					String incrementType = stripColor(
 							e.getCurrentItem().getItemMeta().getDisplayName())
 									.substring(0, 1);
-					String[] split = Strip(
+					String[] split = stripColor(
 							e.getCurrentItem().getItemMeta().getDisplayName())
 									.substring(1).split(" ");
 					int amount = Integer.parseInt(split[0]);
@@ -61,8 +60,8 @@ public class SuccessDestroyInventoryClick extends RPBookGUIUtils
 					CustomEnchant ce = RPStorage
 							.valueOfCustomEnchant(entry.getKey(), true);
 
-					if (type.equals("success")) {
-						if (incrementType.equals("+")) {
+					if ("success".equals(type)) {
+						if ("+".equals(incrementType)) {
 							final int newAmount = (currentSuccess + amount);
 							ItemStack eb = CustomEnchants.getCustomEnchants()
 									.getRevealedItem(ce,
@@ -75,7 +74,7 @@ public class SuccessDestroyInventoryClick extends RPBookGUIUtils
 											currentDestroy, true, true);
 							e.getInventory().setItem(22, eb);
 							player.updateInventory();
-						} else if (incrementType.equals("-")) {
+						} else if ("-".equals(incrementType)) {
 							final int newAmount = (currentSuccess - amount);
 							ItemStack eb = CustomEnchants.getCustomEnchants()
 									.getRevealedItem(ce,
@@ -89,8 +88,8 @@ public class SuccessDestroyInventoryClick extends RPBookGUIUtils
 							e.getInventory().setItem(22, eb);
 							player.updateInventory();
 						}
-					} else if (type.equals("destroy")) {
-						if (incrementType.equals("+")) {
+					} else if ("destroy".equals(type)) {
+						if ("+".equals(incrementType)) {
 							final int newAmount = (currentDestroy + amount);
 							ItemStack eb = CustomEnchants.getCustomEnchants()
 									.getRevealedItem(ce,
@@ -104,7 +103,7 @@ public class SuccessDestroyInventoryClick extends RPBookGUIUtils
 											true, true);
 							e.getInventory().setItem(22, eb);
 							player.updateInventory();
-						} else if (incrementType.equals("-")) {
+						} else if ("-".equals(incrementType)) {
 							final int newAmount = (currentDestroy - amount);
 							ItemStack eb = CustomEnchants.getCustomEnchants()
 									.getRevealedItem(ce,

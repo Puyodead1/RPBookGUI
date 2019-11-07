@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  ******************************************************************************/
-package io.github.puyodead1.rpbookgui.Utils;
+package io.github.puyodead1.rpbookgui.utils;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
