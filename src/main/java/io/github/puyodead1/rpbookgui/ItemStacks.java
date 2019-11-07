@@ -28,10 +28,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
 import io.github.puyodead1.rpbookgui.Utils.UMaterial;
 import me.randomhashtags.randompackage.RandomPackage;
-import me.randomhashtags.randompackage.RandomPackageAPI;
 import me.randomhashtags.randompackage.addon.CustomEnchant;
 import me.randomhashtags.randompackage.addon.EnchantRarity;
-import me.randomhashtags.randompackage.util.RPStorage;
 
 public class ItemStacks {
 

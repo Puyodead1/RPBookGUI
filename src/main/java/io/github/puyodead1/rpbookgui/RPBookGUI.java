@@ -24,11 +24,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import io.github.puyodead1.rpbookgui.Commands.BookGUICommand;
 import io.github.puyodead1.rpbookgui.Commands.RarityInfo;
+import io.github.puyodead1.rpbookgui.Events.EnchantInventoryClick;
+import io.github.puyodead1.rpbookgui.Events.MainInventoryClick;
 import io.github.puyodead1.rpbookgui.Events.RarityInventoryClick;
 import io.github.puyodead1.rpbookgui.Events.SettingsInventoryClick;
 import io.github.puyodead1.rpbookgui.Events.SuccessDestroyInventoryClick;
-import io.github.puyodead1.rpbookgui.Events.EnchantInventoryClick;
-import io.github.puyodead1.rpbookgui.Events.MainInventoryClick;
 import io.github.puyodead1.rpbookgui.Utils.FileCustomEnchant;
 import io.github.puyodead1.rpbookgui.Utils.FileEnchantRarity;
 import io.github.puyodead1.rpbookgui.Utils.MetricsLite;
@@ -128,6 +128,7 @@ public class RPBookGUI extends JavaPlugin {
 	/**
 	 * Enable Metrics
 	 */
+	@SuppressWarnings("unused")
 	public void InitMetrics() {
 		long started = System.currentTimeMillis();
 		MetricsLite metrics = new MetricsLite(this);
@@ -150,29 +151,32 @@ public class RPBookGUI extends JavaPlugin {
 		if (folder.exists()) {
 			for (File f : folder.listFiles()) {
 				if (f.isDirectory()) {
-					final File[] files = new File(p + separator + f.getName())
-							.listFiles();
-					if (files != null) {
-						FileEnchantRarity rarity = null;
-						final List<File> F = Arrays.asList(files);
-						for (File k : F) {
-							if (k.getName().contains("_settings")) {
-								rarity = new FileEnchantRarity(f, k);
+					if(!f.getName().contains("RANDOM")) {
+						final File[] files = new File(p + separator + f.getName())
+								.listFiles();
+						if (files != null) {
+							FileEnchantRarity rarity = null;
+							final List<File> F = Arrays.asList(files);
+							for (File k : F) {
+								if (k.getName().contains("_settings")) {
+									rarity = new FileEnchantRarity(f, k);
+								}
 							}
-						}
-						if (rarity != null) {
-							for (File ff : files) {
-								if (!ff.getName().startsWith("_settings")) {
-									final FileCustomEnchant e = new FileCustomEnchant(
-											ff);
-									if(e.isEnabled()) {
-										rarity.getEnchants().add(e);
-										RPBookGUIUtils.enchants.put(e.getIdentifier(), e);
+							if (rarity != null) {
+								for (File ff : files) {
+									if (!ff.getName().startsWith("_settings")) {
+										final FileCustomEnchant e = new FileCustomEnchant(
+												ff);
+										if(e.isEnabled()) {
+											rarity.getEnchants().add(e);
+											RPBookGUIUtils.enchants.put(e.getIdentifier(), e);
+										}
 									}
 								}
 							}
 						}
 					}
+					// Note: Random ce category causes errors, so dont load it
 				}
 			}
 		}

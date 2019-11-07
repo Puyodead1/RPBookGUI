@@ -29,6 +29,7 @@ public class FileEnchantRarity extends RPBookGUIUtils implements EnchantRarity {
 		enchants = new ArrayList<>();
 		addEnchantRarity(this);
 	}
+
 	public String getIdentifier() {
 		return folder.getName();
 	}
@@ -36,64 +37,68 @@ public class FileEnchantRarity extends RPBookGUIUtils implements EnchantRarity {
 	public String[] getRevealedEnchantRarities() {
 		return yml.getString("reveals enchant rarities").split(";");
 	}
+
 	public List<String> getRevealedEnchantMsg() {
 		if (revealedEnchantMsg == null)
-			revealedEnchantMsg = api.colorizeListString(
-					yml.getStringList("reveal enchant msg"));
+			revealedEnchantMsg = api.colorizeListString(yml.getStringList("reveal enchant msg"));
 		return revealedEnchantMsg;
 	}
+
 	public ItemStack getRevealItem() {
 		if (revealItem == null)
 			revealItem = api.d(yml, "reveal item");
 		return getClone(revealItem, null);
 	}
+
 	public ItemStack getRevealedItem() {
 		if (revealedItem == null)
 			revealedItem = api.d(yml, "revealed item");
 		return getClone(revealedItem, null);
 	}
+
 	public String getNameColors() {
-		return ChatColor.translateAlternateColorCodes('&',
-				yml.getString("revealed item.name colors"));
+		return ChatColor.translateAlternateColorCodes('&', yml.getString("revealed item.name colors"));
 	}
+
 	public String getApplyColors() {
-		return ChatColor.translateAlternateColorCodes('&',
-				yml.getString("revealed item.apply colors"));
+		return ChatColor.translateAlternateColorCodes('&', yml.getString("revealed item.apply colors"));
 	}
+
 	public boolean percentsAddUpto100() {
 		return yml.getBoolean("settings.success+destroy=100");
 	}
+
 	public String getSuccess() {
-		return ChatColor.translateAlternateColorCodes('&',
-				yml.getString("settings.success"));
+		return ChatColor.translateAlternateColorCodes('&', yml.getString("settings.success"));
 	}
+
 	public String getDestroy() {
-		return ChatColor.translateAlternateColorCodes('&',
-				yml.getString("settings.destroy"));
+		return ChatColor.translateAlternateColorCodes('&', yml.getString("settings.destroy"));
 	}
+
 	public List<String> getLoreFormat() {
 		if (loreFormat == null)
-			loreFormat = api.colorizeListString(
-					yml.getStringList("settings.lore format"));
+			loreFormat = api.colorizeListString(yml.getStringList("settings.lore format"));
 		return loreFormat;
 	}
+
 	public int getSuccessSlot() {
 		return getLoreFormat().indexOf("{SUCCESS}");
 	}
+
 	public int getDestroySlot() {
 		return getLoreFormat().indexOf("{DESTROY}");
 	}
+
 	public Firework getFirework() {
 		if (firework == null) {
-			final String[] a = yml.getString("revealed item.firework")
-					.split(":");
-			firework = api.createFirework(
-					FireworkEffect.Type.valueOf(a[0].toUpperCase()),
-					api.getColor(a[1]), api.getColor(a[2]),
-					Integer.parseInt(a[3]));
+			final String[] a = yml.getString("revealed item.firework").split(":");
+			firework = api.createFirework(FireworkEffect.Type.valueOf(a[0].toUpperCase()), api.getColor(a[1]),
+					api.getColor(a[2]), Integer.parseInt(a[3]));
 		}
 		return firework;
 	}
+
 	public List<CustomEnchant> getEnchants() {
 		return enchants;
 	}

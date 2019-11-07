@@ -1,26 +1,15 @@
 package io.github.puyodead1.rpbookgui.Commands;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import io.github.puyodead1.rpbookgui.Inventories;
 import io.github.puyodead1.rpbookgui.RPBookGUI;
 import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
-import me.randomhashtags.randompackage.addon.EnchantRarity;
-import me.randomhashtags.randompackage.util.addon.FileCustomEnchant;
-import me.randomhashtags.randompackage.util.addon.FileEnchantRarity;
-import me.randomhashtags.randompackage.util.addon.RPAddon;
 
 public class BookGUICommand implements CommandExecutor {
 
