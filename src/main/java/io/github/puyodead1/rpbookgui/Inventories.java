@@ -15,304 +15,347 @@
  ******************************************************************************/
 package io.github.puyodead1.rpbookgui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.puyodead1.rpbookgui.Utils.ItemBuilder;
 import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
+import io.github.puyodead1.rpbookgui.Utils.UMaterial;
 import me.randomhashtags.randompackage.addon.CustomEnchant;
 import me.randomhashtags.randompackage.addon.EnchantRarity;
 import me.randomhashtags.randompackage.api.CustomEnchants;
 import me.randomhashtags.randompackage.util.RPStorage;
-import me.randomhashtags.randompackage.util.universal.UMaterial;
 
-public class Inventories {
+public class Inventories extends RPBookGUIUtils {
 
-	// TODO: get the round method working, round to closest multiple of 9 depending
-	// on the number of enchants.
-
+	/**
+	 * Main Inventory
+	 * @return inventory
+	 */
 	public static Inventory MainGUI() {
-		Inventory inv = Bukkit.createInventory(null, 9, "Enchantment Categories");
-		inv.setItem(0, ItemStacks.GlassSeperator().clone());
-		inv.setItem(1, ItemStacks.SimpleCategoryItem().clone());
-		inv.setItem(2, ItemStacks.UniqueCategoryItem().clone());
-		inv.setItem(3, ItemStacks.EliteCategoryItem().clone());
-		inv.setItem(4, ItemStacks.UltimateCategoryItem().clone());
-		inv.setItem(5, ItemStacks.LegendaryCategoryItem().clone());
-		inv.setItem(6, ItemStacks.SoulCategoryItem().clone());
-		inv.setItem(7, ItemStacks.HeroicCategoryItem().clone());
-		inv.setItem(8, ItemStacks.GlassSeperator().clone());
+		Inventory inv = Bukkit.createInventory(null,
+				toNineDenom(rarities.size()),
+				"Enchantment Categories");
+		int currentIndex = 0;
+		for(final EnchantRarity rarity : rarities.values()) {
+			if(currentIndex <= rarities.size()) {
+				inv.setItem(currentIndex, new ItemBuilder(UMaterial.match("BOOK").getItemStack()).setName(rarity.getNameColors() + rarity.getIdentifier() + " Enchants").addLoreLine(RPBookGUIUtils.ChatColor("&7Click to view " + rarity.getNameColors() + rarity.getIdentifier() + "&r&7 Enchantments")).toItemStack());
+				currentIndex++;
+			} else {
+				break;
+			}
+		}
 		return inv;
 	}
 
-	public static Inventory SimpleEnchants() {
-		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("SIMPLE");
-		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&7&lSimple Enchantments"));
-
-		for (int i = 0; i < rarities.size(); i++) {
-			CustomEnchant ce = rarities.get(i);
-			ItemStack is = ItemStacks.EnchantBook(ce).clone();
-			inv.setItem(i, is);
+	/**
+	 * Enchants for a specific Rarity
+	 * @param rarity
+	 * @return inventory
+	 */
+	public static Inventory RarityInventory(EnchantRarity rarity) {
+		Inventory inv = Bukkit.createInventory(null,
+				toNineDenom(rarity.getEnchants().size() + 1),
+				ChatColor(
+						rarity.getNameColors() + rarity.getIdentifier()));
+		
+		for(int i = 0; i < rarity.getEnchants().size(); i++) {
+			final CustomEnchant ce = rarity.getEnchants().get(i);
+			inv.setItem(i, ItemStacks.EnchantBook(rarity, ce).clone());
 		}
-
-		inv.setItem(53, ItemStacks.Back().clone());
+		inv.setItem(inv.getSize() - 1, ItemStacks.Back().clone());
 		return inv;
 	}
 
-	public static Inventory UniqueEnchants() {
-		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("UNIQUE");
-		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&a&lUnique Enchantments"));
-		for (int i = 0; i < rarities.size(); i++) {
-			CustomEnchant ce = rarities.get(i);
-			ItemStack is = ItemStacks.EnchantBook(ce).clone();
-			inv.setItem(i, is);
-		}
-		inv.setItem(53, ItemStacks.Back().clone());
-		return inv;
-	}
-
-	public static Inventory EliteEnchants() {
-		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("ELITE");
-		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&b&lElite Enchantments"));
-
-		for (int i = 0; i < rarities.size(); i++) {
-			CustomEnchant ce = rarities.get(i);
-			ItemStack is = ItemStacks.EnchantBook(ce).clone();
-			inv.setItem(i, is);
-		}
-
-		inv.setItem(53, ItemStacks.Back().clone());
-		return inv;
-	}
-
-	public static Inventory UltimateEnchants() {
-		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("ULTIMATE");
-		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&e&lUltimate Enchantments"));
-
-		for (int i = 0; i < rarities.size(); i++) {
-			CustomEnchant ce = rarities.get(i);
-			ItemStack is = ItemStacks.EnchantBook(ce).clone();
-			inv.setItem(i, is);
-		}
-
-		inv.setItem(53, ItemStacks.Back().clone());
-		return inv;
-	}
-
-	public static Inventory LegendaryEnchants() {
-		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("LEGENDARY");
-		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&6&lLegendary Enchantments"));
-
-		for (int i = 0; i < rarities.size(); i++) {
-			CustomEnchant ce = rarities.get(i);
-			ItemStack is = ItemStacks.EnchantBook(ce).clone();
-			inv.setItem(i, is);
-		}
-
-		inv.setItem(53, ItemStacks.Back().clone());
-		return inv;
-	}
-
-	public static Inventory SoulEnchants() {
-		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("SOUL");
-		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&c&lSoul Enchantments"));
-
-		for (int i = 0; i < rarities.size(); i++) {
-			CustomEnchant ce = rarities.get(i);
-			ItemStack is = ItemStacks.EnchantBook(ce).clone();
-			inv.setItem(i, is);
-		}
-
-		inv.setItem(53, ItemStacks.Back().clone());
-		return inv;
-	}
-
-	public static Inventory HeroicEnchants() {
-		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("HEROIC");
-		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils.ChatColor("&d&lHeroic Enchantments"));
-
-		for (int i = 0; i < rarities.size(); i++) {
-			CustomEnchant ce = rarities.get(i);
-			ItemStack is = ItemStacks.EnchantBook(ce).clone();
-			inv.setItem(i, is);
-		}
-
-		inv.setItem(53, ItemStacks.Back().clone());
-		return inv;
-	}
-
-	/**/
-	public static Inventory SimpleEnchants(ItemStack itemApplyTo) {
-		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("SIMPLE");
-		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
-				.ChatColor("&7&lSimple Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
-
-		List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
-
-		for (int i = 0; i < rarities.size(); i++) {
-			CustomEnchant ce = rarities.get(i);
-			if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo))
-				enchantsForIS.add(ce);
-		}
-
-		for (int i = 0; i < enchantsForIS.size(); i++) {
-			ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
-			inv.setItem(i, is);
-		}
-
-		inv.setItem(53, ItemStacks.Back().clone());
-		return inv;
-	}
-
-	public static Inventory UniqueEnchants(ItemStack itemApplyTo) {
-		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("UNIQUE");
-		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
-				.ChatColor("&a&lUnique Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
-
-		List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
-
-		for (int i = 0; i < rarities.size(); i++) {
-			CustomEnchant ce = rarities.get(i);
-			if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo))
-				enchantsForIS.add(ce);
-		}
-
-		for (int i = 0; i < enchantsForIS.size(); i++) {
-			ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
-			inv.setItem(i, is);
-		}
-
-		inv.setItem(53, ItemStacks.Back().clone());
-		return inv;
-	}
-
-	public static Inventory EliteEnchants(ItemStack itemApplyTo) {
-		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("ELITE");
-		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
-				.ChatColor("&b&lElite Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
-
-		List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
-
-		for (int i = 0; i < rarities.size(); i++) {
-			CustomEnchant ce = rarities.get(i);
-			if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo))
-				enchantsForIS.add(ce);
-		}
-
-		for (int i = 0; i < enchantsForIS.size(); i++) {
-			ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
-			inv.setItem(i, is);
-		}
-
-		inv.setItem(53, ItemStacks.Back().clone());
-		return inv;
-	}
-
-	public static Inventory UltimateEnchants(ItemStack itemApplyTo) {
-		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("ULTIMATE");
-		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
-				.ChatColor("&e&lUltimate Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
-
-		List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
-
-		for (int i = 0; i < rarities.size(); i++) {
-			CustomEnchant ce = rarities.get(i);
-			if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo))
-				enchantsForIS.add(ce);
-		}
-
-		for (int i = 0; i < enchantsForIS.size(); i++) {
-			ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
-			inv.setItem(i, is);
-		}
-
-		inv.setItem(53, ItemStacks.Back().clone());
-		return inv;
-	}
-
-	public static Inventory LegendaryEnchants(ItemStack itemApplyTo) {
-		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("LEGENDARY");
-		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
-				.ChatColor("&6&lLegendary Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
-
-		List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
-
-		for (int i = 0; i < rarities.size(); i++) {
-			CustomEnchant ce = rarities.get(i);
-			if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo))
-				enchantsForIS.add(ce);
-		}
-
-		for (int i = 0; i < enchantsForIS.size(); i++) {
-			ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
-			inv.setItem(i, is);
-		}
-
-		inv.setItem(53, ItemStacks.Back().clone());
-		return inv;
-	}
-
-	public static Inventory SoulEnchants(ItemStack itemApplyTo) {
-		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("SOUL");
-		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
-				.ChatColor("&c&lSoul Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
-
-		List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
-
-		for (int i = 0; i < rarities.size(); i++) {
-			CustomEnchant ce = rarities.get(i);
-			if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo))
-				enchantsForIS.add(ce);
-		}
-
-		for (int i = 0; i < enchantsForIS.size(); i++) {
-			ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
-			inv.setItem(i, is);
-		}
-
-		inv.setItem(53, ItemStacks.Back().clone());
-		return inv;
-	}
-
-	public static Inventory HeroicEnchants(ItemStack itemApplyTo) {
-		List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("HEROIC");
-		Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
-				.ChatColor("&d&lHeroic Enchants - " + itemApplyTo.getType().toString().replace("DIAMOND_", "")));
-
-		List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
-
-		for (int i = 0; i < rarities.size(); i++) {
-			CustomEnchant ce = rarities.get(i);
-			if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo))
-				enchantsForIS.add(ce);
-		}
-
-		for (int i = 0; i < enchantsForIS.size(); i++) {
-			ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
-			inv.setItem(i, is);
-		}
-
-		inv.setItem(53, ItemStacks.Back().clone());
-		return inv;
-	}
+	// public static Inventory SimpleEnchants() {
+	// List<CustomEnchant> rarities =
+	// RPBookGUIUtils.getCustomEnchants("SIMPLE");
+	// Inventory inv = Bukkit.createInventory(null, 54,
+	// RPBookGUIUtils.ChatColor("&7&lSimple Enchantments"));
+	//
+	// for (int i = 0; i < rarities.size(); i++) {
+	// CustomEnchant ce = rarities.get(i);
+	// ItemStack is = ItemStacks.EnchantBook(ce).clone();
+	// inv.setItem(i, is);
+	// }
+	//
+	// inv.setItem(53, ItemStacks.Back().clone());
+	// return inv;
+	// }
+	//
+	// public static Inventory UniqueEnchants() {
+	// List<CustomEnchant> rarities =
+	// RPBookGUIUtils.getCustomEnchants("UNIQUE");
+	// Inventory inv = Bukkit.createInventory(null, 54,
+	// RPBookGUIUtils.ChatColor("&a&lUnique Enchantments"));
+	// for (int i = 0; i < rarities.size(); i++) {
+	// CustomEnchant ce = rarities.get(i);
+	// ItemStack is = ItemStacks.EnchantBook(ce).clone();
+	// inv.setItem(i, is);
+	// }
+	// inv.setItem(53, ItemStacks.Back().clone());
+	// return inv;
+	// }
+	//
+	// public static Inventory EliteEnchants() {
+	// List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("ELITE");
+	// Inventory inv = Bukkit.createInventory(null, 54,
+	// RPBookGUIUtils.ChatColor("&b&lElite Enchantments"));
+	//
+	// for (int i = 0; i < rarities.size(); i++) {
+	// CustomEnchant ce = rarities.get(i);
+	// ItemStack is = ItemStacks.EnchantBook(ce).clone();
+	// inv.setItem(i, is);
+	// }
+	//
+	// inv.setItem(53, ItemStacks.Back().clone());
+	// return inv;
+	// }
+	//
+	// public static Inventory UltimateEnchants() {
+	// List<CustomEnchant> rarities =
+	// RPBookGUIUtils.getCustomEnchants("ULTIMATE");
+	// Inventory inv = Bukkit.createInventory(null, 54,
+	// RPBookGUIUtils.ChatColor("&e&lUltimate Enchantments"));
+	//
+	// for (int i = 0; i < rarities.size(); i++) {
+	// CustomEnchant ce = rarities.get(i);
+	// ItemStack is = ItemStacks.EnchantBook(ce).clone();
+	// inv.setItem(i, is);
+	// }
+	//
+	// inv.setItem(53, ItemStacks.Back().clone());
+	// return inv;
+	// }
+	//
+	// public static Inventory LegendaryEnchants() {
+	// List<CustomEnchant> rarities =
+	// RPBookGUIUtils.getCustomEnchants("LEGENDARY");
+	// Inventory inv = Bukkit.createInventory(null, 54,
+	// RPBookGUIUtils.ChatColor("&6&lLegendary Enchantments"));
+	//
+	// for (int i = 0; i < rarities.size(); i++) {
+	// CustomEnchant ce = rarities.get(i);
+	// ItemStack is = ItemStacks.EnchantBook(ce).clone();
+	// inv.setItem(i, is);
+	// }
+	//
+	// inv.setItem(53, ItemStacks.Back().clone());
+	// return inv;
+	// }
+	//
+	// public static Inventory SoulEnchants() {
+	// List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("SOUL");
+	// Inventory inv = Bukkit.createInventory(null, 54,
+	// RPBookGUIUtils.ChatColor("&c&lSoul Enchantments"));
+	//
+	// for (int i = 0; i < rarities.size(); i++) {
+	// CustomEnchant ce = rarities.get(i);
+	// ItemStack is = ItemStacks.EnchantBook(ce).clone();
+	// inv.setItem(i, is);
+	// }
+	//
+	// inv.setItem(53, ItemStacks.Back().clone());
+	// return inv;
+	// }
+	//
+	// public static Inventory HeroicEnchants() {
+	// List<CustomEnchant> rarities =
+	// RPBookGUIUtils.getCustomEnchants("HEROIC");
+	// Inventory inv = Bukkit.createInventory(null, 54,
+	// RPBookGUIUtils.ChatColor("&d&lHeroic Enchantments"));
+	//
+	// for (int i = 0; i < rarities.size(); i++) {
+	// CustomEnchant ce = rarities.get(i);
+	// ItemStack is = ItemStacks.EnchantBook(ce).clone();
+	// inv.setItem(i, is);
+	// }
+	//
+	// inv.setItem(53, ItemStacks.Back().clone());
+	// return inv;
+	// }
+	//
+	// /**/
+	// public static Inventory SimpleEnchants(ItemStack itemApplyTo) {
+	// List<CustomEnchant> rarities =
+	// RPBookGUIUtils.getCustomEnchants("SIMPLE");
+	// Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
+	// .ChatColor("&7&lSimple Enchants - " +
+	// itemApplyTo.getType().toString().replace("DIAMOND_", "")));
+	//
+	// List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
+	//
+	// for (int i = 0; i < rarities.size(); i++) {
+	// CustomEnchant ce = rarities.get(i);
+	// if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo))
+	// enchantsForIS.add(ce);
+	// }
+	//
+	// for (int i = 0; i < enchantsForIS.size(); i++) {
+	// ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
+	// inv.setItem(i, is);
+	// }
+	//
+	// inv.setItem(53, ItemStacks.Back().clone());
+	// return inv;
+	// }
+	//
+	// public static Inventory UniqueEnchants(ItemStack itemApplyTo) {
+	// List<CustomEnchant> rarities =
+	// RPBookGUIUtils.getCustomEnchants("UNIQUE");
+	// Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
+	// .ChatColor("&a&lUnique Enchants - " +
+	// itemApplyTo.getType().toString().replace("DIAMOND_", "")));
+	//
+	// List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
+	//
+	// for (int i = 0; i < rarities.size(); i++) {
+	// CustomEnchant ce = rarities.get(i);
+	// if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo))
+	// enchantsForIS.add(ce);
+	// }
+	//
+	// for (int i = 0; i < enchantsForIS.size(); i++) {
+	// ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
+	// inv.setItem(i, is);
+	// }
+	//
+	// inv.setItem(53, ItemStacks.Back().clone());
+	// return inv;
+	// }
+	//
+	// public static Inventory EliteEnchants(ItemStack itemApplyTo) {
+	// List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("ELITE");
+	// Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
+	// .ChatColor("&b&lElite Enchants - " +
+	// itemApplyTo.getType().toString().replace("DIAMOND_", "")));
+	//
+	// List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
+	//
+	// for (int i = 0; i < rarities.size(); i++) {
+	// CustomEnchant ce = rarities.get(i);
+	// if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo))
+	// enchantsForIS.add(ce);
+	// }
+	//
+	// for (int i = 0; i < enchantsForIS.size(); i++) {
+	// ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
+	// inv.setItem(i, is);
+	// }
+	//
+	// inv.setItem(53, ItemStacks.Back().clone());
+	// return inv;
+	// }
+	//
+	// public static Inventory UltimateEnchants(ItemStack itemApplyTo) {
+	// List<CustomEnchant> rarities =
+	// RPBookGUIUtils.getCustomEnchants("ULTIMATE");
+	// Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
+	// .ChatColor("&e&lUltimate Enchants - " +
+	// itemApplyTo.getType().toString().replace("DIAMOND_", "")));
+	//
+	// List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
+	//
+	// for (int i = 0; i < rarities.size(); i++) {
+	// CustomEnchant ce = rarities.get(i);
+	// if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo))
+	// enchantsForIS.add(ce);
+	// }
+	//
+	// for (int i = 0; i < enchantsForIS.size(); i++) {
+	// ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
+	// inv.setItem(i, is);
+	// }
+	//
+	// inv.setItem(53, ItemStacks.Back().clone());
+	// return inv;
+	// }
+	//
+	// public static Inventory LegendaryEnchants(ItemStack itemApplyTo) {
+	// List<CustomEnchant> rarities =
+	// RPBookGUIUtils.getCustomEnchants("LEGENDARY");
+	// Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
+	// .ChatColor("&6&lLegendary Enchants - " +
+	// itemApplyTo.getType().toString().replace("DIAMOND_", "")));
+	//
+	// List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
+	//
+	// for (int i = 0; i < rarities.size(); i++) {
+	// CustomEnchant ce = rarities.get(i);
+	// if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo))
+	// enchantsForIS.add(ce);
+	// }
+	//
+	// for (int i = 0; i < enchantsForIS.size(); i++) {
+	// ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
+	// inv.setItem(i, is);
+	// }
+	//
+	// inv.setItem(53, ItemStacks.Back().clone());
+	// return inv;
+	// }
+	//
+	// public static Inventory SoulEnchants(ItemStack itemApplyTo) {
+	// List<CustomEnchant> rarities = RPBookGUIUtils.getCustomEnchants("SOUL");
+	// Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
+	// .ChatColor("&c&lSoul Enchants - " +
+	// itemApplyTo.getType().toString().replace("DIAMOND_", "")));
+	//
+	// List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
+	//
+	// for (int i = 0; i < rarities.size(); i++) {
+	// CustomEnchant ce = rarities.get(i);
+	// if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo))
+	// enchantsForIS.add(ce);
+	// }
+	//
+	// for (int i = 0; i < enchantsForIS.size(); i++) {
+	// ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
+	// inv.setItem(i, is);
+	// }
+	//
+	// inv.setItem(53, ItemStacks.Back().clone());
+	// return inv;
+	// }
+	//
+	// public static Inventory HeroicEnchants(ItemStack itemApplyTo) {
+	// List<CustomEnchant> rarities =
+	// RPBookGUIUtils.getCustomEnchants("HEROIC");
+	// Inventory inv = Bukkit.createInventory(null, 54, RPBookGUIUtils
+	// .ChatColor("&d&lHeroic Enchants - " +
+	// itemApplyTo.getType().toString().replace("DIAMOND_", "")));
+	//
+	// List<CustomEnchant> enchantsForIS = new ArrayList<CustomEnchant>();
+	//
+	// for (int i = 0; i < rarities.size(); i++) {
+	// CustomEnchant ce = rarities.get(i);
+	// if (RPBookGUIUtils.isOnCorrectItem(ce, itemApplyTo))
+	// enchantsForIS.add(ce);
+	// }
+	//
+	// for (int i = 0; i < enchantsForIS.size(); i++) {
+	// ItemStack is = ItemStacks.EnchantBook(enchantsForIS.get(i)).clone();
+	// inv.setItem(i, is);
+	// }
+	//
+	// inv.setItem(53, ItemStacks.Back().clone());
+	// return inv;
+	// }
 
 	public static Inventory Enchant(CustomEnchant ce) {
 		EnchantRarity rarity = RPStorage.valueOfEnchantRarity(ce);
-		Inventory inv = Bukkit.createInventory(null, 18, rarity.getNameColors() + ce.getName());
+		Inventory inv = Bukkit.createInventory(null, RPBookGUIUtils.toNineDenom(ce.getMaxLevel() + 1),
+				rarity.getNameColors() + ce.getName());
 		int x = 0;
 		for (int i = 1; i < ce.getMaxLevel() + 1; i++) {
-			ItemStack is = CustomEnchants.getCustomEnchants().getRevealedItem(ce, i, 100, 0, true, true).clone();
+			ItemStack is = CustomEnchants.getCustomEnchants()
+					.getRevealedItem(ce, i, 100, 0, true, true).clone();
 			new EnchantConstructor(ce, rarity, i, 0, 0);
 			inv.setItem(x, is);
 			x++;
 		}
-		inv.setItem(17, ItemStacks.Back().clone());
+		inv.setItem(inv.getSize() - 1, ItemStacks.Back().clone());
 		return inv;
 	}
 
@@ -339,9 +382,9 @@ public class Inventories {
 		return inv;
 	}
 
-	public static Inventory SuccessDestroySelection(ItemStack book) {
-		Inventory inv = Bukkit.createInventory(null, 45, "Success & Destry Configuration");
-		CustomEnchant ce = RPStorage.valueOfCustomEnchant(book);
+	public static Inventory SuccessDestroySelection(CustomEnchant ce) {
+		Inventory inv = Bukkit.createInventory(null, 45,
+				"Success & Destroy Configuration");
 		// slot 10-12 - increase success
 		// slot 14-16 - increase destroy
 		// slot 28-30 - decrease success
@@ -349,48 +392,75 @@ public class Inventories {
 		// slot 22 - book
 
 		// Success controls
-		ItemStack as1 = new ItemBuilder(UMaterial.match("GREEN_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&a+1 Success"))
-				.toItemStack();
-		ItemStack rs1 = new ItemBuilder(UMaterial.match("RED_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&c-1 Success"))
-				.toItemStack();
-		ItemStack as5 = new ItemBuilder(UMaterial.match("GREEN_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&a+5 Success"))
-				.toItemStack();
-		ItemStack rs5 = new ItemBuilder(UMaterial.match("RED_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&c-5 Success"))
-				.toItemStack();
-		ItemStack as10 = new ItemBuilder(UMaterial.match("GREEN_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&a+10 Success"))
-				.toItemStack();
-		ItemStack rs10 = new ItemBuilder(UMaterial.match("RED_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&c-10 Success"))
-				.toItemStack();
+		ItemStack as1 = new ItemBuilder(
+				UMaterial.match("GREEN_WOOL").getItemStack())
+						.setName(RPBookGUIUtils.ChatColor("&a+1 Success"))
+						.toItemStack();
+		ItemStack rs1 = new ItemBuilder(
+				UMaterial.match("RED_WOOL").getItemStack())
+						.setName(RPBookGUIUtils.ChatColor("&c-1 Success"))
+						.toItemStack();
+		ItemStack as5 = new ItemBuilder(
+				UMaterial.match("GREEN_WOOL").getItemStack())
+						.setName(RPBookGUIUtils.ChatColor("&a+5 Success"))
+						.toItemStack();
+		ItemStack rs5 = new ItemBuilder(
+				UMaterial.match("RED_WOOL").getItemStack())
+						.setName(RPBookGUIUtils.ChatColor("&c-5 Success"))
+						.toItemStack();
+		ItemStack as10 = new ItemBuilder(
+				UMaterial.match("GREEN_WOOL").getItemStack())
+						.setName(RPBookGUIUtils.ChatColor("&a+10 Success"))
+						.toItemStack();
+		ItemStack rs10 = new ItemBuilder(
+				UMaterial.match("RED_WOOL").getItemStack())
+						.setName(RPBookGUIUtils.ChatColor("&c-10 Success"))
+						.toItemStack();
 
 		// Destroy controls
-		ItemStack ad1 = new ItemBuilder(UMaterial.match("GREEN_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&a+1 Destroy"))
-				.toItemStack();
-		ItemStack rd1 = new ItemBuilder(UMaterial.match("RED_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&c-1 Destroy"))
-				.toItemStack();
-		ItemStack ad5 = new ItemBuilder(UMaterial.match("GREEN_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&a+5 Destroy"))
-				.toItemStack();
-		ItemStack rd5 = new ItemBuilder(UMaterial.match("RED_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&c-5 Destroy"))
-				.toItemStack();
-		ItemStack ad10 = new ItemBuilder(UMaterial.match("GREEN_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&a+10 Destroy"))
-				.toItemStack();
-		ItemStack rd10 = new ItemBuilder(UMaterial.match("RED_WOOL").getItemStack()).setName(RPBookGUIUtils.ChatColor("&c-10 Destroy"))
-				.toItemStack();
+		ItemStack ad1 = new ItemBuilder(
+				UMaterial.match("GREEN_WOOL").getItemStack())
+						.setName(RPBookGUIUtils.ChatColor("&a+1 Destroy"))
+						.toItemStack();
+		ItemStack rd1 = new ItemBuilder(
+				UMaterial.match("RED_WOOL").getItemStack())
+						.setName(RPBookGUIUtils.ChatColor("&c-1 Destroy"))
+						.toItemStack();
+		ItemStack ad5 = new ItemBuilder(
+				UMaterial.match("GREEN_WOOL").getItemStack())
+						.setName(RPBookGUIUtils.ChatColor("&a+5 Destroy"))
+						.toItemStack();
+		ItemStack rd5 = new ItemBuilder(
+				UMaterial.match("RED_WOOL").getItemStack())
+						.setName(RPBookGUIUtils.ChatColor("&c-5 Destroy"))
+						.toItemStack();
+		ItemStack ad10 = new ItemBuilder(
+				UMaterial.match("GREEN_WOOL").getItemStack())
+						.setName(RPBookGUIUtils.ChatColor("&a+10 Destroy"))
+						.toItemStack();
+		ItemStack rd10 = new ItemBuilder(
+				UMaterial.match("RED_WOOL").getItemStack())
+						.setName(RPBookGUIUtils.ChatColor("&c-10 Destroy"))
+						.toItemStack();
 
 		inv.setItem(10, as1);
 		inv.setItem(11, as5);
 		inv.setItem(12, as10);
-		
+
 		inv.setItem(14, ad10);
 		inv.setItem(15, ad5);
 		inv.setItem(16, ad1);
 
-		inv.setItem(22, CustomEnchants.getCustomEnchants().getRevealedItem(ce,
-				EnchantConstructor.getEnchants().get(ce.getIdentifier()).getEnchantLevel(), 0, 0, true, true));
+		inv.setItem(22,
+				CustomEnchants.getCustomEnchants()
+						.getRevealedItem(ce, EnchantConstructor.getEnchants()
+								.get(ce.getIdentifier()).getEnchantLevel(), 0,
+								0, true, true));
 
 		inv.setItem(28, rs1);
 		inv.setItem(29, rs5);
 		inv.setItem(30, rs10);
-		
+
 		inv.setItem(32, rd10);
 		inv.setItem(33, rd5);
 		inv.setItem(34, rd1);

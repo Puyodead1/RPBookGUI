@@ -170,11 +170,9 @@ public class ItemStacks {
 		return item;
 	}
 
-	public static ItemStack EnchantBook(CustomEnchant ce) {
+	public static ItemStack EnchantBook(EnchantRarity rarity, CustomEnchant ce) {
 		ItemStack item = new ItemStack(Material.BOOK);
 		ItemMeta meta = item.getItemMeta();
-
-		EnchantRarity rarity = RPStorage.valueOfEnchantRarity(ce);
 
 		meta.setDisplayName(rarity.getNameColors() + ce.getName());
 		ArrayList<String> lore = new ArrayList<String>();

@@ -15,7 +15,7 @@
  ******************************************************************************/
 package io.github.puyodead1.rpbookgui.Utils;
 
-import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,9 +24,14 @@ import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 
 import me.randomhashtags.randompackage.addon.CustomEnchant;
+import me.randomhashtags.randompackage.addon.EnchantRarity;
 import me.randomhashtags.randompackage.api.CustomEnchants;
 
 public class RPBookGUIUtils {
+
+	public static LinkedHashMap<String, EnchantRarity> rarities = new LinkedHashMap<>();
+	public static LinkedHashMap<String, CustomEnchant> enchants = new LinkedHashMap<>();
+
 	public static String ChatColor(String msg) {
 		return ChatColor.translateAlternateColorCodes('&', msg);
 	}
@@ -34,16 +39,14 @@ public class RPBookGUIUtils {
 	public static void SendDebugMessge(String msg) {
 		Bukkit.getServer().getPlayer("Puyodead1").sendMessage(msg);
 	}
-	
+
 	public static String FormatEnchantName(ItemStack item) {
-		return ChatColor.stripColor(item.getItemMeta().getDisplayName().replace(" ", "_").toUpperCase());
+		return ChatColor.stripColor(item.getItemMeta().getDisplayName()
+				.replace(" ", "_").toUpperCase());
 	}
-	
-	public static int r(double i) {
-		long a = Math.round(i / 9);
-		if (a <= 1)
-			a++;
-		return (int) (a * 9);
+
+	public static int toNineDenom(int from) {
+		return ((((from / 9) + ((from % 9 == 0) ? 0 : 1)) * 9));
 	}
 
 	public static String Strip(String message) {
@@ -60,8 +63,19 @@ public class RPBookGUIUtils {
 	}
 
 	public static List<CustomEnchant> getCustomEnchants(String rarity) {
-		List<CustomEnchant> enchants = CustomEnchants.getCustomEnchants().getEnchantRarity(rarity.toUpperCase()).getEnchants();
-		return enchants.stream().filter(e -> e.isEnabled()).collect(Collectors.toList());
+		List<CustomEnchant> enchants = CustomEnchants.getCustomEnchants()
+				.getEnchantRarity(rarity.toUpperCase()).getEnchants();
+		return enchants.stream().filter(e -> e.isEnabled())
+				.collect(Collectors.toList());
+	}
+
+	public static void addEnchantRarity(EnchantRarity rarity) {
+		final String identifier = rarity.getIdentifier();
+		rarities.put(identifier, rarity);
+	}
+
+	public static final ItemStack getClone(ItemStack is, ItemStack def) {
+		return is != null ? is.clone() : def;
 	}
 
 }

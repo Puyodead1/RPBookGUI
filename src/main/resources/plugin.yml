@@ -1,9 +1,11 @@
 name: RPBookGUI
-version: 2.9.8-rc2
+version: 2.9.8-rc4
 author: Puyodead1
 main: io.github.puyodead1.rpbookgui.RPBookGUI
 depend: [RandomPackage]
 api-version: 1.13
+depend: [RandomPackage]
+loadbefore: [RandomPackage]
 commands:
   bookgui:
     description: Open the main menu
