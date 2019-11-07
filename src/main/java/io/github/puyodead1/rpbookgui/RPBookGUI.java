@@ -80,39 +80,31 @@ public class RPBookGUI extends JavaPlugin {
 
 	}
 
+	/**
+	 * Register commands
+	 */
 	public void InitCommands() {
 		getCommand("bookgui").setExecutor(new BookGUICommand());
 		getCommand("rarityinfo").setExecutor(new RarityInfo());
 	}
 
+	/**
+	 * Copy and Initialize config
+	 */
 	public void InitConfig() {
 		long started = System.currentTimeMillis();
 
 		getConfig().options().copyDefaults(true);
 		saveDefaultConfig();
-		// File playerDataDir = new File(getDataFolder(), "_playerData");
-		// if (!playerDataDir.exists()) {
-		// Bukkit.getConsoleSender().sendMessage(
-		// RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bPlayer Data Directory
-		// doesn't exist, creating..."));
-		// if (playerDataDir.mkdir())
-		// Bukkit.getConsoleSender()
-		// .sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bCreated
-		// Player Data Directory."));
-		// else
-		// Bukkit.getConsoleSender().sendMessage(
-		// RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bFailed to create Player
-		// Data Directory."));
-		// } else
-		// Bukkit.getConsoleSender()
-		// .sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bPlayer
-		// Data Directory exists."));
 
 		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils
 				.ChatColor("&7[&dRPBookGUI&7] &bLoaded Configuration file &e("
 						+ (System.currentTimeMillis() - started) + "ms)"));
 	}
 
+	/**
+	 * Register Events
+	 */
 	public void InitEvents() {
 		long started = System.currentTimeMillis();
 
@@ -124,25 +116,29 @@ public class RPBookGUI extends JavaPlugin {
 		.registerEvents(new EnchantInventoryClick(), this);
 		getServer().getPluginManager()
 		.registerEvents(new SuccessDestroyInventoryClick(), this);
-		// getServer().getPluginManager().registerEvents(new PlayerJoin(),
-		// this);
 
 		Bukkit.getConsoleSender().sendMessage(
 				RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bLoaded Events &e("
 						+ (System.currentTimeMillis() - started) + "ms)"));
 	}
 
+	/**
+	 * Enable Metrics
+	 */
 	public void InitMetrics() {
 		long started = System.currentTimeMillis();
 		MetricsLite metrics = new MetricsLite(this);
 
-		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils
-				.ChatColor("&7[&dRPBookGUI&7] &bInitalized Metrics &e("
-						+ (System.currentTimeMillis() - started) + "ms)"));
-		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor(
-				"&7[&dRPBookGUI&7] &bUsing Metrics: &e" + metrics.isEnabled()));
+//		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils
+//				.ChatColor("&7[&dRPBookGUI&7] &bInitalized Metrics &e("
+//						+ (System.currentTimeMillis() - started) + "ms)"));
+//		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor(
+//				"&7[&dRPBookGUI&7] &bUsing Metrics: &e" + metrics.isEnabled()));
 	}
 
+	/**
+	 * Initialize Rarities and Custom Enchants
+	 */
 	private void InitRarities() {
 		final String separator = RPAddon.separator;
 		final String p = RPAddon.rpd + separator + "custom enchants";

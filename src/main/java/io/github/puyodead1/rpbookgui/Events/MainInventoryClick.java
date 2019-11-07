@@ -32,7 +32,7 @@ public class MainInventoryClick extends RPBookGUIUtils implements Listener {
 					if(itemName.equals(rarity.getIdentifier())) {
 						e.setCancelled(true);
 						player.getOpenInventory().close();
-						player.openInventory(Inventories.RarityInventory(rarity));
+						player.openInventory(Inventories.rarityInventory(rarity));
 					}
 				}
 			}

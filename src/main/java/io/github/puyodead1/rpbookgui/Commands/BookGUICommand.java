@@ -37,7 +37,7 @@ public class BookGUICommand implements CommandExecutor {
 							rpbgConfig.getString("permissions.bookgui"))
 							|| player.isOp() || !rpbgConfig
 									.getBoolean("settings.use permissions")) {
-						player.openInventory(Inventories.MainGUI());
+						player.openInventory(Inventories.mainInventory());
 						return true;
 					} else {
 						player.sendMessage(RPBookGUIUtils.ChatColor(rpbgConfig
@@ -75,7 +75,7 @@ public class BookGUICommand implements CommandExecutor {
 								.hasPermission(rpbgConfig.getString(
 										"permissions.bookgui settings"))
 								|| player.isOp()) {
-							player.openInventory(Inventories.Settings());
+							player.openInventory(Inventories.settingsInventory());
 							return true;
 						} else {
 							player.sendMessage(RPBookGUIUtils

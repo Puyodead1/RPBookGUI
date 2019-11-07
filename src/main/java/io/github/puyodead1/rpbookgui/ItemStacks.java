@@ -34,91 +34,6 @@ import me.randomhashtags.randompackage.addon.EnchantRarity;
 import me.randomhashtags.randompackage.util.RPStorage;
 
 public class ItemStacks {
-	
-
-	public static ItemStack SimpleCategoryItem() {
-		ItemStack item = new ItemStack(Material.BOOK);
-		ItemMeta meta = item.getItemMeta();
-
-		meta.setDisplayName(RPBookGUIUtils.ChatColor("&f&lSimple Enchants"));
-		ArrayList<String> lore = new ArrayList<String>();
-		lore.add(RPBookGUIUtils.ChatColor("&7Click to view &f&lSimple Enchantments"));
-		meta.setLore(lore);
-		item.setItemMeta(meta);
-		return item;
-	}
-
-	public static ItemStack UniqueCategoryItem() {
-		ItemStack item = new ItemStack(Material.BOOK);
-		ItemMeta meta = item.getItemMeta();
-
-		meta.setDisplayName(RPBookGUIUtils.ChatColor("&a&lUnique Enchants"));
-		ArrayList<String> lore = new ArrayList<String>();
-		lore.add(RPBookGUIUtils.ChatColor("&7Click to view &a&lUnique Enchantments"));
-		meta.setLore(lore);
-		item.setItemMeta(meta);
-		return item;
-	}
-
-	public static ItemStack EliteCategoryItem() {
-		ItemStack item = new ItemStack(Material.BOOK);
-		ItemMeta meta = item.getItemMeta();
-
-		meta.setDisplayName(RPBookGUIUtils.ChatColor("&b&lElite Enchants"));
-		ArrayList<String> lore = new ArrayList<String>();
-		lore.add(RPBookGUIUtils.ChatColor("&7Click to view &b&lElite Enchantments"));
-		meta.setLore(lore);
-		item.setItemMeta(meta);
-		return item;
-	}
-
-	public static ItemStack UltimateCategoryItem() {
-		ItemStack item = new ItemStack(Material.BOOK);
-		ItemMeta meta = item.getItemMeta();
-
-		meta.setDisplayName(RPBookGUIUtils.ChatColor("&e&lUltimate Enchants"));
-		ArrayList<String> lore = new ArrayList<String>();
-		lore.add(RPBookGUIUtils.ChatColor("&7Click to view &e&lUltimate Enchantments"));
-		meta.setLore(lore);
-		item.setItemMeta(meta);
-		return item;
-	}
-
-	public static ItemStack LegendaryCategoryItem() {
-		ItemStack item = new ItemStack(Material.BOOK);
-		ItemMeta meta = item.getItemMeta();
-
-		meta.setDisplayName(RPBookGUIUtils.ChatColor("&6&lLegendary Enchants"));
-		ArrayList<String> lore = new ArrayList<String>();
-		lore.add(RPBookGUIUtils.ChatColor("&7Click to view &6&lLegendary Enchantments"));
-		meta.setLore(lore);
-		item.setItemMeta(meta);
-		return item;
-	}
-
-	public static ItemStack SoulCategoryItem() {
-		ItemStack item = new ItemStack(Material.BOOK);
-		ItemMeta meta = item.getItemMeta();
-
-		meta.setDisplayName(RPBookGUIUtils.ChatColor("&c&lSoul Enchants"));
-		ArrayList<String> lore = new ArrayList<String>();
-		lore.add(RPBookGUIUtils.ChatColor("&7Click to view &c&lSoul Enchantments"));
-		meta.setLore(lore);
-		item.setItemMeta(meta);
-		return item;
-	}
-
-	public static ItemStack HeroicCategoryItem() {
-		ItemStack item = new ItemStack(Material.BOOK);
-		ItemMeta meta = item.getItemMeta();
-
-		meta.setDisplayName(RPBookGUIUtils.ChatColor("&d&lHeroic Enchants"));
-		ArrayList<String> lore = new ArrayList<String>();
-		lore.add(RPBookGUIUtils.ChatColor("&7Click to view &d&lHeroic Enchantments"));
-		meta.setLore(lore);
-		item.setItemMeta(meta);
-		return item;
-	}
 
 	public static ItemStack GlassSeperator() {
 		ItemStack item = new ItemStack(UMaterial.match("WHITE_STAINED_GLASS_PANE").getMaterial());
@@ -152,20 +67,6 @@ public class ItemStacks {
 		ItemMeta meta = item.getItemMeta();
 
 		meta.setDisplayName(RPBookGUIUtils.ChatColor("&c&lGo Back"));
-		item.setItemMeta(meta);
-		return item;
-	}
-
-	public static ItemStack CreateKit() {
-		ItemStack item = new ItemStack(UMaterial.match("CHEST").getMaterial());
-		ItemMeta meta = item.getItemMeta();
-		ArrayList<String> il = new ArrayList<String>();
-
-		meta.setDisplayName(RPBookGUIUtils.ChatColor("&6&lCreate Kit"));
-		il.add(RPBookGUIUtils.ChatColor("&7Click to create a"));
-		il.add(RPBookGUIUtils.ChatColor("&7new kit."));
-
-		meta.setLore(il);
 		item.setItemMeta(meta);
 		return item;
 	}

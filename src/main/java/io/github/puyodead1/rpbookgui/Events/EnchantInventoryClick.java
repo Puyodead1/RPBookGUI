@@ -39,7 +39,7 @@ public class EnchantInventoryClick extends RPBookGUIUtils implements Listener {
 							"settings.use success destroy configuration")) {
 						player.getOpenInventory().close();
 						player.openInventory(
-								Inventories.SuccessDestroySelection(
+								Inventories.successAndDestroyInventory(
 										RPStorage.valueOfCustomEnchant(item)));
 					} else {
 						player.getInventory().addItem(item);
@@ -54,7 +54,7 @@ public class EnchantInventoryClick extends RPBookGUIUtils implements Listener {
 					}
 				} else {
 					player.getOpenInventory().close();
-					player.openInventory(Inventories.MainGUI());
+					player.openInventory(Inventories.mainInventory());
 				}
 			}
 		}

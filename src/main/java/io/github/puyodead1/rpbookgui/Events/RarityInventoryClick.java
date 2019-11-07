@@ -36,16 +36,16 @@ public class RarityInventoryClick extends RPBookGUIUtils implements Listener {
 					if (item.getItemMeta().getDisplayName().equals(ItemStacks.Back()
 							.clone().getItemMeta().getDisplayName())) {
 						player.getOpenInventory().close();
-						player.openInventory(Inventories.MainGUI());
+						player.openInventory(Inventories.mainInventory());
 					}
 					player.getOpenInventory().close();
 					final CustomEnchant ce = RPStorage.valueOfCustomEnchant(Strip(
 							e.getCurrentItem().getItemMeta().getDisplayName()),
 							true);
-					player.openInventory(Inventories.Enchant(ce));
+					player.openInventory(Inventories.enchantInventory(ce));
 				} else {
 					player.getOpenInventory().close();
-					player.openInventory(Inventories.MainGUI());
+					player.openInventory(Inventories.mainInventory());
 				}
 			}
 		}
