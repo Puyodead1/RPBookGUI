@@ -42,38 +42,29 @@ public class RPBookGUI extends JavaPlugin {
 	public void onEnable() {
 		getPlugin = this;
 
-		if (!Bukkit.getServer().getPluginManager().getPlugin("RandomPackage")
-				.isEnabled()) {
-			Bukkit.getConsoleSender().sendMessage(
-					"RandomPackage plugin not enabled or not installed! This plugin will be disabled!");
+		if (!Bukkit.getServer().getPluginManager().getPlugin("RandomPackage").isEnabled()) {
+			Bukkit.getConsoleSender()
+					.sendMessage("RandomPackage plugin not enabled or not installed! This plugin will be disabled!");
 			Bukkit.getPluginManager().disablePlugin(this);
 		}
 
-		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor(
-				"&7[&dRPBookGUI&7] &b============================================================="));
+		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils
+				.ChatColor("&7[&dRPBookGUI&7] &b============================================================="));
 		InitRarities();
 		InitCommands();
 		InitConfig();
 		InitEvents();
 		InitMetrics();
+		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &d========================"));
+		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bAuthor: &ePuyodead1"));
+		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bRandomPackage Version: &e"
+				+ getServer().getPluginManager().getPlugin("RandomPackage").getDescription().getVersion()));
+		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bRPBookGUI Version: &e"
+				+ getServer().getPluginManager().getPlugin("RPBookGUI").getDescription().getVersion()));
+		Bukkit.getConsoleSender().sendMessage(
+				RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bMinecraft Version: &e" + getServer().getVersion()));
 		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils
-				.ChatColor("&7[&dRPBookGUI&7] &d========================"));
-		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils
-				.ChatColor("&7[&dRPBookGUI&7] &bAuthor: &ePuyodead1"));
-		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor(
-				"&7[&dRPBookGUI&7] &bRandomPackage Version: &e" + getServer()
-						.getPluginManager().getPlugin("RandomPackage")
-						.getDescription().getVersion()));
-		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils
-				.ChatColor("&7[&dRPBookGUI&7] &bRPBookGUI Version: &e"
-						+ getServer().getPluginManager().getPlugin("RPBookGUI")
-								.getDescription().getVersion()));
-		Bukkit.getConsoleSender()
-				.sendMessage(RPBookGUIUtils
-						.ChatColor("&7[&dRPBookGUI&7] &bMinecraft Version: &e"
-								+ getServer().getVersion()));
-		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor(
-				"&7[&dRPBookGUI&7] &b============================================================="));
+				.ChatColor("&7[&dRPBookGUI&7] &b============================================================="));
 	}
 
 	@Override
@@ -98,9 +89,8 @@ public class RPBookGUI extends JavaPlugin {
 		getConfig().options().copyDefaults(true);
 		saveDefaultConfig();
 
-		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils
-				.ChatColor("&7[&dRPBookGUI&7] &bLoaded Configuration file &e("
-						+ (System.currentTimeMillis() - started) + "ms)"));
+		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils.ChatColor(
+				"&7[&dRPBookGUI&7] &bLoaded Configuration file &e(" + (System.currentTimeMillis() - started) + "ms)"));
 	}
 
 	/**
@@ -109,20 +99,14 @@ public class RPBookGUI extends JavaPlugin {
 	public void InitEvents() {
 		long started = System.currentTimeMillis();
 
-		getServer().getPluginManager()
-				.registerEvents(new MainInventoryClick(), this);
-		getServer().getPluginManager()
-		.registerEvents(new RarityInventoryClick(), this);
-		getServer().getPluginManager()
-		.registerEvents(new EnchantInventoryClick(), this);
-		getServer().getPluginManager()
-		.registerEvents(new SuccessDestroyInventoryClick(), this);
-		getServer().getPluginManager()
-		.registerEvents(new SettingsInventoryClick(), this);
+		getServer().getPluginManager().registerEvents(new MainInventoryClick(), this);
+		getServer().getPluginManager().registerEvents(new RarityInventoryClick(), this);
+		getServer().getPluginManager().registerEvents(new EnchantInventoryClick(), this);
+		getServer().getPluginManager().registerEvents(new SuccessDestroyInventoryClick(), this);
+		getServer().getPluginManager().registerEvents(new SettingsInventoryClick(), this);
 
-		Bukkit.getConsoleSender().sendMessage(
-				RPBookGUIUtils.ChatColor("&7[&dRPBookGUI&7] &bLoaded Events &e("
-						+ (System.currentTimeMillis() - started) + "ms)"));
+		Bukkit.getConsoleSender().sendMessage(RPBookGUIUtils
+				.ChatColor("&7[&dRPBookGUI&7] &bLoaded Events &e(" + (System.currentTimeMillis() - started) + "ms)"));
 	}
 
 	/**
@@ -150,36 +134,30 @@ public class RPBookGUI extends JavaPlugin {
 
 		if (folder.exists()) {
 			for (File f : folder.listFiles()) {
-				if (f.isDirectory()) {
-					if(!f.getName().contains("RANDOM")) {
-						final File[] files = new File(p + separator + f.getName())
-								.listFiles();
-						if (files != null) {
-							FileEnchantRarity rarity = null;
-							final List<File> F = Arrays.asList(files);
-							for (File k : F) {
-								if (k.getName().contains("_settings")) {
-									rarity = new FileEnchantRarity(f, k);
-								}
+				if (f.isDirectory() && !f.getName().contains("RANDOM")) {
+					final File[] files = new File(p + separator + f.getName()).listFiles();
+					if (files != null) {
+						FileEnchantRarity rarity = null;
+						final List<File> F = Arrays.asList(files);
+						for (File k : F) {
+							if (k.getName().contains("_settings")) {
+								rarity = new FileEnchantRarity(f, k);
 							}
-							if (rarity != null) {
-								for (File ff : files) {
-									if (!ff.getName().startsWith("_settings")) {
-										final FileCustomEnchant e = new FileCustomEnchant(
-												ff);
-										if(e.isEnabled()) {
-											rarity.getEnchants().add(e);
-											RPBookGUIUtils.enchants.put(e.getIdentifier(), e);
-										}
+						}
+						if (rarity != null) {
+							for (File ff : files) {
+								if (!ff.getName().startsWith("_settings")) {
+									final FileCustomEnchant e = new FileCustomEnchant(ff);
+									if (e.isEnabled()) {
+										rarity.getEnchants().add(e);
+										RPBookGUIUtils.enchants.put(e.getIdentifier(), e);
 									}
 								}
 							}
 						}
 					}
-					// Note: Random ce category causes errors, so dont load it
 				}
 			}
 		}
-
 	}
 }
