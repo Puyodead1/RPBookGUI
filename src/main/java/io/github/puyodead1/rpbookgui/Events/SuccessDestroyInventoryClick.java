@@ -34,6 +34,7 @@ public class SuccessDestroyInventoryClick extends RPBookGUIUtils
 			if (invTitle.equals("Success & Destroy Configuration")) {
 				e.setCancelled(true);
 				if (e.getCurrentItem().getType().equals(Material.BOOK)) {
+					EnchantConstructor.getEnchants().clear();
 					player.getInventory().addItem(e.getCurrentItem().clone());
 					player.getOpenInventory().close();
 				} else {
