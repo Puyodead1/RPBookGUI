@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  ******************************************************************************/
-package io.github.puyodead1.rpbookgui.Utils;
+package io.github.puyodead1.rpbookgui.utils;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -32,27 +32,59 @@ public class RPBookGUIUtils {
 	public static LinkedHashMap<String, EnchantRarity> rarities = new LinkedHashMap<>();
 	public static LinkedHashMap<String, CustomEnchant> enchants = new LinkedHashMap<>();
 
-	public static String ChatColor(String msg) {
+	/**
+	 * Easier way to translate color codes
+	 * @param msg
+	 * @return string
+	 */
+	public static String chatColor(String msg) {
 		return ChatColor.translateAlternateColorCodes('&', msg);
 	}
 
-	public static void SendDebugMessge(String msg) {
+	/**
+	 * Sends messages to me (Puyodead1)
+	 * @param msg
+	 */
+	public static void sendDebugMessage(String msg) {
 		Bukkit.getServer().getPlayer("Puyodead1").sendMessage(msg);
 	}
 
-	public static String FormatEnchantName(ItemStack item) {
+	/**
+	 * Formats enchant names, replaces spaces with _
+	 * @param item
+	 * @return string
+	 * @deprecated
+	 */
+	public static String formatEnchantName(ItemStack item) {
 		return ChatColor.stripColor(item.getItemMeta().getDisplayName()
 				.replace(" ", "_").toUpperCase());
 	}
 
+	/**
+	 * Nearest multiple of 9 from a number
+	 * @param from
+	 * @return int
+	 */
 	public static int toNineDenom(int from) {
 		return ((((from / 9) + ((from % 9 == 0) ? 0 : 1)) * 9));
 	}
 
-	public static String Strip(String message) {
+	/**
+	 * Easier way to strip colors
+	 * @param message
+	 * @return
+	 */
+	public static String stripColor(String message) {
 		return ChatColor.stripColor(message);
 	}
 
+	/**
+	 * Checks if an item is being applied to the correct item
+	 * @param enchant
+	 * @param is
+	 * @return boolean
+	 * @deprecated
+	 */
 	public static boolean isOnCorrectItem(CustomEnchant enchant, ItemStack is) {
 		final String i = is != null ? is.getType().name() : null;
 		if (enchant != null && i != null)
@@ -62,6 +94,12 @@ public class RPBookGUIUtils {
 		return false;
 	}
 
+	/**
+	 * Gets a list of custom enchants of a rarity
+	 * @param rarity
+	 * @return List<CustomEnchant>
+	 * @deprecated
+	 */
 	public static List<CustomEnchant> getCustomEnchants(String rarity) {
 		List<CustomEnchant> enchants = CustomEnchants.getCustomEnchants()
 				.getEnchantRarity(rarity.toUpperCase()).getEnchants();
@@ -69,11 +107,21 @@ public class RPBookGUIUtils {
 				.collect(Collectors.toList());
 	}
 
+	/**
+	 * Adds a new enchant rarity
+	 * @param rarity
+	 */
 	public static void addEnchantRarity(EnchantRarity rarity) {
 		final String identifier = rarity.getIdentifier();
 		rarities.put(identifier, rarity);
 	}
 
+	/**
+	 * Clones an item
+	 * @param is
+	 * @param def
+	 * @return ItemStack
+	 */
 	public static final ItemStack getClone(ItemStack is, ItemStack def) {
 		return is != null ? is.clone() : def;
 	}

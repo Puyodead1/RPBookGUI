@@ -1,4 +1,4 @@
-package io.github.puyodead1.rpbookgui.Events;
+package io.github.puyodead1.rpbookgui.events;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -9,8 +9,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.puyodead1.rpbookgui.Inventories;
-import io.github.puyodead1.rpbookgui.ItemStacks;
-import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
+import io.github.puyodead1.rpbookgui.utils.ItemStackUtils;
+import io.github.puyodead1.rpbookgui.utils.RPBookGUIUtils;
 import me.randomhashtags.randompackage.addon.CustomEnchant;
 import me.randomhashtags.randompackage.util.RPStorage;
 import me.randomhashtags.randompackage.util.universal.UMaterial;
@@ -18,7 +18,7 @@ import me.randomhashtags.randompackage.util.universal.UMaterial;
 public class RarityInventoryClick extends RPBookGUIUtils implements Listener {
 
 	@EventHandler
-	public void InventoryClickEvent(InventoryClickEvent e) {
+	public void clickEvent(InventoryClickEvent e) {
 		if (!e.isCancelled() && e.getCurrentItem() != null
 				&& !e.getCurrentItem().getType().equals(Material.AIR)
 				&& e.getClickedInventory() != null && e.getCursor() != null
@@ -28,18 +28,18 @@ public class RarityInventoryClick extends RPBookGUIUtils implements Listener {
 			String invTitle = e.getView().getTitle();
 
 			
-			if (rarities.keySet().contains(Strip(invTitle))) {
+			if (rarities.keySet().contains(stripColor(invTitle))) {
 				e.setCancelled(true);
 				
 				if(item.getType().equals(UMaterial.match("BOOK").getMaterial())) {
 					// Close if its the back button
-					if (item.getItemMeta().getDisplayName().equals(ItemStacks.Back()
+					if (item.getItemMeta().getDisplayName().equals(ItemStackUtils.back()
 							.clone().getItemMeta().getDisplayName())) {
 						player.getOpenInventory().close();
 						player.openInventory(Inventories.mainInventory());
 					}
 					player.getOpenInventory().close();
-					final CustomEnchant ce = RPStorage.valueOfCustomEnchant(Strip(
+					final CustomEnchant ce = RPStorage.valueOfCustomEnchant(stripColor(
 							e.getCurrentItem().getItemMeta().getDisplayName()),
 							true);
 					player.openInventory(Inventories.enchantInventory(ce));

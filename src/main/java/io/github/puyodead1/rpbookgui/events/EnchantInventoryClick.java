@@ -1,4 +1,4 @@
-package io.github.puyodead1.rpbookgui.Events;
+package io.github.puyodead1.rpbookgui.events;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -10,14 +10,14 @@ import org.bukkit.inventory.ItemStack;
 
 import io.github.puyodead1.rpbookgui.Inventories;
 import io.github.puyodead1.rpbookgui.RPBookGUI;
-import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
+import io.github.puyodead1.rpbookgui.utils.RPBookGUIUtils;
 import me.randomhashtags.randompackage.util.RPStorage;
 import me.randomhashtags.randompackage.util.universal.UMaterial;
 
 public class EnchantInventoryClick extends RPBookGUIUtils implements Listener {
 
 	@EventHandler
-	public void InventoryClickEvent(InventoryClickEvent e) {
+	public void clickEvent(InventoryClickEvent e) {
 		if (!e.isCancelled() && e.getCurrentItem() != null
 				&& !e.getCurrentItem().getType().equals(Material.AIR)
 				&& e.getClickedInventory() != null && e.getCursor() != null
@@ -27,7 +27,7 @@ public class EnchantInventoryClick extends RPBookGUIUtils implements Listener {
 			String invTitle = e.getView().getTitle();
 
 			if (enchants.keySet().contains(
-					Strip(invTitle).toUpperCase().replace(" ", "_"))) {
+					stripColor(invTitle).toUpperCase().replace(" ", "_"))) {
 				e.setCancelled(true);
 
 				if (item.getType()
@@ -47,7 +47,7 @@ public class EnchantInventoryClick extends RPBookGUIUtils implements Listener {
 								.getBoolean("settings.keep inventory open"))
 							player.getOpenInventory().close();
 						player.sendMessage(RPBookGUIUtils
-								.ChatColor(RPBookGUI.getPlugin.getConfig()
+								.chatColor(RPBookGUI.getPlugin.getConfig()
 										.getString("messages.added book")
 										.replace("{NAME}", item.getItemMeta()
 												.getDisplayName())));

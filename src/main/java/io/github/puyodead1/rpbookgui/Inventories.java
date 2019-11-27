@@ -19,9 +19,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.puyodead1.rpbookgui.Utils.ItemBuilder;
-import io.github.puyodead1.rpbookgui.Utils.RPBookGUIUtils;
-import io.github.puyodead1.rpbookgui.Utils.UMaterial;
+import io.github.puyodead1.rpbookgui.utils.ItemBuilder;
+import io.github.puyodead1.rpbookgui.utils.ItemStackUtils;
+import io.github.puyodead1.rpbookgui.utils.RPBookGUIUtils;
+import io.github.puyodead1.rpbookgui.utils.UMaterial;
 import me.randomhashtags.randompackage.addon.CustomEnchant;
 import me.randomhashtags.randompackage.addon.EnchantRarity;
 import me.randomhashtags.randompackage.api.CustomEnchants;
@@ -40,7 +41,7 @@ public class Inventories extends RPBookGUIUtils {
 		int currentIndex = 0;
 		for(final EnchantRarity rarity : rarities.values()) {
 			if(currentIndex <= rarities.size()) {
-				inv.setItem(currentIndex, new ItemBuilder(UMaterial.match("BOOK").getItemStack()).setName(rarity.getNameColors() + rarity.getIdentifier() + " Enchants").addLoreLine(RPBookGUIUtils.ChatColor("&7Click to view " + rarity.getNameColors() + rarity.getIdentifier() + "&r&7 Enchantments")).toItemStack());
+				inv.setItem(currentIndex, new ItemBuilder(UMaterial.match("BOOK").getItemStack()).setName(rarity.getNameColors() + rarity.getIdentifier() + " Enchants").addLoreLine(RPBookGUIUtils.chatColor("&7Click to view " + rarity.getNameColors() + rarity.getIdentifier() + "&r&7 Enchantments")).toItemStack());
 				currentIndex++;
 			} else {
 				break;
@@ -57,14 +58,14 @@ public class Inventories extends RPBookGUIUtils {
 	public static Inventory rarityInventory(EnchantRarity rarity) {
 		Inventory inv = Bukkit.createInventory(null,
 				toNineDenom(rarity.getEnchants().size() + 1),
-				ChatColor(
+				chatColor(
 						rarity.getNameColors() + rarity.getIdentifier()));
 		
 		for(int i = 0; i < rarity.getEnchants().size(); i++) {
 			final CustomEnchant ce = rarity.getEnchants().get(i);
-			inv.setItem(i, ItemStacks.EnchantBook(rarity, ce).clone());
+			inv.setItem(i, ItemStackUtils.enchantBook(rarity, ce).clone());
 		}
-		inv.setItem(inv.getSize() - 1, ItemStacks.Back().clone());
+		inv.setItem(inv.getSize() - 1, ItemStackUtils.back().clone());
 		return inv;
 	}
 
@@ -85,7 +86,7 @@ public class Inventories extends RPBookGUIUtils {
 			inv.setItem(x, is);
 			x++;
 		}
-		inv.setItem(inv.getSize() - 1, ItemStacks.Back().clone());
+		inv.setItem(inv.getSize() - 1, ItemStackUtils.back().clone());
 		return inv;
 	}
 
@@ -97,22 +98,22 @@ public class Inventories extends RPBookGUIUtils {
 		Inventory inv = Bukkit.createInventory(null, 36, "RPBookGUI Settings");
 
 		for (int i = 0; i < 10; i++)
-			inv.setItem(i, ItemStacks.GlassSeperator().clone());
-		inv.setItem(10, ItemStacks.GlassSeperator2().clone());
-		inv.setItem(11, ItemStacks.KeepMenuOpenSetting().clone());
-		inv.setItem(12, ItemStacks.GlassSeperator2().clone());
+			inv.setItem(i, ItemStackUtils.glassSeperator().clone());
+		inv.setItem(10, ItemStackUtils.glassSeperator2().clone());
+		inv.setItem(11, ItemStackUtils.keepMenuOpenSetting().clone());
+		inv.setItem(12, ItemStackUtils.glassSeperator2().clone());
 
-		inv.setItem(13, ItemStacks.GlassSeperator3().clone());
+		inv.setItem(13, ItemStackUtils.glassSeperator3().clone());
 
-		inv.setItem(14, ItemStacks.GlassSeperator2().clone());
-		inv.setItem(15, ItemStacks.UsePermissionsSetting().clone());
-		inv.setItem(16, ItemStacks.GlassSeperator2().clone());
+		inv.setItem(14, ItemStackUtils.glassSeperator2().clone());
+		inv.setItem(15, ItemStackUtils.usePermissionsSetting().clone());
+		inv.setItem(16, ItemStackUtils.glassSeperator2().clone());
 
-		inv.setItem(17, ItemStacks.GlassSeperator().clone());
-		inv.setItem(18, ItemStacks.GlassSeperator().clone());
+		inv.setItem(17, ItemStackUtils.glassSeperator().clone());
+		inv.setItem(18, ItemStackUtils.glassSeperator().clone());
 		for (int i = 26; i < 36; i++)
-			inv.setItem(i, ItemStacks.GlassSeperator().clone());
-		inv.setItem(22, ItemStacks.Back().clone());
+			inv.setItem(i, ItemStackUtils.glassSeperator().clone());
+		inv.setItem(22, ItemStackUtils.back().clone());
 		return inv;
 	}
 
@@ -133,53 +134,53 @@ public class Inventories extends RPBookGUIUtils {
 		// Success controls
 		ItemStack as1 = new ItemBuilder(
 				UMaterial.match("GREEN_WOOL").getItemStack())
-						.setName(RPBookGUIUtils.ChatColor("&a+1 Success"))
+						.setName(RPBookGUIUtils.chatColor("&a+1 Success"))
 						.toItemStack();
 		ItemStack rs1 = new ItemBuilder(
 				UMaterial.match("RED_WOOL").getItemStack())
-						.setName(RPBookGUIUtils.ChatColor("&c-1 Success"))
+						.setName(RPBookGUIUtils.chatColor("&c-1 Success"))
 						.toItemStack();
 		ItemStack as5 = new ItemBuilder(
 				UMaterial.match("GREEN_WOOL").getItemStack())
-						.setName(RPBookGUIUtils.ChatColor("&a+5 Success"))
+						.setName(RPBookGUIUtils.chatColor("&a+5 Success"))
 						.toItemStack();
 		ItemStack rs5 = new ItemBuilder(
 				UMaterial.match("RED_WOOL").getItemStack())
-						.setName(RPBookGUIUtils.ChatColor("&c-5 Success"))
+						.setName(RPBookGUIUtils.chatColor("&c-5 Success"))
 						.toItemStack();
 		ItemStack as10 = new ItemBuilder(
 				UMaterial.match("GREEN_WOOL").getItemStack())
-						.setName(RPBookGUIUtils.ChatColor("&a+10 Success"))
+						.setName(RPBookGUIUtils.chatColor("&a+10 Success"))
 						.toItemStack();
 		ItemStack rs10 = new ItemBuilder(
 				UMaterial.match("RED_WOOL").getItemStack())
-						.setName(RPBookGUIUtils.ChatColor("&c-10 Success"))
+						.setName(RPBookGUIUtils.chatColor("&c-10 Success"))
 						.toItemStack();
 
 		// Destroy controls
 		ItemStack ad1 = new ItemBuilder(
 				UMaterial.match("GREEN_WOOL").getItemStack())
-						.setName(RPBookGUIUtils.ChatColor("&a+1 Destroy"))
+						.setName(RPBookGUIUtils.chatColor("&a+1 Destroy"))
 						.toItemStack();
 		ItemStack rd1 = new ItemBuilder(
 				UMaterial.match("RED_WOOL").getItemStack())
-						.setName(RPBookGUIUtils.ChatColor("&c-1 Destroy"))
+						.setName(RPBookGUIUtils.chatColor("&c-1 Destroy"))
 						.toItemStack();
 		ItemStack ad5 = new ItemBuilder(
 				UMaterial.match("GREEN_WOOL").getItemStack())
-						.setName(RPBookGUIUtils.ChatColor("&a+5 Destroy"))
+						.setName(RPBookGUIUtils.chatColor("&a+5 Destroy"))
 						.toItemStack();
 		ItemStack rd5 = new ItemBuilder(
 				UMaterial.match("RED_WOOL").getItemStack())
-						.setName(RPBookGUIUtils.ChatColor("&c-5 Destroy"))
+						.setName(RPBookGUIUtils.chatColor("&c-5 Destroy"))
 						.toItemStack();
 		ItemStack ad10 = new ItemBuilder(
 				UMaterial.match("GREEN_WOOL").getItemStack())
-						.setName(RPBookGUIUtils.ChatColor("&a+10 Destroy"))
+						.setName(RPBookGUIUtils.chatColor("&a+10 Destroy"))
 						.toItemStack();
 		ItemStack rd10 = new ItemBuilder(
 				UMaterial.match("RED_WOOL").getItemStack())
-						.setName(RPBookGUIUtils.ChatColor("&c-10 Destroy"))
+						.setName(RPBookGUIUtils.chatColor("&c-10 Destroy"))
 						.toItemStack();
 
 		inv.setItem(10, as1);
