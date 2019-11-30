@@ -33,6 +33,7 @@ import io.github.puyodead1.rpbookgui.utils.FileCustomEnchant;
 import io.github.puyodead1.rpbookgui.utils.FileEnchantRarity;
 import io.github.puyodead1.rpbookgui.utils.MetricsLite;
 import io.github.puyodead1.rpbookgui.utils.RPBookGUIUtils;
+import me.randomhashtags.randompackage.RandomPackageAPI;
 import me.randomhashtags.randompackage.util.addon.RPAddon;
 
 public class RPBookGUI extends JavaPlugin {
@@ -129,7 +130,7 @@ public class RPBookGUI extends JavaPlugin {
 	 */
 	private void InitRarities() {
 		final String separator = RPAddon.separator;
-		final String p = RPAddon.rpd + separator + "custom enchants";
+		final String p = RandomPackageAPI.randompackage.getDataFolder() + separator + "custom enchants";
 		final File folder = new File(p);
 
 		if (folder.exists()) {
