@@ -1,5 +1,7 @@
 package io.github.puyodead1.rpbookgui.events;
 
+import io.github.puyodead1.rpbookgui.utils.UMaterial;
+import me.randomhashtags.randompackage.RandomPackageAPI;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,7 +14,6 @@ import io.github.puyodead1.rpbookgui.Inventories;
 import io.github.puyodead1.rpbookgui.RPBookGUI;
 import io.github.puyodead1.rpbookgui.utils.RPBookGUIUtils;
 import me.randomhashtags.randompackage.util.RPStorage;
-import me.randomhashtags.randompackage.util.universal.UMaterial;
 
 public class EnchantInventoryClick extends RPBookGUIUtils implements Listener {
 
@@ -40,7 +41,7 @@ public class EnchantInventoryClick extends RPBookGUIUtils implements Listener {
 						player.getOpenInventory().close();
 						player.openInventory(
 								Inventories.successAndDestroyInventory(
-										RPStorage.valueOfCustomEnchant(item)));
+										RandomPackageAPI.INSTANCE.valueOfCustomEnchant(item)));
 					} else {
 						player.getInventory().addItem(item);
 						if (!RPBookGUI.getPlugin.getConfig()

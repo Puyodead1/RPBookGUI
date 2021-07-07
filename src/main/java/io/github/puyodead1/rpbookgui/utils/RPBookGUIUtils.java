@@ -102,7 +102,7 @@ public class RPBookGUIUtils {
 	 */
 	public static List<CustomEnchant> getCustomEnchants(String rarity) {
 		List<CustomEnchant> enchants = CustomEnchants.getCustomEnchants()
-				.getEnchantRarity(rarity.toUpperCase()).getEnchants();
+				.getCustomEnchantRarity(rarity.toUpperCase()).getEnchants();
 		return enchants.stream().filter(e -> e.isEnabled())
 				.collect(Collectors.toList());
 	}
@@ -114,6 +114,10 @@ public class RPBookGUIUtils {
 	public static void addEnchantRarity(EnchantRarity rarity) {
 		final String identifier = rarity.getIdentifier();
 		rarities.put(identifier, rarity);
+	}
+
+	public static void addCustomEnchant(CustomEnchant customEnchant) {
+		enchants.put(customEnchant.getIdentifier(), customEnchant);
 	}
 
 	/**

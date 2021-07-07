@@ -78,7 +78,7 @@ public class ItemStackUtils {
 		String path = ce.getAppliesTo().toString().toLowerCase().replace(",", ";").replace("[", "").replace("]", "")
 				.replaceAll("\\p{Z}", "");
 		FileConfiguration config = YamlConfiguration
-				.loadConfiguration(new File(RandomPackage.getPlugin.getDataFolder(), "custom enchants/_settings.yml"));
+				.loadConfiguration(new File(RandomPackage.GET_PLUGIN.getDataFolder(), "custom enchants/_settings.yml"));
 		lore.add(RPBookGUIUtils.chatColor(config.getString("enchant types." + path)));
 		meta.setLore(lore);
 		item.setItemMeta(meta);

@@ -15,6 +15,8 @@
  ******************************************************************************/
 package io.github.puyodead1.rpbookgui;
 
+import me.randomhashtags.randompackage.RandomPackage;
+import me.randomhashtags.randompackage.RandomPackageAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -75,7 +77,7 @@ public class Inventories extends RPBookGUIUtils {
 	 * @return inventory
 	 */
 	public static Inventory enchantInventory(CustomEnchant ce) {
-		EnchantRarity rarity = RPStorage.valueOfEnchantRarity(ce);
+		EnchantRarity rarity = RandomPackageAPI.INSTANCE.valueOfCustomEnchantRarity(ce);
 		Inventory inv = Bukkit.createInventory(null, RPBookGUIUtils.toNineDenom(ce.getMaxLevel() + 1),
 				rarity.getNameColors() + ce.getName());
 		int x = 0;

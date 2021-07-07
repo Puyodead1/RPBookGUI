@@ -2,6 +2,7 @@ package io.github.puyodead1.rpbookgui.events;
 
 import java.util.Map.Entry;
 
+import me.randomhashtags.randompackage.RandomPackageAPI;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -57,8 +58,7 @@ public class SuccessDestroyInventoryClick extends RPBookGUIUtils
 
 					Entry<String, EnchantConstructor> entry = EnchantConstructor
 							.getEnchants().entrySet().iterator().next();
-					CustomEnchant ce = RPStorage
-							.valueOfCustomEnchant(entry.getKey(), true);
+					CustomEnchant ce = RandomPackageAPI.INSTANCE.valueOfCustomEnchant(entry.getKey(), true);
 
 					if ("success".equals(type)) {
 						if ("+".equals(incrementType)) {
