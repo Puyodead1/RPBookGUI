@@ -27,12 +27,14 @@ public class MainInventoryClick extends RPBookGUIUtils implements Listener {
 			if("Enchantment Categories".equals(invTitle)) {
 				String itemName = item.getItemMeta().getDisplayName().split(" ")[0];
 				itemName = stripColor(itemName).toUpperCase();
-				
+
+				// TODO: this is terrible
 				for(final EnchantRarity rarity : rarities.values()) {
 					if(itemName.equals(rarity.getIdentifier())) {
 						e.setCancelled(true);
 						player.getOpenInventory().close();
 						player.openInventory(Inventories.rarityInventory(rarity));
+						return;
 					}
 				}
 			}

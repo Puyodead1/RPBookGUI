@@ -18,37 +18,38 @@ import me.randomhashtags.randompackage.util.RPStorage;
 
 public class RarityInventoryClick extends RPBookGUIUtils implements Listener {
 
-	@EventHandler
-	public void clickEvent(InventoryClickEvent e) {
-		if (!e.isCancelled() && e.getCurrentItem() != null
-				&& !e.getCurrentItem().getType().equals(Material.AIR)
-				&& e.getClickedInventory() != null && e.getCursor() != null
-				&& !e.getClick().equals(ClickType.DOUBLE_CLICK)) {
-			ItemStack item = e.getCurrentItem();
-			Player player = (Player) e.getWhoClicked();
-			String invTitle = e.getView().getTitle();
+    @EventHandler
+    public void clickEvent(InventoryClickEvent e) {
+        if (e.isCancelled() || e.getCurrentItem() == null || e.getCurrentItem() == null
+                || e.getCurrentItem().getType().equals(Material.AIR)
+                || e.getClickedInventory() == null || e.getCursor() == null
+                || e.getClick().equals(ClickType.DOUBLE_CLICK))
+            return;
 
-			
-			if (rarities.keySet().contains(stripColor(invTitle))) {
-				e.setCancelled(true);
-				
-				if(item.getType().equals(UMaterial.match("BOOK").getMaterial())) {
-					// Close if its the back button
-					if (item.getItemMeta().getDisplayName().equals(ItemStackUtils.back()
-							.clone().getItemMeta().getDisplayName())) {
-						player.getOpenInventory().close();
-						player.openInventory(Inventories.mainInventory());
-					}
-					player.getOpenInventory().close();
-					final CustomEnchant ce = RandomPackageAPI.INSTANCE.valueOfCustomEnchant(stripColor(
-							e.getCurrentItem().getItemMeta().getDisplayName()),
-							true);
-					player.openInventory(Inventories.enchantInventory(ce));
-				} else {
-					player.getOpenInventory().close();
-					player.openInventory(Inventories.mainInventory());
-				}
-			}
-		}
-	}
+        ItemStack item = e.getCurrentItem();
+        Player player = (Player) e.getWhoClicked();
+        String invTitle = e.getView().getTitle();
+
+        if (rarities.containsKey(stripColor(invTitle))) {
+            e.setCancelled(true);
+
+            if (item.getType().equals(UMaterial.match("BOOK").getMaterial())) {
+                // Close if its the back button
+                if (item.getItemMeta().getDisplayName().equals(ItemStackUtils.back()
+                        .clone().getItemMeta().getDisplayName())) {
+                    player.getOpenInventory().close();
+                    player.openInventory(Inventories.mainInventory());
+                }
+                player.getOpenInventory().close();
+                final CustomEnchant ce = RandomPackageAPI.INSTANCE.valueOfCustomEnchant(stripColor(
+                        e.getCurrentItem().getItemMeta().getDisplayName()),
+                        true);
+                player.openInventory(Inventories.enchantInventory(ce));
+            } else {
+                player.getOpenInventory().close();
+                player.openInventory(Inventories.mainInventory());
+            }
+        }
+
+    }
 }

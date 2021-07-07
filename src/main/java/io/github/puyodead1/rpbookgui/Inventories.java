@@ -65,7 +65,8 @@ public class Inventories extends RPBookGUIUtils {
 		
 		for(int i = 0; i < rarity.getEnchants().size(); i++) {
 			final CustomEnchant ce = rarity.getEnchants().get(i);
-			inv.setItem(i, ItemStackUtils.enchantBook(rarity, ce).clone());
+			if(!ce.isEnabled()) continue;
+			inv.addItem(ItemStackUtils.enchantBook(rarity, ce).clone());
 		}
 		inv.setItem(inv.getSize() - 1, ItemStackUtils.back().clone());
 		return inv;

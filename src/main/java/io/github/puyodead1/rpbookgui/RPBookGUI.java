@@ -27,6 +27,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RPBookGUI extends JavaPlugin {
     public static RPBookGUI getPlugin;
 
@@ -106,7 +109,7 @@ public class RPBookGUI extends JavaPlugin {
      */
     public void InitMetrics() {
         long started = System.currentTimeMillis();
-        new Metrics(this,4890);
+        new Metrics(this, 4890);
 
         Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&dRPBookGUI&7] &bInitialized Metrics &e("
                 + (System.currentTimeMillis() - started) + "ms)"));
@@ -117,8 +120,9 @@ public class RPBookGUI extends JavaPlugin {
      */
     private void InitRarities() {
         long started = System.currentTimeMillis();
+
         for (EnchantRarity enchantRarity : RandomPackageAPI.INSTANCE.getAllCustomEnchantRarities().values()) {
-        	if(enchantRarity.getIdentifier().equals("RANDOM")) continue;
+            if (enchantRarity.getIdentifier().equals("RANDOM")) continue;
             RPBookGUIUtils.addEnchantRarity(enchantRarity);
         }
 
