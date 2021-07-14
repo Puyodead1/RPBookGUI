@@ -125,7 +125,7 @@ public class Inventories extends RPBookGUIUtils {
 	 * @param ce
 	 * @return inventory
 	 */
-	public static Inventory successAndDestroyInventory(CustomEnchant ce) {
+	public static Inventory successAndDestroyInventory(CustomEnchant ce, int level) {
 		Inventory inv = Bukkit.createInventory(null, 45,
 				"Success & Destroy Configuration");
 		// slot 10-12 - increase success
@@ -196,8 +196,7 @@ public class Inventories extends RPBookGUIUtils {
 
 		inv.setItem(22,
 				CustomEnchants.getCustomEnchants()
-						.getRevealedItem(ce, EnchantConstructor.getEnchants()
-								.get(ce.getIdentifier()).getEnchantLevel(), 0,
+						.getRevealedItem(ce, level, 0,
 								0, true, true));
 
 		inv.setItem(28, rs1);

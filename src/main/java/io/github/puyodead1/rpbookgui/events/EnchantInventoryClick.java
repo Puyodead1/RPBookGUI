@@ -2,6 +2,9 @@ package io.github.puyodead1.rpbookgui.events;
 
 import io.github.puyodead1.rpbookgui.utils.UMaterial;
 import me.randomhashtags.randompackage.RandomPackageAPI;
+import me.randomhashtags.randompackage.addon.CustomEnchant;
+import me.randomhashtags.randompackage.api.CustomEnchants;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -34,15 +37,15 @@ public class EnchantInventoryClick extends RPBookGUIUtils implements Listener {
 
 			if (item.getType()
 					.equals(UMaterial.match("BOOK").getMaterial())) {
-				// Note: there was the old enchant constructor removal here,
-				// but
-				// doesnt seem needed as there is only one enchant now
 				if (RPBookGUI.getPlugin.getConfig().getBoolean(
 						"settings.use success destroy configuration")) {
 					player.getOpenInventory().close();
+					final CustomEnchant ce = RandomPackageAPI.INSTANCE.valueOfCustomEnchant(item);
+					final int level = CustomEnchants.getCustomEnchants().getEnchantmentLevel(item.getItemMeta().getDisplayName());
 					player.openInventory(
 							Inventories.successAndDestroyInventory(
-									RandomPackageAPI.INSTANCE.valueOfCustomEnchant(item)));
+									ce, level));
+
 				} else {
 					player.getInventory().addItem(item);
 					if (!RPBookGUI.getPlugin.getConfig()
